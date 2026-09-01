@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# =========================
+# Olist datasets
+# =========================
+
+datasets/raw/*
+!datasets/raw/.gitkeep
+
+datasets/processed/*
+!datasets/processed/.gitkeep
