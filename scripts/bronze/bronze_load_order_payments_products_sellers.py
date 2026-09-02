@@ -6,6 +6,7 @@ current_layer = "bronze"
 source_type = ".csv"
 seperator = ","
 source_path = "./datasets/raw/"
+dtype = "str"
 destination_path = f"./scripts/{current_layer}/"
 destination_type = ".pkl"
 
@@ -25,7 +26,7 @@ for key, value in source_tables_dict.items():
 
     table_name = current_layer + source_type + "_" + key + source_type
     dataframe_name = table_name
-    dataframe_name = pd.read_csv(source_path + value + source_type, sep=seperator)
+    dataframe_name = pd.read_csv(source_path + value + source_type, sep=seperator, dtype=dtype)
     pickle_dict[table_name] = dataframe_name
     source_tables_list.append(table_name)
 
