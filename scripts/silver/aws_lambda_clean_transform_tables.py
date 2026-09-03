@@ -84,6 +84,8 @@ print("Convert columns".upper())
 print("====================================================================\n")
 
 numeric_columns = ["payment_sequential", "payment_installments", "payment_value"]
+string_columns = ["order_id", "payment_type"]
+
 
 for col in numeric_columns:
 
@@ -93,6 +95,17 @@ for col in numeric_columns:
         
     except Execution as e:
         print(f"Error in converting {col} into numeric")
+        print(f"Error details: {e}")
+        sys.exit(1)
+
+for col in string_columns:
+
+    try:
+        df_order_payments[col] = df_order_payments[col].astype("str")
+        print(f"{col} successfully converted into {df_order_payments[col].dtype}")
+        
+    except Execution as e:
+        print(f"Error in converting {col} into string")
         print(f"Error details: {e}")
         sys.exit(1)
 
@@ -224,6 +237,12 @@ numeric_columns = [
     "product_width_cm"
     ]
 
+string_columns = [
+    "product_id",
+    "product_category_name"
+]
+
+
 for col in numeric_columns:
 
     try:
@@ -234,6 +253,17 @@ for col in numeric_columns:
         print(f"Error in converting {col} into numeric")
         print(f"Error details: {e}")
         sys.exit(1) #exit script to avoid errors
+
+for col in string_columns:
+
+    try:
+        df_products[col] = df_products[col].astype("str")
+        print(f"{col} successfully converted into {df_products[col].dtype}")
+        
+    except Execution as e:
+        print(f"Error in converting {col} into string")
+        print(f"Error details: {e}")
+        sys.exit(1)
 
 print("\n")
 
@@ -433,6 +463,30 @@ print("\n")
 # seller state
 
 print("====================================================================")
+print("Convert columns".upper())
+print("====================================================================\n")
+
+string_columns = [
+    "seller_id",
+    "seller_zip_code_prefix",
+    "seller_city",
+    "seller_state"
+]
+
+for col in string_columns:
+
+    try:
+        df_sellers[col] = df_sellers[col].astype("str")
+        print(f"{col} successfully converted into {df_sellers[col].dtype}")
+        
+    except Execution as e:
+        print(f"Error in converting {col} into string")
+        print(f"Error details: {e}")
+        sys.exit(1)
+
+print("\n")
+
+print("====================================================================")
 print("Check Data Quality".upper())
 print("====================================================================\n")
 
@@ -555,6 +609,7 @@ for char in special_characters_list:
         else:
             print(f"There was a problem by splitting on '{char}'\n")
 
+df_sellers["seller_city"] = df_sellers["seller_city"].astype("str")
 
 print("====================================================================")
 print("seller_state")
