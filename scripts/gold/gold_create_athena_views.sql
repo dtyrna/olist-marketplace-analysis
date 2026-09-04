@@ -34,16 +34,16 @@ CREATE OR REPLACE VIEW gold.fact_orders AS
 
 CREATE OR REPLACE VIEW gold.dim_products AS
     SELECT
-    p.id_products,
-    p.product_description_lenght,
-    p.product_height_cm,
-    p.product_id,
-    p.product_length_cm,
-    p.product_name_lenght,
-    p.product_photos_qty,
-    p.product_weight_g,
-    p.product_width_cm
-    ct.product_category_name_eng
+        p.id_products,
+        p.product_description_lenght,
+        p.product_height_cm,
+        p.product_id,
+        p.product_length_cm,
+        p.product_name_lenght,
+        p.product_photos_qty,
+        p.product_weight_g,
+        p.product_width_cm
+        ct.product_category_name_eng
     FROM products p
     LEFT JOIN category_translation ct ON p.product_category_name_bras = ct.product_category_name_bras
 ;
