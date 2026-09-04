@@ -9,8 +9,8 @@ USE dsi_final_project_powerbi_dw;
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_category_translation (
   
   id_product_name_translation SMALLSERIAL,
-  product_category_name_bras  VARCHAR,
-  product_category_name_eng   VARCHAR
+  product_category_name_bras  STRING,
+  product_category_name_eng   STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -28,12 +28,12 @@ TBLPROPERTIES (
 
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_customers (
-  id_customers                BIGSERIAL,
-  customer_id                 VARCHAR,
-  customer_unique_id          VARCHAR,
-  customer_zip_code_prefix    CHAR(5),
-  customer_city               VARCHAR,
-  customer_state              VARCHAR
+  id_customers                BIGINT,
+  customer_id                 STRING,
+  customer_unique_id          STRING,
+  customer_zip_code_prefix    STRING,
+  customer_city               STRING,
+  customer_state              STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -51,10 +51,10 @@ TBLPROPERTIES (
 
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_geolocation (
-  id_geolocation                BIGSERIAL,
-  geolocation_zip_code_prefix   VARCHAR
-  geolocation_city              VARCHAR,
-  geolocation_state             VARCHAR
+  id_geolocation                BIGINT,
+  geolocation_zip_code_prefix   STRING
+  geolocation_city              STRING,
+  geolocation_state             STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -72,14 +72,14 @@ TBLPROPERTIES (
 
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_order_items (
-  id_olist_order_items_dataset  BIGSERIAL,
-  order_id                      VARCHAR,
-  product_id                    VARCHAR(32),
-  seller_id                     VARCHAR(32),
+  id_olist_order_items_dataset  BIGINT,
+  order_id                      STRING,
+  product_id                    STRING,
+  seller_id                     STRING,
   shipping_limit_date           DATE,
-  order_item_id                 SMALLINT,
-  price                         FLOAT(5,2),
-  freight_value                 FLOAT(5,2)
+  order_item_id                 INT,
+  price                         DECIMAL(5,2),
+  freight_value                 DECIMAL(5,2)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -96,12 +96,12 @@ TBLPROPERTIES (
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_order_payments (
-  id_order_payments     BIGSERIAL,
-  order_id              CHAR(32),
-  payment_installments  SMALLINT,
-  payment_sequential    SMALLINT,
-  payment_type          VARCHAR(20)
-  payment_value         FLOAT(5,2)
+  id_order_payments     BIGINT,
+  order_id              STRING,
+  payment_installments  INT,
+  payment_sequential    INT,
+  payment_type          STRING,
+  payment_value         DECIMAL(5,2)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -118,16 +118,16 @@ TBLPROPERTIES (
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_order_reviews (
-  id_order_reviews            BIGSERIAL,
-  review_id                   VARCHAR,
-  order_id                    VARCHAR,
-  review_score                SMALLINT,
-  review_comment_title        VARCHAR,
-  review_comment_title_en     VARCHAR,
-  review_comment_message      VARCHAR,
-  review_comment_message_en   VARCHAR,
+  id_order_reviews            BIGINT,
+  review_id                   STRING,
+  order_id                    STRING,
+  review_score                INT,
+  review_comment_title        STRING,
+  review_comment_title_en     STRING,
+  review_comment_message      STRING,
+  review_comment_message_en   STRING,
   review_creation_date        DATE,
-  review_answer_timestamp     DATE
+  review_answer_timestamp     TIMESTAMP
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -144,11 +144,11 @@ TBLPROPERTIES (
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_orders (
-  id_orders                       BIGSERIAL,
-  order_id                        VARCHAR,
-  customer_id                     VARCHAR,
-  order_status                    CHAR(10),
-  order_purchase_timestamp        DATE,
+  id_orders                       BIGINT,
+  order_id                        STRING,
+  customer_id                     STRING,
+  order_status                    STRING,
+  order_purchase_timestamp        TIMESTAMP,
   order_approved_at               DATE,
   order_delivered_carrier_date    DATE,
   order_delivered_customer_date   DATE,
@@ -169,16 +169,16 @@ TBLPROPERTIES (
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_products (
-  id_products                 BIGSERIAL,
-  product_category_name_bras  VARCHAR(50),
+  id_products                 BIGINT,
+  product_category_name_bras  STRING,
   product_description_lenght  INTEGER,
-  product_height_cm           FLOAT(4,1),
-  product_id                  CHAR(32),
-  product_length_cm           FLOAT(4,1),
+  product_height_cm           DECIMAL(4,1),
+  product_id                  STRING,
+  product_length_cm           DECIMAL(4,1),
   product_name_lenght         INTEGER,
-  product_photos_qty          SMALLINT,
-  product_weight_g            FLOAT(4,1),
-  product_width_cm            FLOAT(4,1)
+  product_photos_qty          INT,
+  product_weight_g            DECIMAL(4,1),
+  product_width_cm            DECIMAL(4,1)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -195,11 +195,11 @@ TBLPROPERTIES (
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_sellers (
-  id_sellers              BIGSERIAL,
-  seller_city             VARCHAR(50),
-  seller_id               CHAR(32),
-  seller_state            CHAR(2),
-  seller_zip_code_prefix  CHAR(5)
+  id_sellers              BIGINT,
+  seller_city             STRING,
+  seller_id               STRING,
+  seller_state            STRING,
+  seller_zip_code_prefix  STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
