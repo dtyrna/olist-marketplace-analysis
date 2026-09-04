@@ -1,8 +1,16 @@
+--###############################################
+--Modify for real data
+--###############################################
+
+--###############################################
 USE dsi_final_project_powerbi_dw;
+--###############################################
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_category_translation (
-  category_id   STRING,
-  category_name STRING
+  
+  id_product_name_translation SMALLSERIAL,
+  product_category_name_bras  VARCHAR,
+  product_category_name_eng   VARCHAR
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -11,18 +19,21 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/category_translation/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_customers (
-  customer_id           STRING,
-  customer_unique_id    STRING,
-  customer_zip_code_prefix STRING,
-  customer_city         STRING,
-  customer_state        STRING
+  id_customers                BIGSERIAL,
+  customer_id                 VARCHAR,
+  customer_unique_id          VARCHAR,
+  customer_zip_code_prefix    CHAR(5),
+  customer_city               VARCHAR,
+  customer_state              VARCHAR
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -31,18 +42,19 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/customers/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_geolocation (
-  geolocation_zip_code_prefix STRING,
-  geolocation_lat             DOUBLE,
-  geolocation_lng             DOUBLE,
-  geolocation_city            STRING,
-  geolocation_state           STRING
+  id_geolocation                BIGSERIAL,
+  geolocation_zip_code_prefix   VARCHAR
+  geolocation_city              VARCHAR,
+  geolocation_state             VARCHAR
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -51,21 +63,23 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/geolocation/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_order_items (
-  order_item_id        STRING,
-  order_id             STRING,
-  order_item_number    INT,
-  product_id           STRING,
-  seller_id            STRING,
-  shipping_limit_date  STRING,
-  price                DOUBLE,
-  freight_value        DOUBLE
+  id_olist_order_items_dataset  BIGSERIAL,
+  order_id                      VARCHAR,
+  product_id                    VARCHAR(32),
+  seller_id                     VARCHAR(32),
+  shipping_limit_date           DATE,
+  order_item_id                 SMALLINT,
+  price                         FLOAT(5,2),
+  freight_value                 FLOAT(5,2)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -74,17 +88,20 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_items/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_order_payments (
-  order_id              STRING,
-  payment_sequential    INT,
-  payment_type          STRING,
-  payment_installments  INT,
-  payment_value         DOUBLE
+  id_order_payments     BIGSERIAL,
+  order_id              CHAR(32),
+  payment_installments  SMALLINT,
+  payment_sequential    SMALLINT,
+  payment_type          VARCHAR(20)
+  payment_value         FLOAT(5,2)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -93,19 +110,24 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_payments/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_order_reviews (
-  review_id                 STRING,
-  order_id                  STRING,
-  review_score              INT,
-  review_comment_title      STRING,
-  review_comment_message    STRING,
-  review_creation_date      STRING,
-  review_answer_timestamp   STRING
+  id_order_reviews            BIGSERIAL,
+  review_id                   VARCHAR,
+  order_id                    VARCHAR,
+  review_score                SMALLINT,
+  review_comment_title        VARCHAR,
+  review_comment_title_en     VARCHAR,
+  review_comment_message      VARCHAR,
+  review_comment_message_en   VARCHAR,
+  review_creation_date        DATE,
+  review_answer_timestamp     DATE
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -114,20 +136,23 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_reviews/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_orders (
-  order_id                        STRING,
-  customer_id                     STRING,
-  order_status                    STRING,
-  order_purchase_timestamp        STRING,
-  order_approved_at               STRING,
-  order_delivered_customer_date   STRING,
-  order_delivered_carrier_date    STRING,
-  order_estimated_delivery_date   STRING
+  id_orders                       BIGSERIAL,
+  order_id                        VARCHAR,
+  customer_id                     VARCHAR,
+  order_status                    CHAR(10),
+  order_purchase_timestamp        DATE,
+  order_approved_at               DATE,
+  order_delivered_carrier_date    DATE,
+  order_delivered_customer_date   DATE,
+  order_estimated_delivery_date   DATE,
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -136,21 +161,24 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/orders/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_products (
-  product_id                STRING,
-  product_category_name     STRING,
-  product_name_lenght       INT,
-  product_description_lenght INT,
-  product_photos_qty        INT,
-  product_weight_g          INT,
-  product_length_cm         INT,
-  product_height_cm         INT,
-  product_width_cm          INT
+  id_products                 BIGSERIAL,
+  product_category_name_bras  VARCHAR(50),
+  product_description_lenght  INTEGER,
+  product_height_cm           FLOAT(4,1),
+  product_id                  CHAR(32),
+  product_length_cm           FLOAT(4,1),
+  product_name_lenght         INTEGER,
+  product_photos_qty          SMALLINT,
+  product_weight_g            FLOAT(4,1),
+  product_width_cm            FLOAT(4,1)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -159,16 +187,19 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/products/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
 CREATE EXTERNAL TABLE IF NOT EXISTS silver.csv_sellers (
-  seller_id              STRING,
-  seller_zip_code_prefix STRING,
-  seller_city            STRING,
-  seller_state           STRING
+  id_sellers              BIGSERIAL,
+  seller_city             VARCHAR(50),
+  seller_id               CHAR(32),
+  seller_state            CHAR(2),
+  seller_zip_code_prefix  CHAR(5)
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
@@ -177,7 +208,9 @@ WITH SERDEPROPERTIES (
   'escapeChar' = '\\'
 )
 STORED AS TEXTFILE
+--###############################################
 LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/sellers/'
+--###############################################
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
