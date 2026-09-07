@@ -2,7 +2,7 @@
 --dropped unneccary id-columns
 --change column's order to groups to a topic, e.g. delivery
 --gave columns an Alias
-CREATE OR REPLACE VIEW gold.fact_orders AS
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_orders AS
     SELECT
         o.order_id AS order_id,
         o.customer_id AS customer_id,
@@ -32,7 +32,7 @@ CREATE OR REPLACE VIEW gold.fact_orders AS
     LEFT JOIN order_reviews o_r ON o.order_id = o_r.order_id
 ;
 
-CREATE OR REPLACE VIEW gold.dim_products AS
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_products AS
     SELECT
         p.id_products,
         p.product_description_lenght,
@@ -50,20 +50,20 @@ CREATE OR REPLACE VIEW gold.dim_products AS
 
 
 
-CREATE OR REPLACE VIEW gold.dim_customer AS
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_customers AS
     SELECT
-        id_customers,
+        -- id_customers, outlined for testing power bi connection
         customer_id,
         customer_unique_id,
         customer_zip_code_prefix,
         customer_city,
         customer_state   
-    FROM customers
+    FROM silver_csv_customers
 ;
 
 
 
-CREATE OR REPLACE VIEW gold.dim_seller AS
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_sellers AS
     SELECT
         id_sellers,
         seller_city,
