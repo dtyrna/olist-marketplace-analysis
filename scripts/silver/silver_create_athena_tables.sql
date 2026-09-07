@@ -6,6 +6,8 @@
 USE dsi_final_project_powerbi_dw;
 --###############################################
 
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_category_translation;
+
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_category_translation (
   id_product_name_translation INT,
   product_category_name_bras  STRING,
@@ -21,9 +23,10 @@ TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_customers;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_customers (
-  id_customers                BIGINT,
+  --id_customers                BIGINT, outlined for testing power bi connection
   customer_id                 STRING,
   customer_unique_id          STRING,
   customer_zip_code_prefix    STRING,
@@ -40,6 +43,7 @@ TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_geolocation;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_geolocation (
   id_geolocation                BIGINT,
@@ -57,6 +61,7 @@ TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items (
   id_olist_order_items_dataset  BIGINT,
@@ -78,6 +83,8 @@ TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_payments;
+
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_payments (
   id_order_payments     BIGINT,
   order_id              STRING,
@@ -95,6 +102,8 @@ LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_payment
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
+
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_reviews;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_reviews (
   id_order_reviews            BIGINT,
@@ -118,6 +127,8 @@ TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_orders;
+
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orders (
   id_orders                       BIGINT,
   order_id                        STRING,
@@ -138,6 +149,8 @@ LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/orders/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
+
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_products;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_products (
   id_products                 BIGINT,
@@ -160,6 +173,8 @@ LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/products/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
+
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_sellers;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_sellers (
   id_sellers              BIGINT,
