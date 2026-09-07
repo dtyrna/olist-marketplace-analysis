@@ -1,4 +1,4 @@
---JOINED Tables order_payments, order_items, order_reviews
+--JOINED Tables order_payments, order_items, order_reviews, geolocation
 --dropped unneccary id-columns
 --change column's order to groups to a topic, e.g. delivery
 --gave columns an Alias
