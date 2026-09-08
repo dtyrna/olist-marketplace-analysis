@@ -5,7 +5,7 @@
 CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_orders AS
     SELECT
         o.order_id AS order_id,
-        o.customer_unique_id AS customer_unique_id,
+        o.customer_id AS customer_id,
         o_i.product_id AS product_id,
         o_i.seller_id AS seller_id,
         o.order_status AS order_status,                

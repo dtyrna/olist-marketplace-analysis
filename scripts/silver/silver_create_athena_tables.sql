@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_orders;
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orders (
   id_orders                       BIGINT,
   order_id                        STRING,
-  customer_unique_id              STRING,
+  customer_id                     STRING,
   order_status                    STRING,
   order_purchase_timestamp        TIMESTAMP,
   order_approved_at               TIMESTAMP,
