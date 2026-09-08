@@ -1,7 +1,3 @@
-######################################################################################################################################################################
-# Jakob's Code
-######################################################################################################################################################################
-
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -46,14 +42,15 @@ df_geolocation[spalten_liste]=df_geolocation[spalten_liste].astype("string")
 df_geolocation.info()
 
 
-# ## Dropping of unwanted columns 
+# ## Altering of coordinates column
 # 
-# The columns of longitute and latitute will be removed. They don't give us a gain of information on this dataset, since it doesn't clarify more about the sellers. Every row has different measures and the table would become to large and to fine. So we decided to drop those columns and keep the zip-code of the cities as well as the state as category.
+# The columns of longitute and latitute will be altered. It is to much information in the column so do only keep one set of coordinates for every zip code.
 
-# In[14]:
+# In[7]:
 
 
-df_geolocation = df_geolocation.drop(columns=['geolocation_lat', 'geolocation_lng'])
+df_geolocation = df_geolocation.drop_duplicates(subset=['geolocation_zip_code_prefix'], keep='first')
+df_geolocation
 
 
 # ## Data Cleaning
