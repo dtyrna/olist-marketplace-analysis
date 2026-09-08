@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_geolocation;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_geolocation (
   id_geolocation                BIGINT,
-  geolocation_zip_code_prefix   STRING
+  geolocation_zip_code_prefix   STRING,
   geolocation_city              STRING,
   geolocation_state             STRING,
   geolocation_lat               DECIMAL,
