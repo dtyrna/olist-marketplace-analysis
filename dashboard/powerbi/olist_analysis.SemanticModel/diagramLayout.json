@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 93,
+            "y": 117
+          },
+          "nodeIndex": "dim_customers",
+          "nodeLineageTag": "33518cc2-c34c-40ad-b67b-392ae2894613",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 901,
+            "y": 433
+          },
+          "nodeIndex": "dim_products",
+          "nodeLineageTag": "7edd9e8f-c72e-4f72-b918-80c78170cbd2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 51
+          },
+          "nodeIndex": "dim_sellers",
+          "nodeLineageTag": "8fd1d554-40ca-4888-87ef-da809a8f7769",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 463,
+            "y": 428
+          },
+          "nodeIndex": "fact_orders",
+          "nodeLineageTag": "1cf2d917-b047-473f-9398-ccfabcfaff2d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Alle Tabellen",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Alle Tabellen",
+  "defaultDiagram": "Alle Tabellen"
+}

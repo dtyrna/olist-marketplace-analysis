@@ -660,3 +660,19 @@ if seller_id_uniqueness == True:
 sorted_columns = df_sellers.columns.sort_values()
 df_sellers = df_sellers[sorted_columns]
 #df_sellers
+
+print("====================================================================")
+print("EXPORT CSV LOCAL")
+print("====================================================================\n")
+
+destination_path = SCRIPTS_DIR / current_layer  # .../scripts/silver
+destination_type = ".csv"
+
+silver_tables_path = destination_path / f"{current_layer}_order_payments{destination_type}"
+df_order_payments.to_csv(silver_tables_path, index=False)
+
+silver_tables_path = destination_path / f"{current_layer}_sellers{destination_type}"
+df_sellers.to_csv(silver_tables_path, index=False)
+
+silver_tables_path = destination_path / f"{current_layer}_products{destination_type}"
+df_products.to_csv(silver_tables_path, index=False)

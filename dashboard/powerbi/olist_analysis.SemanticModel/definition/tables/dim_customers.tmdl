@@ -1,0 +1,83 @@
+table dim_customers
+	lineageTag: 33518cc2-c34c-40ad-b67b-392ae2894613
+
+	column id_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f9019e1-0f0d-454e-985f-fe2dbd6bf230
+		summarizeBy: none
+		sourceColumn: id_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 0237ac2e-4d3e-4358-b56c-28ede1a419ad
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 123ac955-b512-45cf-a76c-704dfa2a29ad
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_zip_code_prefix
+		dataType: string
+		lineageTag: a8dbfef5-c979-471d-bdf8-f1db2b82c82a
+		summarizeBy: none
+		sourceColumn: customer_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_city
+		dataType: string
+		lineageTag: ca68d158-32a2-4469-8af4-8ca653cae963
+		summarizeBy: none
+		sourceColumn: customer_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state
+		dataType: string
+		lineageTag: cf8690a2-d3fa-4c70-8db3-3e3116cc29bf
+		summarizeBy: none
+		sourceColumn: customer_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column geolocation_lat
+		dataType: double
+		lineageTag: ee6928bf-6e45-4697-971a-93b907cfbea2
+		summarizeBy: none
+		sourceColumn: geolocation_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column geolocation_lng
+		dataType: double
+		lineageTag: 6c25a9c2-4460-4822-9b61-0f0111343589
+		summarizeBy: none
+		sourceColumn: geolocation_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_customers = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    dim_customers_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_customers",Kind="Table"]}[Data]
+				in
+				    dim_customers_Table
+
