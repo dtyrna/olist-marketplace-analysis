@@ -14,11 +14,11 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_orders AS
         o.order_estimated_delivery_date AS estimated_delivery_date,
         o.order_delivered_carrier_date AS delivered_carrier_date,
         o.order_delivered_customer_date AS delivered_customer_date,
-        o.order_carrier_before_purchase_flag AS carrier_before_purchase_flag,
-        o.order_delivery_before_carrier_flag AS delivery_before_carrier_flag,
-        o.order_missing_approval_flag AS missing_approval_flag,
-        o.order_missing_carrier_date_flag AS missing_carrier_date_flag,
-        o.order_missing_delivery_date_flag AS missing_delivery_date_flag,
+        o.carrier_before_purchase_flag AS carrier_before_purchase_flag,
+        o.delivery_before_carrier_flag AS delivery_before_carrier_flag,
+        o.missing_approval_flag AS missing_approval_flag,
+        o.missing_carrier_date_flag AS missing_carrier_date_flag,
+        o.missing_delivery_date_flag AS missing_delivery_date_flag,
         o_i.shipping_limit_date AS shipping_limit_date,
         o_i.freight_value AS freight_value,
         o_p.payment_installments AS payment_installments,
@@ -34,7 +34,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_orders AS
     FROM silver_csv_orders o
     LEFT JOIN silver_csv_order_payments o_p ON o.order_id = o_p.order_id
     LEFT JOIN silver_csv_order_items o_i ON o.order_id = o_i.order_id
-    LEFT JOIN silver_csv_order_reviews o_r ON o.order_id = o_r.order_id
+    LEFT JOIN silver_csv_order_reviews_en o_r ON o.order_id = o_r.order_id
 ;
 
 CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_products AS
@@ -50,14 +50,14 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_products AS
         p.product_width_cm AS product_width_cm,
         ct.product_category_name_eng AS product_category_name
     FROM silver_csv_products p
-    LEFT JOIN category_translation ct ON p.product_category_name_bras = ct.product_category_name_bras
+    LEFT JOIN silver_csv_category_translation ct ON p.product_category_name_bras = ct.product_category_name
 ;
 
 
 
 CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_customers AS
     SELECT
-        -- c.id_customers AS id_customers, outlined for testing power bi connection
+        c.id_customers AS id_customers,
         c.customer_id AS customer_id,
         c.customer_unique_id AS customer_unique_id,
         c.customer_zip_code_prefix AS customer_zip_code_prefix,
@@ -66,7 +66,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_customers AS
         g.geolocation_lat AS geolocation_lat,
         g.geolocation_lng AS geolocation_lng 
     FROM silver_csv_customers c
-    LEFT JOIN silver_csv_geolocation g ON silver_csv_customers.customer_zip_code_prefix = silver_csv_geolocation.geolocation_zip_code_prefix
+    LEFT JOIN silver_csv_geolocation g ON c.customer_zip_code_prefix = g.geolocation_zip_code_prefix
 ;
 
 
@@ -81,5 +81,5 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_sellers AS
         g.geolocation_lat AS geolocation_lat,
         g.geolocation_lng AS geolocation_lng 
     FROM silver_csv_sellers s
-    LEFT JOIN silver_csv_geolocation g ON silver_csv_sellers.seller_zip_code_prefix = silver_csv_geolocation.geolocation_zip_code_prefix
+    LEFT JOIN silver_csv_geolocation g ON s.seller_zip_code_prefix = g.geolocation_zip_code_prefix
     ;
