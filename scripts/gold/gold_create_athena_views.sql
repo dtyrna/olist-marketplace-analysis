@@ -5,7 +5,7 @@
 CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_orders AS
     SELECT
         o.order_id AS order_id,
-        o.customer_id AS customer_id,
+        o.customer_unique_id AS customer_unique_id,
         o_i.product_id AS product_id,
         o_i.seller_id AS seller_id,
         o.order_status AS order_status,                
@@ -14,6 +14,11 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_orders AS
         o.order_estimated_delivery_date AS estimated_delivery_date,
         o.order_delivered_carrier_date AS delivered_carrier_date,
         o.order_delivered_customer_date AS delivered_customer_date,
+        o.order_carrier_before_purchase_flag AS carrier_before_purchase_flag,
+        o.order_delivery_before_carrier_flag AS delivery_before_carrier_flag,
+        o.order_missing_approval_flag AS missing_approval_flag,
+        o.order_missing_carrier_date_flag AS missing_carrier_date_flag,
+        o.order_missing_delivery_date_flag AS missing_delivery_date_flag,
         o_i.shipping_limit_date AS shipping_limit_date,
         o_i.freight_value AS freight_value,
         o_p.payment_installments AS payment_installments,

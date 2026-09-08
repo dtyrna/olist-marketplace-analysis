@@ -105,9 +105,9 @@ TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
 
-DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_reviews;
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_reviews_en;
 
-CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_reviews (
+CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_reviews_en (
   id_order_reviews            BIGINT,
   review_id                   STRING,
   order_id                    STRING,
@@ -134,13 +134,18 @@ DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_orders;
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orders (
   id_orders                       BIGINT,
   order_id                        STRING,
-  customer_id                     STRING,
+  customer_unique_id              STRING,
   order_status                    STRING,
   order_purchase_timestamp        TIMESTAMP,
-  order_approved_at               DATE,
-  order_delivered_carrier_date    DATE,
-  order_delivered_customer_date   DATE,
-  order_estimated_delivery_date   DATE,
+  order_approved_at               TIMESTAMP,
+  order_delivered_carrier_date    TIMESTAMP,
+  order_delivered_customer_date   TIMESTAMP,
+  order_estimated_delivery_date   TIMESTAMP,
+  carrier_before_purchase_flag    BOOLEAN,
+  delivery_before_carrier_flag    BOOLEAN,
+  missing_approval_flag           BOOLEAN,
+  missing_carrier_date_flag       BOOLEAN,
+  missing_delivery_date_flag      BOOLEAN
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
