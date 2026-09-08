@@ -1,0 +1,106 @@
+table dim_products
+	lineageTag: 7edd9e8f-c72e-4f72-b918-80c78170cbd2
+
+	column id_products
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d887a3d-5afe-4cce-affc-94e6798b4fa8
+		summarizeBy: sum
+		sourceColumn: id_products
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_description_lenght
+		dataType: int64
+		formatString: 0
+		lineageTag: 384dde66-3afb-4079-9493-81e79d0d4fcc
+		summarizeBy: sum
+		sourceColumn: product_description_lenght
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_height_cm
+		dataType: double
+		lineageTag: 1660474a-6c67-4c28-82c1-290c7efa0c44
+		summarizeBy: sum
+		sourceColumn: product_height_cm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_id
+		dataType: string
+		lineageTag: b148021e-4e61-49c6-a558-aebfecc385db
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_length_cm
+		dataType: double
+		lineageTag: 966d0217-75dc-4467-8938-7464843e27c7
+		summarizeBy: sum
+		sourceColumn: product_length_cm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_name_lenght
+		dataType: int64
+		formatString: 0
+		lineageTag: 793164e7-b345-42f8-8c8e-5015b159b7b7
+		summarizeBy: sum
+		sourceColumn: product_name_lenght
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_photos_qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 122a10db-3456-47bb-ae0c-c6542d307162
+		summarizeBy: sum
+		sourceColumn: product_photos_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_weight_g
+		dataType: double
+		lineageTag: 40df48f2-fac3-41c4-b223-bf6af4fbf803
+		summarizeBy: sum
+		sourceColumn: product_weight_g
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_width_cm
+		dataType: double
+		lineageTag: a04985a6-f745-4193-8114-31356330dbdb
+		summarizeBy: sum
+		sourceColumn: product_width_cm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_category_name
+		dataType: string
+		lineageTag: a8b598f9-8485-46b4-82e8-870fb1055fb9
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_products = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    dim_products_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_products",Kind="Table"]}[Data]
+				in
+				    dim_products_Table
+
