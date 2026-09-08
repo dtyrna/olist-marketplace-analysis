@@ -36,14 +36,14 @@
         },
         {
           "location": {
-            "x": 852,
-            "y": 51
+            "x": 494,
+            "y": 60
           },
           "nodeIndex": "dim_sellers",
           "nodeLineageTag": "8fd1d554-40ca-4888-87ef-da809a8f7769",
           "size": {
             "height": 248,
-            "width": 234
+            "width": 272
           },
           "zIndex": 0
         },
@@ -67,8 +67,22 @@
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [],
+      "name": "test david",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
     }
   ],
-  "selectedDiagram": "Alle Tabellen",
+  "selectedDiagram": "test david",
   "defaultDiagram": "Alle Tabellen"
 }

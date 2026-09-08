@@ -672,36 +672,7 @@ print(quality_flag_summary.to_string(index=False))
 
 
 # ------------------------------------------------------------
-# 3.3 Customer Mapping
-# ------------------------------------------------------------
-
-# Map customer_unique_id from the validated
-# Silver Customers dataset
-customer_mapping = silver_customers[
-    ["customer_id", "customer_unique_id"]
-].copy()
-
-assert customer_mapping["customer_id"].is_unique
-
-bronze_orders = bronze_orders.merge(
-    customer_mapping,
-    on="customer_id",
-    how="left",
-    validate="many_to_one"
-)
-
-assert len(bronze_orders) == orders_raw_row_count
-assert bronze_orders["customer_unique_id"].notna().all()
-
-print("\nCustomer mapping validation passed.")
-print(
-    "Orders with customer_unique_id: "
-    f"{bronze_orders['customer_unique_id'].notna().sum():,}"
-)
-
-
-# ------------------------------------------------------------
-# 3.4 Create Silver Orders Dataset
+# 3.3 Create Silver Orders Dataset
 # ------------------------------------------------------------
 
 silver_orders = bronze_orders.copy()
@@ -716,7 +687,6 @@ expected_orders_columns = [
     "id_orders",
     "order_id",
     "customer_id",
-    "customer_unique_id",
     "order_status",
     "order_purchase_timestamp",
     "order_approved_at",
@@ -743,7 +713,7 @@ print(
 
 
 # ------------------------------------------------------------
-# 3.5 Orders – Silver Data Quality Validation
+# 3.4 Orders – Silver Data Quality Validation
 # ------------------------------------------------------------
 
 assert (
@@ -763,7 +733,6 @@ assert silver_orders["id_orders"].max() == len(
 assert silver_orders["order_id"].notna().all()
 assert silver_orders["order_id"].is_unique
 assert silver_orders["customer_id"].notna().all()
-assert silver_orders["customer_unique_id"].notna().all()
 assert silver_orders["order_status"].notna().all()
 assert silver_orders["order_purchase_timestamp"].notna().all()
 
@@ -831,7 +800,7 @@ print(
 
 
 # ------------------------------------------------------------
-# 3.6 Order Status Diagnostics
+# 3.5 Order Status Diagnostics
 # ------------------------------------------------------------
 
 character_counts = (
@@ -1343,13 +1312,6 @@ assert (
 assert silver_customers["customer_id"].is_unique
 assert silver_orders["order_id"].is_unique
 assert silver_order_reviews["id_order_reviews"].is_unique
-
-# Orders must be fully mapped to validated Silver Customers
-assert (
-    silver_orders["customer_unique_id"]
-    .notna()
-    .all()
-)
 
 print(
     "All three Silver datasets passed the "
