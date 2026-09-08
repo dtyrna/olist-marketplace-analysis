@@ -1,10 +1,4 @@
---###############################################
---Modify for real data
---###############################################
-
---###############################################
 USE dsi_final_project_powerbi_dw;
---###############################################
 
 DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_category_translation;
 
@@ -16,9 +10,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_cate
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/category_translation/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/category_translation/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -26,7 +18,7 @@ TBLPROPERTIES (
 DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_customers;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_customers (
-  --id_customers                BIGINT, outlined for testing power bi connection
+  id_customers                BIGINT,
   customer_id                 STRING,
   customer_unique_id          STRING,
   customer_zip_code_prefix    STRING,
@@ -36,9 +28,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_cust
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/customers/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/customers/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -56,9 +46,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_geol
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/geolocation/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/geolocation/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -78,9 +66,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orde
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_items/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/order_items/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -98,9 +84,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orde
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_payments/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/order_payments/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -122,9 +106,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orde
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/order_reviews/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/order_reviews/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -150,9 +132,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orde
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/orders/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/orders/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -174,9 +154,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_prod
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/products/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/products/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
@@ -193,9 +171,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_sell
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
---###############################################
-LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/test/sellers/'
---###############################################
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/sellers/'
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
