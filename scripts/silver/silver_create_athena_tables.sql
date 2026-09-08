@@ -3,7 +3,6 @@ USE dsi_final_project_powerbi_dw;
 DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_category_translation;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_category_translation (
-  id_product_name_translation INT,
   product_category_name  STRING,
   product_category_name_eng   STRING
 )
@@ -38,8 +37,8 @@ DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_geolocation;
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_geolocation (
   id_geolocation                BIGINT,
   geolocation_zip_code_prefix   STRING,
-  geolocation_lat               DECIMAL,
-  geolocation_lng               DECIMAL,
+  geolocation_lat               DOUBLE,
+  geolocation_lng               DOUBLE,
   geolocation_city              STRING,
   geolocation_state             STRING
   
@@ -55,7 +54,6 @@ TBLPROPERTIES (
 DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items (
-  id_olist_order_items          BIGINT,
   order_id                      STRING,
   product_id                    STRING,
   seller_id                     STRING,
