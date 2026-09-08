@@ -1,0 +1,207 @@
+table dim_orders
+	lineageTag: 67956d8f-a92f-4248-a53a-df67516b572d
+
+	column order_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 039f5af2-6008-4f08-b281-0ac93453c7b1
+		summarizeBy: sum
+		sourceColumn: order_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 0f195142-e6e0-44cc-9684-943540ca25ab
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 99dcd9db-ee11-49d8-b403-6cccdea4975c
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_status
+		dataType: string
+		lineageTag: 0ea94a24-e222-4ab0-800e-c2e21258ec15
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 03e1846e-a74f-4f74-9b84-a70adaa5bb35
+		summarizeBy: sum
+		sourceColumn: purchase_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 9032ef13-7906-4b5b-a48c-eb23864f5f12
+		summarizeBy: sum
+		sourceColumn: approval_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: a3dabc35-b9bd-44ea-ab00-e01edea3c89a
+		summarizeBy: sum
+		sourceColumn: carrier_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivered_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 77e8a5ec-289a-4ac6-ab90-93510d5ee125
+		summarizeBy: none
+		sourceColumn: delivered_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimated_delivery_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b854dc5-9c2f-4c87-b99b-c8800acddd50
+		summarizeBy: sum
+		sourceColumn: estimated_delivery_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_purchase_timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c88af099-cba6-4806-8e45-56aaabf88b5e
+		summarizeBy: none
+		sourceColumn: order_purchase_timestamp
+
+		variation Variation
+			isDefault
+			relationship: e5822554-f4e8-4d20-8d57-f7100d0e1f1b
+			defaultHierarchy: LocalDateTable_c6342338-fcdb-4a58-90bb-3ca876a71270.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_approved_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 45b2ba16-12d3-46ed-b693-3e8c8716c4b1
+		summarizeBy: none
+		sourceColumn: order_approved_at
+
+		variation Variation
+			isDefault
+			relationship: 216efc4a-e520-4593-8153-3161fe205707
+			defaultHierarchy: LocalDateTable_9550e5f3-e1a0-4c14-81f8-2407429be4c4.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_delivered_carrier_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3b84f6bc-6d8b-4ff3-9996-c76d6eea4caa
+		summarizeBy: none
+		sourceColumn: order_delivered_carrier_date
+
+		variation Variation
+			isDefault
+			relationship: 76627c31-7bfb-44b1-8d9a-0a1a334b7de5
+			defaultHierarchy: LocalDateTable_d377dcf3-b6fe-4bc9-93a2-af7e03748515.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_delivered_customer_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5daf69a2-e9f1-4ac4-a65d-6aeed4273055
+		summarizeBy: none
+		sourceColumn: order_delivered_customer_date
+
+		variation Variation
+			isDefault
+			relationship: 774e0471-e59c-4739-a4d5-99443fcf5d45
+			defaultHierarchy: LocalDateTable_9906f3f8-3161-48d8-b83a-42dffcf8fc84.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_estimated_delivery_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4acef189-a3f0-4386-ab85-55cd7f0bd606
+		summarizeBy: none
+		sourceColumn: order_estimated_delivery_date
+
+		variation Variation
+			isDefault
+			relationship: 8daeb271-cfa0-457e-b005-0e934e47ea3e
+			defaultHierarchy: LocalDateTable_050c412d-082c-4bf2-9783-1ff296a162bb.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier_before_purchase_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ffbc1396-5f82-4896-896a-612589f5da06
+		summarizeBy: none
+		sourceColumn: carrier_before_purchase_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_before_carrier_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f9570f6f-420f-4e84-a5f2-8a105cb386c2
+		summarizeBy: none
+		sourceColumn: delivery_before_carrier_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_approval_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 40b52236-74d3-41b7-98a0-1146c2db406a
+		summarizeBy: none
+		sourceColumn: missing_approval_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_carrier_date_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e2bfc09c-1695-406e-b74e-32e4b0ba6a06
+		summarizeBy: none
+		sourceColumn: missing_carrier_date_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_delivery_date_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6690079c-95be-4d57-a95d-bd9c5c5ef150
+		summarizeBy: none
+		sourceColumn: missing_delivery_date_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_orders = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    dim_orders_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_orders",Kind="Table"]}[Data]
+				in
+				    dim_orders_Table
+
