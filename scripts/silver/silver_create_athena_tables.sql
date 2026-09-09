@@ -54,6 +54,7 @@ TBLPROPERTIES (
 DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items (
+  id_olist_order_items          BIGINT,
   order_id                      STRING,
   product_id                    STRING,
   seller_id                     STRING,

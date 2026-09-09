@@ -1,18 +1,18 @@
 table dim_sellers
-	lineageTag: 8fd1d554-40ca-4888-87ef-da809a8f7769
+	lineageTag: d71f5df0-f519-4aa6-8205-3a3d02300030
 
-	column id_sellers
+	column seller_key
 		dataType: int64
 		formatString: 0
-		lineageTag: 1eb9920e-777f-4675-80a0-22d015e1ad86
-		summarizeBy: sum
-		sourceColumn: id_sellers
+		lineageTag: e0e661cd-ef4c-4e8b-b647-81c8d2521c73
+		summarizeBy: none
+		sourceColumn: seller_key
 
 		annotation SummarizationSetBy = Automatic
 
 	column seller_city
 		dataType: string
-		lineageTag: 4dbcaa3a-83fc-4038-995d-cea3f51ce3ef
+		lineageTag: 8312c956-026a-454f-92f2-dec43bdb3b0f
 		summarizeBy: none
 		sourceColumn: seller_city
 
@@ -20,7 +20,7 @@ table dim_sellers
 
 	column seller_id
 		dataType: string
-		lineageTag: a6257ee3-5ad0-4e1f-9cd2-8e481cf62662
+		lineageTag: aed1c227-5745-4293-bd61-0a1d95068386
 		summarizeBy: none
 		sourceColumn: seller_id
 
@@ -28,7 +28,7 @@ table dim_sellers
 
 	column seller_state
 		dataType: string
-		lineageTag: 6bebc946-58ce-428a-bd43-ca3e94425370
+		lineageTag: ef185f69-08c2-4b11-9604-d2e02779ba45
 		summarizeBy: none
 		sourceColumn: seller_state
 
@@ -36,7 +36,7 @@ table dim_sellers
 
 	column seller_zip_code_prefix
 		dataType: string
-		lineageTag: 4df1652d-0d80-44db-9273-3e57c1b94060
+		lineageTag: cb54dcde-63c5-4880-920a-ab756f4a10bf
 		summarizeBy: none
 		sourceColumn: seller_zip_code_prefix
 
@@ -44,8 +44,8 @@ table dim_sellers
 
 	column geolocation_lat
 		dataType: double
-		lineageTag: 1e3b6af7-7277-4035-8116-2702b6095139
-		summarizeBy: sum
+		lineageTag: 6408f166-2a50-41f2-843b-2563239aa45e
+		summarizeBy: none
 		sourceColumn: geolocation_lat
 
 		annotation SummarizationSetBy = Automatic
@@ -54,8 +54,8 @@ table dim_sellers
 
 	column geolocation_lng
 		dataType: double
-		lineageTag: e129dd22-3255-465d-9457-cebd2b84afe3
-		summarizeBy: sum
+		lineageTag: 2302b44c-83fc-4e5f-9bd6-6c608b2af280
+		summarizeBy: none
 		sourceColumn: geolocation_lng
 
 		annotation SummarizationSetBy = Automatic
