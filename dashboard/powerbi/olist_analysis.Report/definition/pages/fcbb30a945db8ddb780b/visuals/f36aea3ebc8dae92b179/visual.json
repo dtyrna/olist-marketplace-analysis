@@ -50,15 +50,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_delivery_date"
+                      "Entity": "dim_purchase_date"
                     }
                   },
                   "Property": "weekday_name"
                 }
               },
-              "queryRef": "dim_delivery_date.weekday_name",
-              "nativeQueryRef": "Wochentag",
-              "displayName": "Wochentag"
+              "queryRef": "dim_purchase_date.weekday_name",
+              "nativeQueryRef": "weekday_name"
             },
             {
               "field": {
@@ -282,20 +281,6 @@
         "type": "Advanced"
       },
       {
-        "name": "28597f43850e0a654d19",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_delivery_date"
-              }
-            },
-            "Property": "weekday_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
         "name": "20435170316528c7eae5",
         "field": {
           "Column": {
@@ -308,6 +293,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "b5aedeb0cdb8cbd2308e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_purchase_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

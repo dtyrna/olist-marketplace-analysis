@@ -47,7 +47,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: 9032ef13-7906-4b5b-a48c-eb23864f5f12
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: approval_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -56,7 +56,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: a3dabc35-b9bd-44ea-ab00-e01edea3c89a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: carrier_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -65,7 +65,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: 77e8a5ec-289a-4ac6-ab90-93510d5ee125
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: delivered_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -74,7 +74,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: 4b854dc5-9c2f-4c87-b99b-c8800acddd50
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: estimated_delivery_date_key
 
 		annotation SummarizationSetBy = Automatic

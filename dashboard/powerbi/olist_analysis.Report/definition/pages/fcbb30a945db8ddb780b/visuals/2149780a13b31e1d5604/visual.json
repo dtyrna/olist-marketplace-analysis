@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_shipping_limit_date"
+                      "Entity": "dim_purchase_date"
                     }
                   },
                   "Property": "weekday_name"
                 }
               },
-              "queryRef": "dim_shipping_limit_date.weekday_name",
-              "nativeQueryRef": "weekday_name",
+              "queryRef": "dim_purchase_date.weekday_name",
+              "nativeQueryRef": "weekday_name1",
               "active": true
             }
           ]
@@ -53,19 +53,6 @@
       },
       "sortDefinition": {
         "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dim_shipping_limit_date"
-                  }
-                },
-                "Property": "weekday_name"
-              }
-            },
-            "direction": "Descending"
-          },
           {
             "field": {
               "Column": {
@@ -158,20 +145,6 @@
         "howCreated": "User"
       },
       {
-        "name": "2f7ae97caa038626808c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_shipping_limit_date"
-              }
-            },
-            "Property": "weekday_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
         "name": "c88874ddc26b548e7606",
         "field": {
           "Measure": {
@@ -184,6 +157,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "b011977e4720c990c3b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_purchase_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

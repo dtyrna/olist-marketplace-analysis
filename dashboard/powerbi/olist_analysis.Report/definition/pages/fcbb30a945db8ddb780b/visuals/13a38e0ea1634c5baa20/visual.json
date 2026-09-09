@@ -101,6 +101,21 @@
         ]
       }
     },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Verkäufer mit den durchschnittlichen Bearbeitungszeiten in Tagen, absteigend sortiert nach Anzahl Einposer-Bestellungen je Verkäufer'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
