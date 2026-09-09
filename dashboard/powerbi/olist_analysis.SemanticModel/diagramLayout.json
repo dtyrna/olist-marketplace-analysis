@@ -5,7 +5,7 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 102.7065746558869
+        "y": 9.4806068913126378
       },
       "nodes": [
         {
@@ -101,8 +101,8 @@
         },
         {
           "location": {
-            "x": 2103.0863438146202,
-            "y": 384.10359942980585
+            "x": 360.23477696164696,
+            "y": 889.73596696647985
           },
           "nodeIndex": "dim_shipping_limit_date",
           "nodeLineageTag": "82a170b6-6d28-4604-b3f3-9119446c660e",
@@ -150,6 +150,19 @@
             "width": 234
           },
           "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1244.6731893010171,
+            "y": 0
+          },
+          "nodeIndex": "tbl_measures_patrick",
+          "nodeLineageTag": "eb5bb8ec-ae9a-4946-974e-8aacf78f509d",
+          "size": {
+            "height": 247.78920451824166,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Alle Tabellen",

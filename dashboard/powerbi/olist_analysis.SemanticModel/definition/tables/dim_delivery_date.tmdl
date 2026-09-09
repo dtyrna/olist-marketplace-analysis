@@ -131,6 +131,9 @@ table dim_delivery_date
 		lineageTag: 414e3815-013f-4373-8a67-552579333c70
 		summarizeBy: none
 		sourceColumn: weekday_name
+		sortByColumn: iso_weekday_no
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

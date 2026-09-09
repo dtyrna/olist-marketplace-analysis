@@ -53,11 +53,15 @@ relationship AutoDetected_8253453c-8f26-44d1-a960-1e3b0ced1223
 	fromColumn: fact_order_payments.order_id
 	toColumn: dim_orders.order_id
 
-relationship f0654325-c68d-ad71-d111-d80176b4fbf9
-	fromColumn: dim_orders.delivered_date_key
-	toColumn: dim_delivery_date.date_key
-
 relationship 0455b119-b8b6-9579-0329-88a4292ff7a0
 	fromColumn: fact_order_payments.order_purchase_date_key
 	toColumn: dim_purchase_date.date_key
+
+relationship b80feb03-f168-9fab-bcd8-0c1e9c5dfc2f
+	fromColumn: fact_order_items.shipping_limit_date_key
+	toColumn: dim_shipping_limit_date.date_key
+
+relationship e175413b-941e-9adf-e1f9-246d0bbd5a51
+	fromColumn: dim_orders.purchase_date_key
+	toColumn: dim_delivery_date.date_key
 

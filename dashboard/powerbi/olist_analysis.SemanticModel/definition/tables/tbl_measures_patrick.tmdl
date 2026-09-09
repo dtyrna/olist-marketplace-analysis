@@ -1,0 +1,108 @@
+table tbl_measures_patrick
+	lineageTag: eb5bb8ec-ae9a-4946-974e-8aacf78f509d
+
+	measure '(hours) average time purchase to delivered carrier' =
+			
+			AVERAGEX(
+			    FILTER(
+			        dim_orders,
+			        NOT ISBLANK(dim_orders[order_purchase_timestamp])
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && dim_orders[order_delivered_carrier_date]
+			                >= dim_orders[order_approved_at]
+			            && dim_orders[carrier_before_purchase_flag] = FALSE()
+			            && dim_orders[delivery_before_carrier_flag] = FALSE()
+			            && CALCULATE(
+			                MAX(fact_order_items[order_item_id])
+			            ) = 1
+			    ),
+			    DATEDIFF(
+			        dim_orders[order_purchase_timestamp],
+			        dim_orders[order_delivered_carrier_date],
+			        HOUR
+			    )
+			)
+			/* calculate average time from purchase an order to the seller hands over to carrieronly orders with one position to make it seller compareable*/
+		lineageTag: 7e33a0ca-e1d6-46a9-9149-837c701afd09
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '(hours) median time purchase to delivered carrier' =
+			
+			MEDIANX(
+			    FILTER(
+			        dim_orders,
+			        NOT ISBLANK(dim_orders[order_purchase_timestamp])
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && dim_orders[order_delivered_carrier_date]
+			                >= dim_orders[order_approved_at]
+			            && dim_orders[carrier_before_purchase_flag] = FALSE()
+			            && dim_orders[delivery_before_carrier_flag] = FALSE()
+			            && CALCULATE(
+			                MAX(fact_order_items[order_item_id])
+			            ) = 1
+			    ),
+			    DATEDIFF(
+			        dim_orders[order_purchase_timestamp],
+			        dim_orders[order_delivered_carrier_date],
+			        HOUR
+			    )
+			)
+			/* calculate median time from purchase an order to the seller hands over to carrieronly orders with one position to make it seller compareable*/
+		lineageTag: 699108c1-ef0f-4b06-88b5-9dc4ff941580
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'number of orders per seller' =
+			
+			COUNTROWS(
+			    DISTINCT(
+			        fact_order_items[order_id]
+			    )
+			)
+		formatString: 0
+		lineageTag: 52170202-0d85-4d13-9c0a-d7e47cb239cf
+
+	measure '(days) average time purchase to delivered carrier' =
+			
+			DIVIDE(
+			    [(hours) average time purchase to delivered carrier],
+			    24)
+		lineageTag: e8ac1427-87af-41d4-b7f7-c5f0b1041d2b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '(days) median time purchase to delivered carrier' =
+			
+			DIVIDE(
+			    [(hours) median time purchase to delivered carrier],
+			    24
+			    )
+		lineageTag: 1331e892-114a-48a3-9587-5b7ace687165
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'filter orders with one item' =
+			
+			VAR MaxItem =
+			    CALCULATE(
+			        MAX(fact_order_items[order_item_id])
+			    )
+			RETURN
+			    IF(MaxItem = 1, 1, 0)
+		formatString: 0
+		lineageTag: 2e32caeb-6f3c-487e-8c33-a972d94e028f
+
+	partition tbl_measures_patrick = m
+		mode: import
+		source =
+				let
+				  Quelle = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Spalte1 = _t]),
+				    #"Entfernte Spalten" = Table.RemoveColumns(Quelle,{"Spalte1"})
+				in
+				  #"Entfernte Spalten"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
