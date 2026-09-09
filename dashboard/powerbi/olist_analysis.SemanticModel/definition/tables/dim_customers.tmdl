@@ -1,18 +1,18 @@
 table dim_customers
-	lineageTag: 33518cc2-c34c-40ad-b67b-392ae2894613
+	lineageTag: 257b6285-dd33-44fe-bad3-e85a3b68a4f0
 
-	column id_customers
+	column customer_key
 		dataType: int64
 		formatString: 0
-		lineageTag: 2f9019e1-0f0d-454e-985f-fe2dbd6bf230
-		summarizeBy: none
-		sourceColumn: id_customers
+		lineageTag: bc33a72c-68e1-489a-82d6-5d3da63b948a
+		summarizeBy: sum
+		sourceColumn: customer_key
 
 		annotation SummarizationSetBy = Automatic
 
 	column customer_id
 		dataType: string
-		lineageTag: 0237ac2e-4d3e-4358-b56c-28ede1a419ad
+		lineageTag: 19535a6f-c12d-4d31-99e5-520789da1f27
 		summarizeBy: none
 		sourceColumn: customer_id
 
@@ -20,7 +20,7 @@ table dim_customers
 
 	column customer_unique_id
 		dataType: string
-		lineageTag: 123ac955-b512-45cf-a76c-704dfa2a29ad
+		lineageTag: 3e3e8705-e230-4af3-a163-52c568253c4a
 		summarizeBy: none
 		sourceColumn: customer_unique_id
 
@@ -28,7 +28,7 @@ table dim_customers
 
 	column customer_zip_code_prefix
 		dataType: string
-		lineageTag: a8dbfef5-c979-471d-bdf8-f1db2b82c82a
+		lineageTag: 7c29ab50-b007-425a-8e9b-259eb5fa4277
 		summarizeBy: none
 		sourceColumn: customer_zip_code_prefix
 
@@ -36,7 +36,7 @@ table dim_customers
 
 	column customer_city
 		dataType: string
-		lineageTag: ca68d158-32a2-4469-8af4-8ca653cae963
+		lineageTag: 2dd012f1-a16b-4be7-aaf8-d8a91e5ec8f5
 		summarizeBy: none
 		sourceColumn: customer_city
 
@@ -44,7 +44,7 @@ table dim_customers
 
 	column customer_state
 		dataType: string
-		lineageTag: cf8690a2-d3fa-4c70-8db3-3e3116cc29bf
+		lineageTag: 86604e78-c132-4a2c-beb6-c2659611fb80
 		summarizeBy: none
 		sourceColumn: customer_state
 
@@ -52,8 +52,8 @@ table dim_customers
 
 	column geolocation_lat
 		dataType: double
-		lineageTag: ee6928bf-6e45-4697-971a-93b907cfbea2
-		summarizeBy: none
+		lineageTag: 754752bd-9c6c-4855-92aa-d92c6f590777
+		summarizeBy: sum
 		sourceColumn: geolocation_lat
 
 		annotation SummarizationSetBy = Automatic
@@ -62,8 +62,8 @@ table dim_customers
 
 	column geolocation_lng
 		dataType: double
-		lineageTag: 6c25a9c2-4460-4822-9b61-0f0111343589
-		summarizeBy: none
+		lineageTag: 535cef10-5a05-49fa-9dd5-929879b8acbd
+		summarizeBy: sum
 		sourceColumn: geolocation_lng
 
 		annotation SummarizationSetBy = Automatic
@@ -80,4 +80,8 @@ table dim_customers
 				    dim_customers_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_customers",Kind="Table"]}[Data]
 				in
 				    dim_customers_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
 

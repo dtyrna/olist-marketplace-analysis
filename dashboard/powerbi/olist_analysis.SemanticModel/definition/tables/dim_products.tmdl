@@ -1,28 +1,28 @@
 table dim_products
-	lineageTag: 7edd9e8f-c72e-4f72-b918-80c78170cbd2
+	lineageTag: 68b0e63d-06ee-45da-afa4-60e333dfe308
 
-	column id_products
+	column product_key
 		dataType: int64
 		formatString: 0
-		lineageTag: 3d887a3d-5afe-4cce-affc-94e6798b4fa8
-		summarizeBy: sum
-		sourceColumn: id_products
+		lineageTag: d0281198-1c4c-4ecf-9ac4-72438cc4d801
+		summarizeBy: none
+		sourceColumn: product_key
 
 		annotation SummarizationSetBy = Automatic
 
 	column product_description_lenght
 		dataType: int64
 		formatString: 0
-		lineageTag: 384dde66-3afb-4079-9493-81e79d0d4fcc
-		summarizeBy: sum
+		lineageTag: 0a69be8e-aa11-49c9-b817-ebbea86be8b4
+		summarizeBy: none
 		sourceColumn: product_description_lenght
 
 		annotation SummarizationSetBy = Automatic
 
 	column product_height_cm
 		dataType: double
-		lineageTag: 1660474a-6c67-4c28-82c1-290c7efa0c44
-		summarizeBy: sum
+		lineageTag: 646dbb10-f4e4-47af-94ec-70551d36203b
+		summarizeBy: none
 		sourceColumn: product_height_cm
 
 		annotation SummarizationSetBy = Automatic
@@ -31,7 +31,7 @@ table dim_products
 
 	column product_id
 		dataType: string
-		lineageTag: b148021e-4e61-49c6-a558-aebfecc385db
+		lineageTag: 8e10d190-1c2e-402a-bd27-5623193c637b
 		summarizeBy: none
 		sourceColumn: product_id
 
@@ -39,8 +39,8 @@ table dim_products
 
 	column product_length_cm
 		dataType: double
-		lineageTag: 966d0217-75dc-4467-8938-7464843e27c7
-		summarizeBy: sum
+		lineageTag: da7bdc2d-90f4-465b-9d9c-781d150bee89
+		summarizeBy: none
 		sourceColumn: product_length_cm
 
 		annotation SummarizationSetBy = Automatic
@@ -50,8 +50,8 @@ table dim_products
 	column product_name_lenght
 		dataType: int64
 		formatString: 0
-		lineageTag: 793164e7-b345-42f8-8c8e-5015b159b7b7
-		summarizeBy: sum
+		lineageTag: df0ad990-0d44-4e25-9b81-465ee531db6b
+		summarizeBy: none
 		sourceColumn: product_name_lenght
 
 		annotation SummarizationSetBy = Automatic
@@ -59,16 +59,16 @@ table dim_products
 	column product_photos_qty
 		dataType: int64
 		formatString: 0
-		lineageTag: 122a10db-3456-47bb-ae0c-c6542d307162
-		summarizeBy: sum
+		lineageTag: 829aabaa-7b05-4ef5-8e48-1596296e4905
+		summarizeBy: none
 		sourceColumn: product_photos_qty
 
 		annotation SummarizationSetBy = Automatic
 
 	column product_weight_g
 		dataType: double
-		lineageTag: 40df48f2-fac3-41c4-b223-bf6af4fbf803
-		summarizeBy: sum
+		lineageTag: 16ff9d07-f752-4b2c-ae01-34bd75b7a489
+		summarizeBy: none
 		sourceColumn: product_weight_g
 
 		annotation SummarizationSetBy = Automatic
@@ -77,8 +77,8 @@ table dim_products
 
 	column product_width_cm
 		dataType: double
-		lineageTag: a04985a6-f745-4193-8114-31356330dbdb
-		summarizeBy: sum
+		lineageTag: 3f772850-0660-4c2b-8102-218e611f4de8
+		summarizeBy: none
 		sourceColumn: product_width_cm
 
 		annotation SummarizationSetBy = Automatic
@@ -87,7 +87,7 @@ table dim_products
 
 	column product_category_name
 		dataType: string
-		lineageTag: a8b598f9-8485-46b4-82e8-870fb1055fb9
+		lineageTag: e3622d18-786b-4e9b-8043-1be4b8beb7f2
 		summarizeBy: none
 		sourceColumn: product_category_name
 
@@ -103,4 +103,8 @@ table dim_products
 				    dim_products_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_products",Kind="Table"]}[Data]
 				in
 				    dim_products_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
 
