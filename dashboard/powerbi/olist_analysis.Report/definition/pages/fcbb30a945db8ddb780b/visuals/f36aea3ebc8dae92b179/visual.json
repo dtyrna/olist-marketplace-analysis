@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f36aea3ebc8dae92b179",
   "position": {
-    "x": 234.28571428571431,
-    "y": 22.857142857142858,
+    "x": 210.09118541033433,
+    "y": 13.130699088145896,
     "z": 3000,
     "height": 308.57142857142861,
     "width": 924.28571428571433,
@@ -73,6 +73,20 @@
               "queryRef": "dim_orders.order_delivered_carrier_date",
               "nativeQueryRef": "Übergabe an Versanddienstleister",
               "displayName": "Übergabe an Versanddienstleister"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_carrier_date"
+                    }
+                  },
+                  "Property": "weekday_name"
+                }
+              },
+              "queryRef": "dim_carrier_date.weekday_name",
+              "nativeQueryRef": "weekday_name1"
             },
             {
               "field": {
@@ -176,55 +190,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "0066f5e228345e04b36c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "filter orders with one item"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "t",
-              "Entity": "tbl_measures_patrick",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 0,
-                  "Left": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "t"
-                        }
-                      },
-                      "Property": "filter orders with one item"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "1L"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
-      },
-      {
         "name": "fbbad1770325969395d3",
         "field": {
           "Column": {
@@ -307,6 +272,69 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "6ec2f077240cd613a435",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_carrier_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3d7d61600a38bee13cb0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "show single-seller order for selected seller"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "tbl_measures_patrick",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "t"
+                        }
+                      },
+                      "Property": "show single-seller order for selected seller"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
       }
     ]
   }

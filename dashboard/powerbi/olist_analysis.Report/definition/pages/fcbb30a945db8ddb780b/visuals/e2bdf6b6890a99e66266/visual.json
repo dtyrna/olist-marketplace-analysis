@@ -60,13 +60,18 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "fact_order_items"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order_items"
+                      }
+                    },
+                    "Property": "product_id"
                   }
                 },
-                "Property": "order_id"
+                "Function": 5
               }
             },
             "direction": "Descending"
@@ -78,55 +83,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "ab7141b67a673004c1c1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "is_single_pos"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "dim_orders",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 0,
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "d"
-                        }
-                      },
-                      "Property": "is_single_pos"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "1L"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
-      },
       {
         "name": "2d1e27e79ed10ed1de50",
         "field": {
@@ -159,6 +115,55 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "d2937c21a4a104074152",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "show single-seller order for selected seller"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "tbl_measures_patrick",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "t"
+                        }
+                      },
+                      "Property": "show single-seller order for selected seller"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
       }
     ]
   }

@@ -23,11 +23,11 @@
                       "Entity": "tbl_measures_patrick"
                     }
                   },
-                  "Property": "(hours) average time purchase to delivered carrier"
+                  "Property": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
                 }
               },
               "queryRef": "tbl_measures_patrick.average time purchase to delivered carrier (hours)",
-              "nativeQueryRef": "(hours) average time purchase to delivered carrier"
+              "nativeQueryRef": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "tbl_measures_patrick"
                   }
                 },
-                "Property": "(hours) average time purchase to delivered carrier"
+                "Property": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
               }
             },
             "direction": "Descending"
@@ -52,5 +52,23 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1fe7c29309c174d2bb7e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

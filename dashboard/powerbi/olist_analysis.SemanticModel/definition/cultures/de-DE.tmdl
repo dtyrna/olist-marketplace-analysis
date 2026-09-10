@@ -15267,7 +15267,7 @@ cultureInfo de-DE
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "tbl_measures_patrick",
-			          "ConceptualProperty": "(hours) average time purchase to delivered carrier"
+			          "ConceptualProperty": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
 			        }
 			      },
 			      "State": "Generated",
@@ -15283,7 +15283,7 @@ cultureInfo de-DE
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "tbl_measures_patrick",
-			          "ConceptualProperty": "(hours) median time purchase to delivered carrier"
+			          "ConceptualProperty": "(hours) median time purchase to delivered carrier (Single-Seller-Order)"
 			        }
 			      },
 			      "State": "Generated",
@@ -15299,7 +15299,7 @@ cultureInfo de-DE
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "tbl_measures_patrick",
-			          "ConceptualProperty": "number of orders per seller"
+			          "ConceptualProperty": "number of orders per seller (Single Seller Only)"
 			        }
 			      },
 			      "State": "Generated",
@@ -15365,7 +15365,7 @@ cultureInfo de-DE
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "tbl_measures_patrick",
-			          "ConceptualProperty": "(days) average time purchase to delivered carrier"
+			          "ConceptualProperty": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
 			        }
 			      },
 			      "State": "Generated",
@@ -15381,7 +15381,7 @@ cultureInfo de-DE
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "tbl_measures_patrick",
-			          "ConceptualProperty": "(days) median time purchase to delivered carrier"
+			          "ConceptualProperty": "(days) median time purchase to delivered carrier (Single-Seller-Order)"
 			        }
 			      },
 			      "State": "Generated",

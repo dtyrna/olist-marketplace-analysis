@@ -23,11 +23,11 @@
                       "Entity": "tbl_measures_patrick"
                     }
                   },
-                  "Property": "(days) median time purchase to delivered carrier"
+                  "Property": "(days) median time purchase to delivered carrier (Single-Seller-Order)"
                 }
               },
               "queryRef": "tbl_measures_patrick.(days) median time purchase to delivered carrier",
-              "nativeQueryRef": "(days) median time purchase to delivered carrier"
+              "nativeQueryRef": "(days) median time purchase to delivered carrier (Single-Seller-Order)"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "tbl_measures_patrick"
                   }
                 },
-                "Property": "(days) median time purchase to delivered carrier"
+                "Property": "(days) median time purchase to delivered carrier (Single-Seller-Order)"
               }
             },
             "direction": "Descending"
