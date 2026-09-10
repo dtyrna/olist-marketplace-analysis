@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5be592535483398b6bb5",
+  "position": {
+    "x": 935.752009184845,
+    "y": 600.68886337543051,
+    "z": 8,
+    "height": 60.61997703788748,
+    "width": 946.77382319173364,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Der starke Anstieg der Carrier-Transitzeit im März 2018 lässt sich nicht durch einen außergewöhnlich hohen Interstate-Anteil erklären. Sowohl Interstate- als auch Intrastate-Transporte weisen in diesem Monat höhere Transitzeiten auf."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

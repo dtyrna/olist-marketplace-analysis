@@ -1,6 +1,357 @@
 table dim_orders
 	lineageTag: 67956d8f-a92f-4248-a53a-df67516b572d
 
+	measure 'Delivered Orders' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(dim_orders[order_id]),
+			    dim_orders[order_status] = "delivered"
+			)
+		formatString: 0
+		lineageTag: ce5a9fde-7bf3-4eee-b02d-909b3965d7e6
+
+	measure 'Average Carrier Transit Days' =
+			
+			AVERAGEX(
+			    FILTER(
+			        dim_orders,
+			        dim_orders[order_status] = "delivered"
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			    ),
+			    DATEDIFF(
+			        dim_orders[order_delivered_carrier_date],
+			        dim_orders[order_delivered_customer_date],
+			        DAY
+			    )
+			)
+		lineageTag: 7a70039b-cbe5-4ca8-a8e3-2714b5dc560d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders with Carrier Transit Time' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(dim_orders[order_id]),
+			    FILTER(
+			        dim_orders,
+			        dim_orders[order_status] = "delivered"
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			    )
+			)
+		formatString: 0
+		lineageTag: e386b44f-2ff8-4681-ae95-e5fd88359a91
+
+	measure 'Average Carrier Transit Days by Seller' =
+			
+			CALCULATE(
+			    [Average Carrier Transit Days],
+			    CROSSFILTER(
+			        dim_orders[order_id],
+			        fact_order_items[order_id],
+			        BOTH
+			    )
+			)
+		lineageTag: af460a97-6c38-4e63-a9a5-d403c97c2e4b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders with Carrier Transit Time by Seller' =
+			
+			CALCULATE(
+			    [Orders with Carrier Transit Time],
+			    CROSSFILTER(
+			        dim_orders[order_id],
+			        fact_order_items[order_id],
+			        BOTH
+			    )
+			)
+		formatString: 0
+		lineageTag: eb6e787c-6e70-4797-b7bc-f63b40c85670
+
+	measure 'Average Carrier Transit Days by Route' =
+			
+			CALCULATE(
+			    [Average Carrier Transit Days],
+			    CROSSFILTER(
+			        dim_orders[order_id],
+			        fact_order_items[order_id],
+			        BOTH
+			    )
+			)
+		lineageTag: 43de9910-a518-472f-a53b-292235fec001
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders with Carrier Transit Time by Route' =
+			
+			CALCULATE(
+			    [Orders with Carrier Transit Time],
+			    CROSSFILTER(
+			        dim_orders[order_id],
+			        fact_order_items[order_id],
+			        BOTH
+			    )
+			)
+		formatString: 0
+		lineageTag: 37113902-8daf-4515-b286-c686653bc079
+
+	measure 'Orders - Interstate Correct' =
+			
+			VAR OrdersWithTransit =
+			    FILTER(
+			        dim_orders,
+			        dim_orders[order_status] = "delivered"
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			    )
+			
+			RETURN
+			COUNTROWS(
+			    FILTER(
+			        OrdersWithTransit,
+			
+			        VAR CurrentOrder = dim_orders[order_id]
+			        VAR CustomerState =
+			            RELATED(dim_customers[customer_state])
+			
+			        VAR SellerIDs =
+			            CALCULATETABLE(
+			                VALUES(fact_order_items[seller_id]),
+			                fact_order_items[order_id] = CurrentOrder
+			            )
+			
+			        VAR SellerStates =
+			            CALCULATETABLE(
+			                VALUES(dim_sellers[seller_state]),
+			                TREATAS(
+			                    SellerIDs,
+			                    dim_sellers[seller_id]
+			                )
+			            )
+			
+			        VAR HasDifferentState =
+			            COUNTROWS(
+			                FILTER(
+			                    SellerStates,
+			                    dim_sellers[seller_state] <> CustomerState
+			                )
+			            ) > 0
+			
+			        RETURN
+			            HasDifferentState
+			    )
+			)
+		formatString: 0
+		lineageTag: 116a390a-5e6e-4ee5-9e1e-f050d9d4e2ab
+
+	measure 'Average Carrier Transit Days - Interstate' = ```
+			
+			VAR OrdersWithTransit =
+			    FILTER(
+			        dim_orders,
+			        dim_orders[order_status] = "delivered"
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			    )
+			
+			RETURN
+			AVERAGEX(
+			    FILTER(
+			        OrdersWithTransit,
+			
+			        VAR CurrentOrder = dim_orders[order_id]
+			        VAR CustomerState =
+			            RELATED(dim_customers[customer_state])
+			
+			        VAR SellerIDs =
+			            CALCULATETABLE(
+			                VALUES(fact_order_items[seller_id]),
+			                fact_order_items[order_id] = CurrentOrder
+			            )
+			
+			        VAR SellerStates =
+			            CALCULATETABLE(
+			                VALUES(dim_sellers[seller_state]),
+			                TREATAS(
+			                    SellerIDs,
+			                    dim_sellers[seller_id]
+			                )
+			            )
+			
+			        VAR HasDifferentState =
+			            COUNTROWS(
+			                FILTER(
+			                    SellerStates,
+			                    dim_sellers[seller_state] <> CustomerState
+			                )
+			            ) > 0
+			
+			        RETURN
+			            HasDifferentState
+			    ),
+			    
+			    DATEDIFF(
+			        dim_orders[order_delivered_carrier_date],
+			        dim_orders[order_delivered_customer_date],
+			        DAY
+			    )
+			)
+			```
+		lineageTag: e7aaa7e8-5479-4413-8be5-ee5bf2d661be
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Carrier Transit Days - Intrastate' =
+			
+			VAR OrdersWithTransit =
+			    FILTER(
+			        dim_orders,
+			        dim_orders[order_status] = "delivered"
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			    )
+			
+			RETURN
+			AVERAGEX(
+			    FILTER(
+			        OrdersWithTransit,
+			
+			        VAR CurrentOrder = dim_orders[order_id]
+			        VAR CustomerState =
+			            RELATED(dim_customers[customer_state])
+			
+			        VAR SellerIDs =
+			            CALCULATETABLE(
+			                VALUES(fact_order_items[seller_id]),
+			                fact_order_items[order_id] = CurrentOrder
+			            )
+			
+			        VAR SellerStates =
+			            CALCULATETABLE(
+			                VALUES(dim_sellers[seller_state]),
+			                TREATAS(
+			                    SellerIDs,
+			                    dim_sellers[seller_id]
+			                )
+			            )
+			
+			        VAR HasDifferentState =
+			            COUNTROWS(
+			                FILTER(
+			                    SellerStates,
+			                    dim_sellers[seller_state] <> CustomerState
+			                )
+			            ) > 0
+			
+			        RETURN
+			            NOT HasDifferentState
+			    ),
+			
+			    DATEDIFF(
+			        dim_orders[order_delivered_carrier_date],
+			        dim_orders[order_delivered_customer_date],
+			        DAY
+			    )
+			)
+		lineageTag: 38f1799c-170e-4a94-8170-3a4ab834b22f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders - Intrastate' =
+			
+			VAR OrdersWithTransit =
+			    FILTER(
+			        dim_orders,
+			        dim_orders[order_status] = "delivered"
+			            && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			            && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			    )
+			
+			RETURN
+			COUNTROWS(
+			    FILTER(
+			        OrdersWithTransit,
+			
+			        VAR CurrentOrder = dim_orders[order_id]
+			        VAR CustomerState =
+			            RELATED(dim_customers[customer_state])
+			
+			        VAR SellerIDs =
+			            CALCULATETABLE(
+			                VALUES(fact_order_items[seller_id]),
+			                fact_order_items[order_id] = CurrentOrder
+			            )
+			
+			        VAR SellerStates =
+			            CALCULATETABLE(
+			                VALUES(dim_sellers[seller_state]),
+			                TREATAS(
+			                    SellerIDs,
+			                    dim_sellers[seller_id]
+			                )
+			            )
+			
+			        VAR HasDifferentState =
+			            COUNTROWS(
+			                FILTER(
+			                    SellerStates,
+			                    dim_sellers[seller_state] <> CustomerState
+			                )
+			            ) > 0
+			
+			        RETURN
+			            NOT HasDifferentState
+			    )
+			)
+		formatString: 0
+		lineageTag: 812443b4-8e29-4b0e-80f1-eb8fc8ea2523
+
+	measure 'Average Carrier Transit Days - Interstate Route' =
+			
+			VAR SellerState =
+			    SELECTEDVALUE(dim_sellers[seller_state])
+			
+			VAR CustomerState =
+			    SELECTEDVALUE(dim_customers[customer_state])
+			
+			RETURN
+			    IF(
+			        SellerState <> CustomerState,
+			        [Average Carrier Transit Days by Route],
+			        BLANK()
+			    )
+		lineageTag: 863a9e1e-f2c6-4d12-b897-0bdd8ff8fd33
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Carrier Transit Days - Interstate Route 100+' =
+			
+			VAR OrderCount =
+			    [Orders with Carrier Transit Time by Route]
+			
+			RETURN
+			    IF(
+			        OrderCount >= 100,
+			        [Average Carrier Transit Days by Route],
+			        BLANK()
+			    )
+		lineageTag: 85b5b7be-4066-4157-b07d-371a2ece1277
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Interstate Order Share' =
+			
+			DIVIDE(
+			    [Orders - Interstate Correct],
+			    [Orders with Carrier Transit Time],
+			    0
+			)
+		lineageTag: 1da9ddf6-0cb6-4d78-b7d3-6e79727d98c3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column order_key
 		dataType: int64
 		formatString: 0

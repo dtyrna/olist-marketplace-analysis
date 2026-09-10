@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5cce8bef470d2acd90a4",
+  "position": {
+    "x": 11.021814006888633,
+    "y": 603.99540757749708,
+    "z": 4,
+    "height": 422.13547646383466,
+    "width": 644.776119402985,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_sellers"
+                    }
+                  },
+                  "Property": "seller_state"
+                }
+              },
+              "queryRef": "dim_sellers.seller_state",
+              "nativeQueryRef": "seller_state"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Orders with Carrier Transit Time by Seller"
+                }
+              },
+              "queryRef": "dim_orders.Orders with Carrier Transit Time by Seller",
+              "nativeQueryRef": "Orders with Carrier Transit Time by Seller"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Average Carrier Transit Days by Seller"
+                }
+              },
+              "queryRef": "dim_orders.Average Carrier Transit Days by Seller",
+              "nativeQueryRef": "Average Carrier Transit Days by Seller"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_orders"
+                  }
+                },
+                "Property": "Orders with Carrier Transit Time by Seller"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ae250650b14a09bc8130",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_sellers"
+              }
+            },
+            "Property": "seller_state"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e55e5001cd7b80ba5c10",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Orders with Carrier Transit Time by Seller"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5ed1ba607d168a20b084",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Average Carrier Transit Days by Seller"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

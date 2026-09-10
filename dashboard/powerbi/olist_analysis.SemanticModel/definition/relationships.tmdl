@@ -61,3 +61,283 @@ relationship 0455b119-b8b6-9579-0329-88a4292ff7a0
 	fromColumn: fact_order_payments.order_purchase_date_key
 	toColumn: dim_purchase_date.date_key
 
+relationship 1f60acd1-247a-49e0-870a-853a2d9aa39f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.full_date
+	toColumn: LocalDateTable_76f082da-e106-45e6-ac43-8c2ea6c87833.Date
+
+relationship fb4742ce-6c0f-4a0e-8abc-c0953c04f1aa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.month_start_date
+	toColumn: LocalDateTable_fbb8bd27-420d-4335-8671-fba08b1c80ed.Date
+
+relationship a11c43be-a177-4a7f-b613-67498da99303
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.month_end_date
+	toColumn: LocalDateTable_2a85cf78-b282-44b1-8192-8a18a57962f5.Date
+
+relationship f3852b79-ac65-481f-b3f1-dbbf5a26d1e9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.quarter_start_date
+	toColumn: LocalDateTable_16707bba-29a2-412c-99a2-b811ce3fdbfb.Date
+
+relationship f44a5fae-a5dc-4c7a-9e5c-9f5c99d65ab8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.quarter_end_date
+	toColumn: LocalDateTable_59fe78a3-88fc-4ea2-ada0-7b369dd0e4ba.Date
+
+relationship 98bd73ef-99c4-4366-b541-7210b37d4c25
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.year_start_date
+	toColumn: LocalDateTable_05435881-ce73-4841-97dc-c56caf18431a.Date
+
+relationship 2ea9c26a-6891-4ac3-ae7a-0da1b038a800
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_approval_date.year_end_date
+	toColumn: LocalDateTable_3fac69df-3d48-453b-a71d-e27c81bea109.Date
+
+relationship b0d77e1a-d6c6-4d49-816b-6f97d42b3aa2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.full_date
+	toColumn: LocalDateTable_d431da57-460c-4bc6-86f5-2f08beb38809.Date
+
+relationship 654b8b22-a5d2-4162-8983-43b9c1f6ed40
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.month_start_date
+	toColumn: LocalDateTable_96c377a8-1c20-4c52-901c-9c1c52dab293.Date
+
+relationship d1c27907-cd63-4807-a905-ea003ba3cd42
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.month_end_date
+	toColumn: LocalDateTable_6fb34eaa-03c0-4e1f-815d-852b3e9227ed.Date
+
+relationship 983f6a13-b59e-4256-8ee5-f8156394815f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.quarter_start_date
+	toColumn: LocalDateTable_731fc305-fdd7-46c8-ba8b-63f82159a295.Date
+
+relationship 5f80cabe-0451-4420-a7e5-029c003f1bc9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.quarter_end_date
+	toColumn: LocalDateTable_024b9d12-18d7-4d2e-ac77-6fd14ab46d3a.Date
+
+relationship 049d6963-a070-4a76-a6fa-68b8c1df1be5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.year_start_date
+	toColumn: LocalDateTable_5f61938e-3020-4af9-b669-12978a70ae75.Date
+
+relationship 94c054a3-8eb7-41e4-a96d-6ceaa65f83d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_carrier_date.year_end_date
+	toColumn: LocalDateTable_e9bbb6cd-56c7-4ab1-b243-30db53623b24.Date
+
+relationship 5945a800-5787-4746-8498-736f3649f1fc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.full_date
+	toColumn: LocalDateTable_e9ba2b59-5635-44de-a4ab-775dda2fe08e.Date
+
+relationship 8b57eff9-4ac5-47d8-b083-421e49b8c9b5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.month_start_date
+	toColumn: LocalDateTable_cb0bfc4b-6ecd-4090-a7b4-579efe959073.Date
+
+relationship 85c91f19-b212-4d16-a2d6-4d1a82bd039a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.month_end_date
+	toColumn: LocalDateTable_062a7fbc-a06c-4d8b-967f-8f7d55e6d202.Date
+
+relationship 118d8730-2142-4dcd-a858-2370d2ac0948
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.quarter_start_date
+	toColumn: LocalDateTable_2f9647d7-8e6a-4847-8bd0-da49a607a7e8.Date
+
+relationship 3f2cb556-1886-4beb-981c-d7f958141fe5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.quarter_end_date
+	toColumn: LocalDateTable_a0305536-55d9-4858-8ae3-63911f606681.Date
+
+relationship 316b3479-4dac-4b4c-94d7-aca84c120266
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.year_start_date
+	toColumn: LocalDateTable_6bdfc3ee-d9ea-4596-b4bd-e8f5e40036d9.Date
+
+relationship 2d31ff38-89a3-4376-818c-8fb78ea9ea7e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.year_end_date
+	toColumn: LocalDateTable_16cac646-56f8-4576-b3f3-30918fc1fa1c.Date
+
+relationship 0c07337e-9109-41fa-86b5-c10710514c6a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.full_date
+	toColumn: LocalDateTable_d44a537f-c950-44e0-8170-b3c690248b0b.Date
+
+relationship 7b6d6373-7380-426c-bfe2-8c716cd9428d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.month_start_date
+	toColumn: LocalDateTable_5f12a0d3-8ac7-4362-b693-cbc1a2208bbd.Date
+
+relationship 6196c314-a2df-473a-a87d-662d6607e795
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.month_end_date
+	toColumn: LocalDateTable_9c004359-3957-40e9-a1d7-b1391f116056.Date
+
+relationship 00304c5b-c50d-4b6f-a56b-d2fb19d61375
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.quarter_start_date
+	toColumn: LocalDateTable_f91cd667-4ba7-4c6e-a865-5bf55abccb5d.Date
+
+relationship 261df353-6dab-409c-b4b6-1b7875b278d7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.quarter_end_date
+	toColumn: LocalDateTable_172cd833-5af6-4f5f-bcaa-e1f013e58b0a.Date
+
+relationship aa87570e-3a7e-47ea-86e6-4a9c7901935c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.year_start_date
+	toColumn: LocalDateTable_5700e2c4-74c9-4e40-bddb-fd0b1753296a.Date
+
+relationship e363050c-c096-4da5-b315-01da45053f55
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_delivered_date.year_end_date
+	toColumn: LocalDateTable_6e5abc9f-22b0-4819-8cf8-115defaf40c6.Date
+
+relationship 3a1416b6-4d58-428e-aa46-852266a2bb4f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.full_date
+	toColumn: LocalDateTable_eae8c78b-20f0-492d-96ae-232a81c26a92.Date
+
+relationship d5616c95-9cec-4e73-bb47-de5657339f82
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.month_start_date
+	toColumn: LocalDateTable_74ea711f-38fc-43e4-b864-2c5ed2d42a23.Date
+
+relationship 64249c34-dd05-4891-b0a0-9ae6d00ba6da
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.month_end_date
+	toColumn: LocalDateTable_f71ba87d-c422-4439-9ad9-eb3bf20b4adb.Date
+
+relationship 459a081d-f1db-477c-8111-c3011d75f948
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.quarter_start_date
+	toColumn: LocalDateTable_102d2197-8a9c-4671-a460-160ed1aa2a38.Date
+
+relationship 5908d688-ac4e-47f7-b071-10838eb7c610
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.quarter_end_date
+	toColumn: LocalDateTable_74cfdf5d-766a-4542-a004-03cad4f8d083.Date
+
+relationship 555ff548-5964-45bf-b473-666a4434fa39
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.year_start_date
+	toColumn: LocalDateTable_19a950c7-0ca2-45e8-ba73-7090073383c2.Date
+
+relationship 328feae3-fc3e-4bf7-a137-bee6dab18f91
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_estimated_delivery_date.year_end_date
+	toColumn: LocalDateTable_59ea0253-a35d-4336-a2d8-ec2b21878127.Date
+
+relationship 5dddcf4f-b339-4f84-a14d-9deb03ea7396
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.full_date
+	toColumn: LocalDateTable_82f298ea-8764-49a0-861c-37033a60a563.Date
+
+relationship a12a4f8e-2d6a-4f8d-9552-6e9451f84c2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.month_start_date
+	toColumn: LocalDateTable_d4dcd948-a5a6-4902-93cf-59c78e324703.Date
+
+relationship f882bb66-1f33-4358-a97e-e0fe42c6fc9b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.month_end_date
+	toColumn: LocalDateTable_cdd6e777-b8a5-4103-a474-4e87e944983c.Date
+
+relationship 5f98e568-f911-4bb6-ba2c-aa8ce41ae6c5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.quarter_start_date
+	toColumn: LocalDateTable_50fd43c6-6097-481a-8322-ad2a90268041.Date
+
+relationship bb2dc8d6-283c-4707-b9b8-ff39ee061241
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.quarter_end_date
+	toColumn: LocalDateTable_dd0514be-20d4-4f37-ad8c-962fcd04c082.Date
+
+relationship aeb1f0f2-51c2-4c93-a1ca-235b3b90069d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.year_start_date
+	toColumn: LocalDateTable_534ffd45-7550-4601-87fa-00322157aad1.Date
+
+relationship 18bf2814-43cd-4152-8ef7-62614a67fd49
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_order_purchase_date.year_end_date
+	toColumn: LocalDateTable_f05a9cb6-ee53-4515-a8bf-4660804516bc.Date
+
+relationship 3d22d55f-b6bb-462e-b958-04f3309c7407
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.full_date
+	toColumn: LocalDateTable_ef26c849-e0f6-4751-a616-495c649ededb.Date
+
+relationship 49e855e9-e81a-42a1-85aa-4382b38561c6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.month_start_date
+	toColumn: LocalDateTable_6eeae798-0c9d-4c1e-a314-f412308ebc15.Date
+
+relationship b26f2159-344d-493c-b9f6-a6b6e4b03dca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.month_end_date
+	toColumn: LocalDateTable_85f22409-b40b-4c0e-84df-24a9222e7fed.Date
+
+relationship 4a6bd9d1-633e-42ee-8f75-635fccc43cb1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.quarter_start_date
+	toColumn: LocalDateTable_f6c36182-dfc1-44d1-af38-ad09f90d18cb.Date
+
+relationship 05f999f9-7eb6-4db5-842f-06664c697b6f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.quarter_end_date
+	toColumn: LocalDateTable_2f63790b-9685-4557-a8b7-0009f3e57a1f.Date
+
+relationship e79046d7-7758-4d18-bbde-bbf2b9b1ce26
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.year_start_date
+	toColumn: LocalDateTable_032d32d7-47c1-41fd-a841-de98ee8c3ce4.Date
+
+relationship 436be87d-2a3d-42d7-8fc8-9d86fb4855fe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_creation_date.year_end_date
+	toColumn: LocalDateTable_2624b35e-7083-4359-859c-b60eb0703b9e.Date
+
+relationship 8e6f7998-1e87-412d-88d0-1f7660a53321
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.full_date
+	toColumn: LocalDateTable_603b7622-d8bd-403b-9678-d0d01bfa9fea.Date
+
+relationship f24984bd-dbaf-4304-9526-9e6430156619
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.month_start_date
+	toColumn: LocalDateTable_48e82e77-5bb7-469d-a249-0f8d276f4af7.Date
+
+relationship bb2b04c1-63d1-4890-902b-c7a7fce6d717
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.month_end_date
+	toColumn: LocalDateTable_e2967f2d-1eea-483d-90f0-19b384518134.Date
+
+relationship 4a107881-2b13-4e9f-964b-efb505ea083c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.quarter_start_date
+	toColumn: LocalDateTable_95671878-6459-46a4-9b04-fb23160c03aa.Date
+
+relationship e281a8c0-8746-4bed-953b-ec7008ecc652
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.quarter_end_date
+	toColumn: LocalDateTable_98750f13-db33-48d7-8e7d-40991c97e85c.Date
+
+relationship 723d266a-732c-4747-bdd4-593bb14b6587
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.year_start_date
+	toColumn: LocalDateTable_67a0b2f6-b763-4bb8-875e-8a6045cf703c.Date
+
+relationship 698945a7-e2d2-4899-89ed-d260ca398fea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_review_answer_date.year_end_date
+	toColumn: LocalDateTable_50baf2dd-3332-4638-91dc-163f6ccba725.Date
+

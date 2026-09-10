@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d372abc5530cd0067ab2",
+  "position": {
+    "x": 77.152698048220429,
+    "y": 458.50746268656712,
+    "z": 4,
+    "height": 537.86452353616528,
+    "width": 740.66590126291612,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_sellers"
+                    }
+                  },
+                  "Property": "seller_state"
+                }
+              },
+              "queryRef": "dim_sellers.seller_state",
+              "nativeQueryRef": "seller_state"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_customers"
+                    }
+                  },
+                  "Property": "customer_state"
+                }
+              },
+              "queryRef": "dim_customers.customer_state",
+              "nativeQueryRef": "customer_state"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Average Carrier Transit Days - Interstate Route 100+"
+                }
+              },
+              "queryRef": "dim_orders.Average Carrier Transit Days - Interstate Route 100+",
+              "nativeQueryRef": "Average Carrier Transit Days - Interstate Route 100+"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Orders with Carrier Transit Time by Route"
+                }
+              },
+              "queryRef": "dim_orders.Orders with Carrier Transit Time by Route",
+              "nativeQueryRef": "Orders with Carrier Transit Time by Route"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_orders"
+                  }
+                },
+                "Property": "Average Carrier Transit Days - Interstate Route 100+"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bcd5a3db04e918809b94",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_sellers"
+              }
+            },
+            "Property": "seller_state"
+          }
+        },
+        "type": "TopN"
+      },
+      {
+        "name": "b4d7b0bf2eb23a0cdc6c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_customers"
+              }
+            },
+            "Property": "customer_state"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "83bac542201000b78687",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Average Carrier Transit Days - Interstate Route 100+"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e7a7ee520d9dd29d1d42",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Orders with Carrier Transit Time by Route"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

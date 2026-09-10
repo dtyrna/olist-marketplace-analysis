@@ -1,0 +1,278 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "968691dd300031ce2d83",
+  "position": {
+    "x": 45.891472868217051,
+    "y": 200.93023255813952,
+    "z": 4,
+    "height": 368.37209302325579,
+    "width": 946.35658914728674,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dim_orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "order_delivered_carrier_date"
+                        }
+                      },
+                      "Hierarchy": "Datumshierarchie"
+                    }
+                  },
+                  "Level": "Jahr"
+                }
+              },
+              "queryRef": "dim_orders.order_delivered_carrier_date.Variation.Datumshierarchie.Jahr",
+              "nativeQueryRef": "order_delivered_carrier_date Jahr",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dim_orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "order_delivered_carrier_date"
+                        }
+                      },
+                      "Hierarchy": "Datumshierarchie"
+                    }
+                  },
+                  "Level": "Monat"
+                }
+              },
+              "queryRef": "dim_orders.order_delivered_carrier_date.Variation.Datumshierarchie.Monat",
+              "nativeQueryRef": "order_delivered_carrier_date Monat",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Orders with Carrier Transit Time"
+                }
+              },
+              "queryRef": "dim_orders.Orders with Carrier Transit Time",
+              "nativeQueryRef": "Orders with Carrier Transit Time"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Interstate Order Share"
+                }
+              },
+              "queryRef": "dim_orders.Interstate Order Share",
+              "nativeQueryRef": "Interstate Order Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Average Carrier Transit Days - Interstate"
+                }
+              },
+              "queryRef": "dim_orders.Average Carrier Transit Days - Interstate",
+              "nativeQueryRef": "Average Carrier Transit Days - Interstate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Average Carrier Transit Days - Intrastate"
+                }
+              },
+              "queryRef": "dim_orders.Average Carrier Transit Days - Intrastate",
+              "nativeQueryRef": "Average Carrier Transit Days - Intrastate"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "Average Carrier Transit Days"
+                }
+              },
+              "queryRef": "dim_orders.Average Carrier Transit Days",
+              "nativeQueryRef": "Average Carrier Transit Days"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5af6591a5b03ccacd1a0",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_orders"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "order_delivered_carrier_date"
+                  }
+                },
+                "Hierarchy": "Datumshierarchie"
+              }
+            },
+            "Level": "Jahr"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c22fd783bac2ad507d1e",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_orders"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "order_delivered_carrier_date"
+                  }
+                },
+                "Hierarchy": "Datumshierarchie"
+              }
+            },
+            "Level": "Monat"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5b092f1350074c0108a6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Average Carrier Transit Days"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ddfa67dcd7a051c5d600",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Orders with Carrier Transit Time"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "037b70d62ebc83b059ba",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Interstate Order Share"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4b860d67606486705200",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Average Carrier Transit Days - Interstate"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5e4cc0bd02b004746e70",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "Average Carrier Transit Days - Intrastate"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

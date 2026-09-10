@@ -11,7 +11,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["dim_customers","dim_delivery_date","dim_orders","dim_products","dim_purchase_date","dim_review_date","dim_sellers","dim_shipping_limit_date","fact_order_items","fact_order_reviews","fact_order_payments"]
+annotation PBI_QueryOrder = ["dim_customers","dim_delivery_date","dim_orders","dim_products","dim_purchase_date","dim_review_date","dim_sellers","dim_shipping_limit_date","fact_order_items","fact_order_reviews","fact_order_payments","dim_approval_date","dim_carrier_date","dim_date","dim_delivered_date","dim_estimated_delivery_date","dim_order_purchase_date","dim_review_creation_date","dim_review_answer_date"]
 
 ref table dim_customers
 ref table DateTableTemplate_e26e30ee-67ba-4ae6-a939-82d24f0c276d
@@ -30,6 +30,70 @@ ref table dim_shipping_limit_date
 ref table fact_order_items
 ref table fact_order_reviews
 ref table fact_order_payments
+ref table dim_approval_date
+ref table LocalDateTable_76f082da-e106-45e6-ac43-8c2ea6c87833
+ref table LocalDateTable_fbb8bd27-420d-4335-8671-fba08b1c80ed
+ref table LocalDateTable_2a85cf78-b282-44b1-8192-8a18a57962f5
+ref table LocalDateTable_16707bba-29a2-412c-99a2-b811ce3fdbfb
+ref table LocalDateTable_59fe78a3-88fc-4ea2-ada0-7b369dd0e4ba
+ref table LocalDateTable_05435881-ce73-4841-97dc-c56caf18431a
+ref table LocalDateTable_3fac69df-3d48-453b-a71d-e27c81bea109
+ref table dim_carrier_date
+ref table LocalDateTable_d431da57-460c-4bc6-86f5-2f08beb38809
+ref table LocalDateTable_96c377a8-1c20-4c52-901c-9c1c52dab293
+ref table LocalDateTable_6fb34eaa-03c0-4e1f-815d-852b3e9227ed
+ref table LocalDateTable_731fc305-fdd7-46c8-ba8b-63f82159a295
+ref table LocalDateTable_024b9d12-18d7-4d2e-ac77-6fd14ab46d3a
+ref table LocalDateTable_5f61938e-3020-4af9-b669-12978a70ae75
+ref table LocalDateTable_e9bbb6cd-56c7-4ab1-b243-30db53623b24
+ref table dim_date
+ref table LocalDateTable_e9ba2b59-5635-44de-a4ab-775dda2fe08e
+ref table LocalDateTable_cb0bfc4b-6ecd-4090-a7b4-579efe959073
+ref table LocalDateTable_062a7fbc-a06c-4d8b-967f-8f7d55e6d202
+ref table LocalDateTable_2f9647d7-8e6a-4847-8bd0-da49a607a7e8
+ref table LocalDateTable_a0305536-55d9-4858-8ae3-63911f606681
+ref table LocalDateTable_6bdfc3ee-d9ea-4596-b4bd-e8f5e40036d9
+ref table LocalDateTable_16cac646-56f8-4576-b3f3-30918fc1fa1c
+ref table dim_delivered_date
+ref table LocalDateTable_d44a537f-c950-44e0-8170-b3c690248b0b
+ref table LocalDateTable_5f12a0d3-8ac7-4362-b693-cbc1a2208bbd
+ref table LocalDateTable_9c004359-3957-40e9-a1d7-b1391f116056
+ref table LocalDateTable_f91cd667-4ba7-4c6e-a865-5bf55abccb5d
+ref table LocalDateTable_172cd833-5af6-4f5f-bcaa-e1f013e58b0a
+ref table LocalDateTable_5700e2c4-74c9-4e40-bddb-fd0b1753296a
+ref table LocalDateTable_6e5abc9f-22b0-4819-8cf8-115defaf40c6
+ref table dim_estimated_delivery_date
+ref table LocalDateTable_eae8c78b-20f0-492d-96ae-232a81c26a92
+ref table LocalDateTable_74ea711f-38fc-43e4-b864-2c5ed2d42a23
+ref table LocalDateTable_f71ba87d-c422-4439-9ad9-eb3bf20b4adb
+ref table LocalDateTable_102d2197-8a9c-4671-a460-160ed1aa2a38
+ref table LocalDateTable_74cfdf5d-766a-4542-a004-03cad4f8d083
+ref table LocalDateTable_19a950c7-0ca2-45e8-ba73-7090073383c2
+ref table LocalDateTable_59ea0253-a35d-4336-a2d8-ec2b21878127
+ref table dim_order_purchase_date
+ref table LocalDateTable_82f298ea-8764-49a0-861c-37033a60a563
+ref table LocalDateTable_d4dcd948-a5a6-4902-93cf-59c78e324703
+ref table LocalDateTable_cdd6e777-b8a5-4103-a474-4e87e944983c
+ref table LocalDateTable_50fd43c6-6097-481a-8322-ad2a90268041
+ref table LocalDateTable_dd0514be-20d4-4f37-ad8c-962fcd04c082
+ref table LocalDateTable_534ffd45-7550-4601-87fa-00322157aad1
+ref table LocalDateTable_f05a9cb6-ee53-4515-a8bf-4660804516bc
+ref table dim_review_creation_date
+ref table LocalDateTable_ef26c849-e0f6-4751-a616-495c649ededb
+ref table LocalDateTable_6eeae798-0c9d-4c1e-a314-f412308ebc15
+ref table LocalDateTable_85f22409-b40b-4c0e-84df-24a9222e7fed
+ref table LocalDateTable_f6c36182-dfc1-44d1-af38-ad09f90d18cb
+ref table LocalDateTable_2f63790b-9685-4557-a8b7-0009f3e57a1f
+ref table LocalDateTable_032d32d7-47c1-41fd-a841-de98ee8c3ce4
+ref table LocalDateTable_2624b35e-7083-4359-859c-b60eb0703b9e
+ref table dim_review_answer_date
+ref table LocalDateTable_603b7622-d8bd-403b-9678-d0d01bfa9fea
+ref table LocalDateTable_48e82e77-5bb7-469d-a249-0f8d276f4af7
+ref table LocalDateTable_e2967f2d-1eea-483d-90f0-19b384518134
+ref table LocalDateTable_95671878-6459-46a4-9b04-fb23160c03aa
+ref table LocalDateTable_98750f13-db33-48d7-8e7d-40991c97e85c
+ref table LocalDateTable_67a0b2f6-b763-4bb8-875e-8a6045cf703c
+ref table LocalDateTable_50baf2dd-3332-4638-91dc-163f6ccba725
 
 ref cultureInfo de-DE
 
