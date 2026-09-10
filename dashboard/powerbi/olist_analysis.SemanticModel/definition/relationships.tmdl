@@ -45,19 +45,43 @@ relationship 92fc1bcc-6579-d048-25d3-0aedbb4457cc
 	fromColumn: fact_order_items.product_id
 	toColumn: dim_products.product_id
 
-relationship 09cb5ac1-407b-621f-b7aa-9d64151ecd6f
-	fromColumn: fact_order_reviews.review_creation_date_key
-	toColumn: dim_review_date.date_key
-
 relationship AutoDetected_8253453c-8f26-44d1-a960-1e3b0ced1223
 	fromColumn: fact_order_payments.order_id
 	toColumn: dim_orders.order_id
 
-relationship f0654325-c68d-ad71-d111-d80176b4fbf9
-	fromColumn: dim_orders.delivered_date_key
-	toColumn: dim_delivery_date.date_key
+relationship b80feb03-f168-9fab-bcd8-0c1e9c5dfc2f
+	fromColumn: fact_order_items.shipping_limit_date_key
+	toColumn: dim_shipping_limit_date.date_key
 
-relationship 0455b119-b8b6-9579-0329-88a4292ff7a0
+relationship 02163db9-4474-d268-4be3-0dad2606f366
+	fromColumn: dim_orders.approval_date_key
+	toColumn: dim_approval_date.date_key
+
+relationship 193c653b-8533-8e2f-a421-699827e8e3d6
+	fromColumn: dim_orders.carrier_date_key
+	toColumn: dim_carrier_date.date_key
+
+relationship 810142a4-c51a-004b-c4f2-012fe6d87092
+	fromColumn: dim_orders.delivered_date_key
+	toColumn: dim_delivered_date.date_key
+
+relationship 6b6067cc-91dc-3a6b-4321-238290c848ac
+	fromColumn: dim_orders.estimated_delivery_date_key
+	toColumn: dim_estimated_delivery_date.date_key
+
+relationship 18641227-f24e-477e-5d43-510265765871
 	fromColumn: fact_order_payments.order_purchase_date_key
+	toColumn: dim_order_purchase_date.date_key
+
+relationship c322061f-2df6-47ad-ac95-fc3716e1995d
+	fromColumn: fact_order_reviews.review_answer_date_key
+	toColumn: dim_review_answer_date.date_key
+
+relationship 4d164dfa-7370-c875-6114-7cbc67a40162
+	fromColumn: fact_order_reviews.review_creation_date_key
+	toColumn: dim_review_creation_date.date_key
+
+relationship fea3dada-643a-6ada-16e6-a22fd8367920
+	fromColumn: dim_orders.purchase_date_key
 	toColumn: dim_purchase_date.date_key
 

@@ -38,7 +38,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: 03e1846e-a74f-4f74-9b84-a70adaa5bb35
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: purchase_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -47,7 +47,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: 9032ef13-7906-4b5b-a48c-eb23864f5f12
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: approval_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -56,7 +56,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: a3dabc35-b9bd-44ea-ab00-e01edea3c89a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: carrier_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -74,7 +74,7 @@ table dim_orders
 		dataType: int64
 		formatString: 0
 		lineageTag: 4b854dc5-9c2f-4c87-b99b-c8800acddd50
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: estimated_delivery_date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -191,6 +191,79 @@ table dim_orders
 		lineageTag: 6690079c-95be-4d57-a95d-bd9c5c5ef150
 		summarizeBy: none
 		sourceColumn: missing_delivery_date_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_before_approved_flag = ```
+			
+			IF(
+			    NOT ISBLANK(dim_orders[order_purchase_timestamp]) && NOT ISBLANK(dim_orders[order_approved_at]), 
+			    IF(
+			        dim_orders[order_purchase_timestamp] <= dim_orders[order_approved_at], 
+			        TRUE(),
+			        FALSE()
+			    ),
+			    TRUE()
+			)
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8bd9d4f3-73f2-47f1-9ab0-128e722c299a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours_purchase_to_delivered_carrier =
+			
+			IF(
+			    NOT ISBLANK(dim_orders[order_purchase_timestamp])
+			        && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			        && dim_orders[order_delivered_carrier_date]
+			            >= dim_orders[order_purchase_timestamp],
+			    DATEDIFF(
+			        dim_orders[order_purchase_timestamp],
+			        dim_orders[order_delivered_carrier_date],
+			        HOUR
+			    ),
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: fc9287cd-2b25-40a1-83f0-5dd310640239
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_purchase_to_delivered_carrier =
+			
+			IF(
+			    NOT ISBLANK(dim_orders[order_purchase_timestamp])
+			        && NOT ISBLANK(dim_orders[order_delivered_carrier_date])
+			        && dim_orders[order_delivered_carrier_date]
+			            >= dim_orders[order_purchase_timestamp],
+			    DATEDIFF(
+			        dim_orders[order_purchase_timestamp],
+			        dim_orders[order_delivered_carrier_date],
+			        DAY
+			    ),
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 42d3852b-8095-472c-9a9c-524b8fcf0a8b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_single_pos =
+			
+			VAR MaxItemForOrder =
+			    CALCULATE(
+			        MAX(fact_order_items[order_item_id]),
+			        ALLEXCEPT(dim_orders, dim_orders[order_id])
+			    )
+			RETURN
+			    IF(MaxItemForOrder = 1, 1, 0)
+		formatString: 0
+		lineageTag: 9ac89bd8-1303-44b8-bbca-7fbf64776b6b
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 
