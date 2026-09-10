@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "73cd7e82b49b33ead6b7",
   "position": {
-    "x": 1158.419452887538,
-    "y": 23.343465045592705,
-    "z": 7001,
-    "height": 309.30091185410333,
-    "width": 716.35258358662611,
-    "tabOrder": 7001
+    "x": 0,
+    "y": 887.05167173252278,
+    "z": 8000,
+    "height": 192.58358662613981,
+    "width": 1604.8632218844984,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "tableEx",
@@ -15,6 +15,20 @@
       "queryState": {
         "Values": {
           "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "order_key"
+                }
+              },
+              "queryRef": "Sum(dim_orders.order_key)",
+              "nativeQueryRef": "order_key"
+            },
             {
               "field": {
                 "Column": {
@@ -28,6 +42,20 @@
               },
               "queryRef": "fact_order_items.order_id",
               "nativeQueryRef": "order_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_order_items"
+                    }
+                  },
+                  "Property": "order_item_id"
+                }
+              },
+              "queryRef": "Sum(fact_order_items.order_item_id)",
+              "nativeQueryRef": "order_item_id"
             },
             {
               "field": {
@@ -56,6 +84,76 @@
               },
               "queryRef": "fact_order_items.product_id",
               "nativeQueryRef": "product_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_category_name"
+                }
+              },
+              "queryRef": "dim_products.product_category_name",
+              "nativeQueryRef": "product_category_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_weight_g"
+                }
+              },
+              "queryRef": "dim_products.product_weight_g",
+              "nativeQueryRef": "product_weight_g"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_length_cm"
+                }
+              },
+              "queryRef": "dim_products.product_length_cm",
+              "nativeQueryRef": "product_length_cm"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_width_cm"
+                }
+              },
+              "queryRef": "dim_products.product_width_cm",
+              "nativeQueryRef": "product_width_cm"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_height_cm"
+                }
+              },
+              "queryRef": "dim_products.product_height_cm",
+              "nativeQueryRef": "product_height_cm"
             }
           ]
         }
@@ -83,21 +181,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "baf27dcf3507c84628a1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_order_items"
-              }
-            },
-            "Property": "order_id"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6a0fe32071bc29935982",
+        "name": "e7b815398382b52489be",
         "field": {
           "Column": {
             "Expression": {
@@ -111,7 +195,7 @@
         "type": "Categorical"
       },
       {
-        "name": "58fae572143e20817d2d",
+        "name": "e2f0bd596dad0c020ca2",
         "field": {
           "Column": {
             "Expression": {
@@ -123,6 +207,118 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "f332bbb5c2cc40a753e2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "order_key"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ed13701b908ce2d0a064",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_order_items"
+              }
+            },
+            "Property": "order_item_id"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0b8c8fdee65201bd4086",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_order_items"
+              }
+            },
+            "Property": "order_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f6f094b220875432763d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_category_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a5dcfbcfd3a5d7ad0c23",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_weight_g"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "36dcf03b6b37672bc4e3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_width_cm"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f07e7ae428365a51bd38",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_height_cm"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6b3e900f14dcba10415b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_length_cm"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

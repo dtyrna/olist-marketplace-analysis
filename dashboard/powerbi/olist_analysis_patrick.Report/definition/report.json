@@ -26,6 +26,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "slicerPanel90BC7143EBDF48EDA50762279AE66254"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "13a38e0ea1634c5baa20",
   "position": {
-    "x": 10,
-    "y": 522.5,
+    "x": 939.57446808510633,
+    "y": 0,
     "z": 2000,
-    "height": 375,
-    "width": 710,
+    "height": 355.98784194528878,
+    "width": 980.42553191489355,
     "tabOrder": 2000
   },
   "visual": {
@@ -101,6 +101,67 @@
         ]
       }
     },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableDetailDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "dynamicLabelValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tbl_measures_patrick"
+                    }
+                  },
+                  "Property": "number of orders per seller (Single Seller Only)"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "highlightMatching": 1
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -121,7 +182,21 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7c61ad1ea13718257467",
+        "name": "1814ede3b8a900379e27",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_sellers"
+              }
+            },
+            "Property": "seller_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "28c762dbc291c7cd8cac",
         "field": {
           "Measure": {
             "Expression": {
@@ -135,21 +210,7 @@
         "type": "Advanced"
       },
       {
-        "name": "55e87d228bed6e4ad323",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8151599011232c740c49",
+        "name": "d05f3eb13b4906b73359",
         "field": {
           "Measure": {
             "Expression": {
@@ -163,18 +224,18 @@
         "type": "Advanced"
       },
       {
-        "name": "1d5ef8c6a2a3b546406b",
+        "name": "9205af3f3c8b08460b42",
         "field": {
-          "Column": {
+          "Measure": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dim_sellers"
+                "Entity": "tbl_measures_patrick"
               }
             },
-            "Property": "seller_id"
+            "Property": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
           }
         },
-        "type": "Categorical"
+        "type": "Advanced"
       }
     ]
   }

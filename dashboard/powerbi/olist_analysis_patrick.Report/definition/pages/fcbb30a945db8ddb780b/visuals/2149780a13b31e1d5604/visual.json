@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "2149780a13b31e1d5604",
   "position": {
-    "x": 887.14285714285722,
-    "y": 401.42857142857144,
+    "x": 1066.5045592705167,
+    "y": 355.98784194528878,
     "z": 5000,
-    "height": 309,
-    "width": 512,
+    "height": 531.063829787234,
+    "width": 538.35866261398178,
     "tabOrder": 5000
   },
   "visual": {
@@ -96,21 +96,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c88874ddc26b548e7606",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "number of orders per seller (Single Seller Only)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b011977e4720c990c3b0",
+        "name": "8c2f72db790095ccbb60",
         "field": {
           "Column": {
             "Expression": {
@@ -122,6 +108,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "fdb47484db8cdeaa2ae0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "number of orders per seller (Single Seller Only)"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

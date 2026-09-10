@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f36aea3ebc8dae92b179",
   "position": {
-    "x": 210.09118541033433,
-    "y": 13.130699088145896,
+    "x": 0,
+    "y": 355.98784194528878,
     "z": 3000,
-    "height": 308.57142857142861,
-    "width": 924.28571428571433,
+    "height": 531.063829787234,
+    "width": 1177.386018237082,
     "tabOrder": 3000
   },
   "visual": {
@@ -117,6 +117,20 @@
               "queryRef": "Sum(dim_orders.days_purchase_to_delivered_carrier)",
               "nativeQueryRef": "Bearbeitungszeit in Tagen",
               "displayName": "Bearbeitungszeit in Tagen"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_orders"
+                    }
+                  },
+                  "Property": "days_delayed_delivery"
+                }
+              },
+              "queryRef": "Sum(dim_orders.days_delayed_delivery)",
+              "nativeQueryRef": "days_delayed_delivery"
             }
           ]
         }
@@ -190,104 +204,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "fbbad1770325969395d3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "order_purchase_timestamp"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "cfcef740ce06da09c010",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "order_delivered_carrier_date"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "3ce3f74a8c1749a60a1d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "hours_purchase_to_delivered_carrier"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5f2a20e523aa3369b8ce",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "days_purchase_to_delivered_carrier"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "20435170316528c7eae5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "order_key"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b5aedeb0cdb8cbd2308e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_purchase_date"
-              }
-            },
-            "Property": "weekday_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6ec2f077240cd613a435",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_carrier_date"
-              }
-            },
-            "Property": "weekday_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
         "name": "3d7d61600a38bee13cb0",
         "field": {
           "Measure": {
@@ -335,6 +251,118 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "0201d95ea879031e3d39",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "order_key"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2adbf695bd4923e9c02c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "order_purchase_timestamp"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5f9bd03c41902cde1816",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_purchase_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d4d5a0c510d0735315cc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "order_delivered_carrier_date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4d9c5e1d6e00943b3005",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_carrier_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6947988e4e3c0ed9b327",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "hours_purchase_to_delivered_carrier"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9ec6cae64cdd14b44073",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "days_purchase_to_delivered_carrier"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4ea22a3c850a046567d0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "days_delayed_delivery"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

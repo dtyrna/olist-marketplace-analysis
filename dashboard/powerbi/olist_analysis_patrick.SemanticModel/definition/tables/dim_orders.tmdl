@@ -267,6 +267,25 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column days_delayed_delivery =
+			
+			IF(
+			    NOT ISBLANK(dim_orders[order_estimated_delivery_date])
+			        && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			        ,
+			    DATEDIFF(
+			        dim_orders[order_estimated_delivery_date],
+			        dim_orders[order_delivered_customer_date],
+			        DAY
+			    ),
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 22a76b82-45b3-42a9-9186-023c52fd7d6c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_orders = m
 		mode: import
 		source =

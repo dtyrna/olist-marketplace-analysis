@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "b147353351b47d60c197",
   "position": {
-    "x": 10,
-    "y": 0,
+    "x": 550.03039513677822,
+    "y": 1.4539598166695384,
     "z": 0,
     "height": 177.14285714285717,
     "width": 200,
@@ -56,7 +56,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "1fe7c29309c174d2bb7e",
+        "name": "d62c2b9d0b5ccb7b80e0",
         "field": {
           "Measure": {
             "Expression": {
