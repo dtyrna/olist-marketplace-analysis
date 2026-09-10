@@ -205,22 +205,51 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_sellers AS
 
 --create seperate dim_date per date-column for Power BI Semantic Model
 
+--dim_orders
 CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_purchase_date AS
     SELECT *
     FROM dsi_final_project_powerbi_dw.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_delivery_date AS
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_approval_date AS
     SELECT *
     FROM dsi_final_project_powerbi_dw.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_review_date AS
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_carrier_date AS
     SELECT *
     FROM dsi_final_project_powerbi_dw.dim_date
 ;
 
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_delivered_date AS
+    SELECT *
+    FROM dsi_final_project_powerbi_dw.dim_date
+;
+
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_estimated_delivery_date AS
+    SELECT *
+    FROM dsi_final_project_powerbi_dw.dim_date
+;
+
+--fact_order_items
 CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_shipping_limit_date AS
+    SELECT *
+    FROM dsi_final_project_powerbi_dw.dim_date
+;
+
+--fact_order_payments
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_order_purchase_date AS
+    SELECT *
+    FROM dsi_final_project_powerbi_dw.dim_date
+;
+
+--fact_order_reviews
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_review_creation_date AS
+    SELECT *
+    FROM dsi_final_project_powerbi_dw.dim_date
+;
+
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_review_answer_date AS
     SELECT *
     FROM dsi_final_project_powerbi_dw.dim_date
 ;

@@ -38,7 +38,7 @@ table fact_order_items
 		dataType: int64
 		formatString: 0
 		lineageTag: f12858b5-3093-4551-8049-ef51235c53b4
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: shipping_limit_date_key
 
 		annotation SummarizationSetBy = Automatic
