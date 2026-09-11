@@ -304,6 +304,14 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column Test_Spalte = ```
+			"Test" 
+			```
+		lineageTag: 3323dd0f-ce9b-4d77-9730-d0c56fd644fe
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_orders = m
 		mode: import
 		source =
