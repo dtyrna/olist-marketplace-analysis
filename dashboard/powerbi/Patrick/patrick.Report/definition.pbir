@@ -3,7 +3,7 @@
   "version": "4.0",
   "datasetReference": {
     "byPath": {
-      "path": "../olist_analysis_patrick.SemanticModel"
+      "path": "../patrick.SemanticModel"
     }
   }
 }
