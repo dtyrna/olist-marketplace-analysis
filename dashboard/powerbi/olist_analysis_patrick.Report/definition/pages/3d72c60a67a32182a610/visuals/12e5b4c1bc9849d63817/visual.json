@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "12e5b4c1bc9849d63817",
   "position": {
-    "x": 999.39209726443767,
-    "y": 102.12765957446808,
-    "z": 1,
-    "height": 557.32522796352578,
-    "width": 739.69604863221889,
-    "tabOrder": 1
+    "x": 1000.0000000000001,
+    "y": 68.571428571428569,
+    "z": 1000,
+    "height": 431.42857142857144,
+    "width": 757.14285714285722,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "barChart",
@@ -111,6 +111,13 @@
         {
           "properties": {
             "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelOverflow": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -301,21 +308,7 @@
         }
       },
       {
-        "name": "ba5e317044457cad6bc7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Number of delayed deliveries (Single-Product-Order)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "08c4a77798063230b02e",
+        "name": "50811cea100550ac0031",
         "field": {
           "Measure": {
             "Expression": {
@@ -324,6 +317,20 @@
               }
             },
             "Property": "number of orders per product (Single Product Only)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a414125422c857bd02aa",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "Number of delayed deliveries (Single-Product-Order)"
           }
         },
         "type": "Advanced"

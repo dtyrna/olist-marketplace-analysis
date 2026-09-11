@@ -4,10 +4,10 @@
   "position": {
     "x": 1322.5019305019305,
     "y": 0,
-    "z": 8,
+    "z": 8000,
     "height": 452.20077220077224,
     "width": 311.35135135135135,
-    "tabOrder": 8
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "columnChart",
@@ -379,34 +379,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "a2ae739e874303d09500",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "769340c450339587523d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Seller Share of Revenue"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

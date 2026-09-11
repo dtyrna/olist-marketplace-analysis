@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "8123cb91b9ba60cbd208",
   "position": {
-    "x": 147.35562310030394,
-    "y": 102.12765957446808,
+    "x": 11.428571428571429,
+    "y": 28.571428571428573,
     "z": 0,
     "height": 557.32522796352578,
     "width": 739.69604863221889,
@@ -314,21 +314,7 @@
         }
       },
       {
-        "name": "cdc14c44750ecda3c219",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Number of delayed deliveries (Single-Seller-Order)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b94f2e6f2b274ca20296",
+        "name": "3c441de5cd21b0e343ca",
         "field": {
           "Measure": {
             "Expression": {
@@ -342,7 +328,7 @@
         "type": "Advanced"
       },
       {
-        "name": "471d61b3d36e0b6700b9",
+        "name": "4af87b9f8b95ac30e40e",
         "field": {
           "Measure": {
             "Expression": {
@@ -351,6 +337,20 @@
               }
             },
             "Property": "number of orders per seller (Single Seller Only)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4693be33c4058a12d31c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "Number of delayed deliveries (Single-Seller-Order)"
           }
         },
         "type": "Advanced"

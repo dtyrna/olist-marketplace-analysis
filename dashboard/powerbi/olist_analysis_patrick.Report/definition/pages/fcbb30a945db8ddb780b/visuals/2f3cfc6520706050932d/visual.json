@@ -52,23 +52,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "509fe7e41b4219eea3cc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "(hours) median time purchase to delivered carrier (Single-Seller-Order)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -4,10 +4,10 @@
   "position": {
     "x": 1011.1505791505792,
     "y": 0,
-    "z": 4,
+    "z": 4000,
     "height": 452.20077220077224,
     "width": 311.35135135135135,
-    "tabOrder": 4
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "columnChart",
@@ -413,34 +413,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "460a35ae778c0c48bb33",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Sold Items"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d56d855183d0a9386014",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Seller Share of Total Items"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

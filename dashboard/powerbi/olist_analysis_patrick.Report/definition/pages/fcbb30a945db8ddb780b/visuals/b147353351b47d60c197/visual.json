@@ -52,23 +52,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d62c2b9d0b5ccb7b80e0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

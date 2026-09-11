@@ -286,6 +286,24 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column seller_order_type =
+			
+			VAR SellerCount =
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_order_items[seller_id])
+			    )
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        SellerCount = 1, "Single Seller",
+			        SellerCount > 1, "Multi Seller",
+			        "Unknown"
+			    )
+		lineageTag: dddfccb7-abbc-4690-bd5e-912b82fbf0ce
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_orders = m
 		mode: import
 		source =

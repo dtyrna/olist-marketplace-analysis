@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "fb2b83c1c630077e4d52",
   "position": {
-    "x": 1604.8632218844984,
-    "y": 355.98784194528878,
-    "z": 10001,
-    "height": 723.64741641337389,
-    "width": 315.1367781155015,
-    "tabOrder": 10001
+    "x": 1457.1428571428573,
+    "y": 450.00000000000006,
+    "z": 9000,
+    "height": 630,
+    "width": 315.71428571428572,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "barChart",
@@ -131,42 +131,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a5a3ef40610386a7c203",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "product_category_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "0d86f572c5b6671067cc",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fact_order_items"
-                  }
-                },
-                "Property": "product_id"
-              }
-            },
-            "Function": 5
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

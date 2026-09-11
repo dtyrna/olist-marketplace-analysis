@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "2149780a13b31e1d5604",
   "position": {
-    "x": 1066.5045592705167,
-    "y": 355.98784194528878,
-    "z": 5000,
-    "height": 531.063829787234,
-    "width": 538.35866261398178,
-    "tabOrder": 5000
+    "x": 1177.1428571428571,
+    "y": 357.14285714285717,
+    "z": 4000,
+    "height": 531.42857142857144,
+    "width": 427.14285714285717,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "columnChart",
@@ -92,37 +92,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8c2f72db790095ccbb60",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_purchase_date"
-              }
-            },
-            "Property": "weekday_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "fdb47484db8cdeaa2ae0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "number of orders per seller (Single Seller Only)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

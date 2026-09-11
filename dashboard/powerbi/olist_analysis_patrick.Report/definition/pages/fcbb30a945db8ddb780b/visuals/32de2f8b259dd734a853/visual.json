@@ -4,10 +4,10 @@
   "position": {
     "x": 550.03039513677811,
     "y": 177.99392097264439,
-    "z": 6000,
+    "z": 5000,
     "height": 177.99392097264439,
     "width": 199.87841945288753,
-    "tabOrder": 6000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -52,23 +52,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "549b05daa724e94dc24e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

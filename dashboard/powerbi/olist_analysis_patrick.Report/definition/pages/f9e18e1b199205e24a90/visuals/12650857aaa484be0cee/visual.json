@@ -256,26 +256,8 @@
               }
             }
           ]
-        }
-      },
-      {
-        "name": "f39173300a96c679c0a8",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fact_order_items"
-                  }
-                },
-                "Property": "product_id"
-              }
-            },
-            "Function": 5
-          }
         },
-        "type": "Advanced"
+        "howCreated": "User"
       }
     ]
   }

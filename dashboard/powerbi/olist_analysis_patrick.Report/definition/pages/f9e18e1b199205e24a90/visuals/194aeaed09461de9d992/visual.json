@@ -3,11 +3,11 @@
   "name": "194aeaed09461de9d992",
   "position": {
     "x": 510.023166023166,
-    "y": 452.20077220077224,
-    "z": 3,
+    "y": 578.22393822393826,
+    "z": 3000,
     "height": 453.73860182370822,
     "width": 500.42553191489361,
-    "tabOrder": 3
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "barChart",
@@ -126,7 +126,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Top 10 Kategorien nach Umsatz'"
+                  "Value": "'Flop 10 Kategorien nach Umsatz'"
                 }
               }
             }
@@ -255,10 +255,25 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       },
       {
-        "name": "284e0207e0e07e564b7e",
+        "name": "47cd9385a5012a06010b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_category_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d4e5ce186e07da0e5c08",
         "field": {
           "Aggregation": {
             "Expression": {

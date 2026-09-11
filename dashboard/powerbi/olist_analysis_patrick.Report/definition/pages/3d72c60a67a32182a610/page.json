@@ -4,5 +4,17 @@
   "displayName": "Patrick - verspätete Lieferungen",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "8123cb91b9ba60cbd208",
+      "target": "01fc180f8db059be8909",
+      "type": "DataFilter"
+    },
+    {
+      "source": "8123cb91b9ba60cbd208",
+      "target": "12e5b4c1bc9849d63817",
+      "type": "DataFilter"
+    }
+  ]
 }

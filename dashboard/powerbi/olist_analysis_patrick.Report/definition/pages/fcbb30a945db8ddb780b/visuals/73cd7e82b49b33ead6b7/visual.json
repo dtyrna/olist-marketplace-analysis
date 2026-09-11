@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 887.05167173252278,
-    "z": 8000,
+    "z": 7000,
     "height": 192.58358662613981,
     "width": 1604.8632218844984,
-    "tabOrder": 8000
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "tableEx",
@@ -177,149 +177,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "e7b815398382b52489be",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_order_items"
-              }
-            },
-            "Property": "seller_id"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e2f0bd596dad0c020ca2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_order_items"
-              }
-            },
-            "Property": "product_id"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f332bbb5c2cc40a753e2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_orders"
-              }
-            },
-            "Property": "order_key"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ed13701b908ce2d0a064",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_order_items"
-              }
-            },
-            "Property": "order_item_id"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0b8c8fdee65201bd4086",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_order_items"
-              }
-            },
-            "Property": "order_id"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f6f094b220875432763d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "product_category_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "a5dcfbcfd3a5d7ad0c23",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "product_weight_g"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "36dcf03b6b37672bc4e3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "product_width_cm"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f07e7ae428365a51bd38",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "product_height_cm"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "6b3e900f14dcba10415b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "product_length_cm"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

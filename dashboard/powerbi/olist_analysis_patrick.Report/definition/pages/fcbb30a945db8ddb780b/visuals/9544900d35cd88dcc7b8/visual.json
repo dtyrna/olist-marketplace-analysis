@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 0,
-    "z": 10000,
+    "z": 8000,
     "height": 355.98784194528878,
     "width": 550.03039513677811,
-    "tabOrder": 10000
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "slicerPanel90BC7143EBDF48EDA50762279AE66254",
@@ -126,23 +126,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "879b2803eb560dad5a80",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_sellers"
-              }
-            },
-            "Property": "seller_id"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -438,6 +438,80 @@ table tbl_measures_patrick
 		formatString: 0
 		lineageTag: f2901931-dbc4-46ac-adb8-6e43c9641c0d
 
+	measure 'Average Hours Purchase to Carrier' =
+			
+			AVERAGEX(
+			    FILTER(dim_orders, NOT ISBLANK(dim_orders[hours_purchase_to_delivered_carrier])),
+			    dim_orders[hours_purchase_to_delivered_carrier]
+			)
+		lineageTag: f00d9031-1200-44b9-902d-c9182066bd3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '(hours) average time purchase to delivered carrier (Multi-Seller-Order)' =
+			
+			CALCULATE(
+			    AVERAGE(
+			        dim_orders[hours_purchase_to_delivered_carrier]
+			    ),
+			    dim_orders[seller_order_type] = "Multi Seller",
+			    dim_orders[carrier_before_purchase_flag] = FALSE(),
+			    dim_orders[delivery_before_carrier_flag] = FALSE()
+			)
+			
+			/*
+			calculate average time from purchase until the seller hands over
+			the order to the carrier, considering only orders with multiple sellers
+			*/
+		lineageTag: 0af09956-58ca-4d55-a828-99c9a677b251
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'number of orders per seller (Multi Seller Only)' =
+			
+			COUNTROWS(
+			    FILTER(
+			        DISTINCT(fact_order_items[order_id]),
+			        VAR SellersInOrder =
+			            CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                ALLEXCEPT(fact_order_items, fact_order_items[order_id])
+			            )
+			        RETURN
+			            SellersInOrder > 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 42eafa85-e3ed-400a-9a39-a59bf62fb1e6
+
+	measure 'diff average single seller multi seller orders' =
+			
+			IF(
+			    [(hours) average time purchase to delivered carrier (Multi-Seller-Order)] = 0,
+			    0,
+			    [(hours) average time purchase to delivered carrier (Multi-Seller-Order)] - [(hours) average time purchase to delivered carrier (Single-Seller-Order)]
+			)
+		lineageTag: ee971a36-e359-4ba2-9876-eea787cfd941
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'number of products per seller' =
+			
+			COUNTROWS(
+			    FILTER(
+			        DISTINCT(fact_order_items[order_id]),
+			        VAR SellersInOrder =
+			            CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                ALLEXCEPT(fact_order_items, fact_order_items[order_id])
+			            )
+			        RETURN
+			            SellersInOrder = 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 4ff9fbc6-d05c-4d01-a9fc-1083ea6260a0
+
 	partition tbl_measures_patrick = m
 		mode: import
 		source =

@@ -4,10 +4,10 @@
   "position": {
     "x": 1633.8532818532819,
     "y": 247.59845559845562,
-    "z": 10,
+    "z": 10000,
     "height": 164.57142857142858,
     "width": 280.21621621621625,
-    "tabOrder": 10
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -80,23 +80,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "33ada6ce79a8086b0192",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "First Order Date per Seller"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

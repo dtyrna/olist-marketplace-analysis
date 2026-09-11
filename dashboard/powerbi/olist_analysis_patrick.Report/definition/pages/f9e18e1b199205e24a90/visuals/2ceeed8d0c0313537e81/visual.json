@@ -4,10 +4,10 @@
   "position": {
     "x": 510.63829787234044,
     "y": 0,
-    "z": 2,
+    "z": 2000,
     "height": 452.27963525835867,
     "width": 500.42553191489361,
-    "tabOrder": 2
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "barChart",
@@ -270,25 +270,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "f9ccb471320c0dd93a06",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "fact_order_items"
-                  }
-                },
-                "Property": "price"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }
