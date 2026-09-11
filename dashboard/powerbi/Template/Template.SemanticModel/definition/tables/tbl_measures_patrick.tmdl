@@ -1,0 +1,527 @@
+table tbl_measures_patrick
+	lineageTag: eb5bb8ec-ae9a-4946-974e-8aacf78f509d
+
+	measure '(hours) average time purchase to delivered carrier (Single-Seller-Order)' =
+			
+			AVERAGEX(
+			    FILTER(
+			        dim_orders,
+			        NOT ISBLANK(
+			            dim_orders[hours_purchase_to_delivered_carrier]
+			        )
+			            && dim_orders[carrier_before_purchase_flag] = FALSE()
+			            && dim_orders[delivery_before_carrier_flag] = FALSE()
+			            && CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                REMOVEFILTERS(fact_order_items[seller_id])
+			            ) = 1
+			    ),
+			    dim_orders[hours_purchase_to_delivered_carrier]
+			)
+			/* calculate average time from purchase an order to the seller hands over to carrier only orders with one seller to make it seller compareable*/
+		lineageTag: 7e33a0ca-e1d6-46a9-9149-837c701afd09
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '(hours) median time purchase to delivered carrier (Single-Seller-Order)' =
+			
+			MEDIANX(
+			    FILTER(
+			        dim_orders,
+			        NOT ISBLANK(
+			            dim_orders[hours_purchase_to_delivered_carrier]
+			        )
+			            && dim_orders[carrier_before_purchase_flag] = FALSE()
+			            && dim_orders[delivery_before_carrier_flag] = FALSE()
+			            && CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                REMOVEFILTERS(fact_order_items[seller_id])
+			            ) = 1
+			    ),
+			    dim_orders[hours_purchase_to_delivered_carrier]
+			)
+			/* calculate median time from purchase an order to the seller hands over to carrieronly orders with one seller to make it seller compareable*/
+		lineageTag: 699108c1-ef0f-4b06-88b5-9dc4ff941580
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'number of orders per seller (Single Seller Only)' =
+			
+			COUNTROWS(
+			    FILTER(
+			        DISTINCT(fact_order_items[order_id]),
+			        VAR SellersInOrder =
+			            CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                ALLEXCEPT(fact_order_items, fact_order_items[order_id])
+			            )
+			        RETURN
+			            SellersInOrder = 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 52170202-0d85-4d13-9c0a-d7e47cb239cf
+
+	measure '(days) average time purchase to delivered carrier (Single-Seller-Order)' =
+			
+			DIVIDE(
+			    [(hours) average time purchase to delivered carrier (Single-Seller-Order)],
+			    24)
+		lineageTag: e8ac1427-87af-41d4-b7f7-c5f0b1041d2b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '(days) median time purchase to delivered carrier (Single-Seller-Order)' =
+			
+			DIVIDE(
+			    [(hours) median time purchase to delivered carrier (Single-Seller-Order)],
+			    24
+			    )
+		lineageTag: 1331e892-114a-48a3-9587-5b7ace687165
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'filter orders with one item' =
+			
+			VAR MaxItem =
+			    CALCULATE(
+			        MAX(fact_order_items[order_item_id])
+			    )
+			RETURN
+			    IF(MaxItem = 1, 1, 0)
+		formatString: 0
+		lineageTag: 2e32caeb-6f3c-487e-8c33-a972d94e028f
+
+	measure 'show single-seller order for selected seller' =
+			
+			VAR SelectedSellers =
+			    CALCULATETABLE(
+			        VALUES(dim_sellers[seller_id]),
+			        ALLSELECTED(dim_sellers[seller_id])
+			    )
+			VAR HasSellerSelection =
+			    COUNTROWS(SelectedSellers) > 0
+			VAR SellerMatchesOrder =
+			    CALCULATE(
+			        COUNTROWS(fact_order_items),
+			        TREATAS(
+			            SelectedSellers,
+			            fact_order_items[seller_id]
+			        )
+			    ) > 0
+			VAR SellersInWholeOrder =
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_order_items[seller_id]),
+			        REMOVEFILTERS(dim_sellers)
+			    )
+			RETURN
+			    IF(
+			        NOT HasSellerSelection,
+			        1,
+			        IF(
+			            SellerMatchesOrder
+			                && SellersInWholeOrder = 1,
+			            1,
+			            0
+			        )
+			    )
+		formatString: 0
+		lineageTag: fefd0aa6-bac4-47c7-9431-3493c991954b
+
+	measure 'Show Item for Selected Seller and Order' =
+			
+			VAR SellerIsSelected =
+			    ISFILTERED(dim_sellers[seller_id])
+			VAR OrderIsSelected =
+			    ISFILTERED(dim_orders[order_id])
+			VAR ItemBelongsToSelectedSeller =
+			    CALCULATE(
+			        COUNTROWS(fact_order_items)
+			    ) > 0
+			RETURN
+			    IF(
+			        NOT SellerIsSelected
+			            || NOT OrderIsSelected,
+			        0,
+			        IF(
+			            ItemBelongsToSelectedSeller,
+			            1,
+			            0
+			        )
+			    )
+		formatString: 0
+		lineageTag: 8fadd014-3434-4656-82b8-2a98e652389f
+
+	measure 'Debug Seller Selected' =
+			
+			IF(
+			    ISFILTERED(dim_sellers[seller_id]),
+			    "Seller selected",
+			    "No seller selected"
+			)
+		lineageTag: 6b397e32-426c-404c-b7e9-7a2971f52735
+
+	measure 'Sold Items' =
+			
+			COUNTROWS(fact_order_items)
+		formatString: 0
+		lineageTag: 210463be-4686-4166-9eb9-2c1e126e5794
+
+	measure 'Seller Share of Total Items' =
+			
+			DIVIDE(
+			    [Sold Items],
+			    CALCULATE(
+			        [Sold Items],
+			        REMOVEFILTERS(dim_sellers)
+			    )
+			)
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 64cb2fb7-98f3-45f9-a960-9bc9947dccf1
+
+	measure Revenue =
+			
+			SUM(fact_order_items[price])
+		lineageTag: e191370e-41fe-4e01-a338-6bcf45f2d471
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seller Share of Revenue' =
+			
+			DIVIDE(
+			    [Revenue],
+			    CALCULATE(
+			        [Revenue],
+			        REMOVEFILTERS(dim_sellers)
+			    )
+			)
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 322c91f7-67c9-42a5-8e47-bdf97c5066f0
+
+	measure 'First Order Date per Seller' =
+			
+			VAR SellerOrderIDs =
+			    CALCULATETABLE(
+			        VALUES(fact_order_items[order_id])
+			    )
+			RETURN
+			    CALCULATE(
+			        MIN(dim_orders[order_purchase_timestamp]),
+			        TREATAS(
+			            SellerOrderIDs,
+			            dim_orders[order_id]
+			        )
+			    )
+		formatString: Short Date
+		lineageTag: 521f5464-df2b-4570-83e6-6fa828eecc25
+
+	measure 'Show Purchase Date in Seller Range' =
+			
+			VAR CurrentDate =
+			    MAX(dim_purchase_date[full_date])
+			VAR FirstSellerOrder =
+			    CALCULATE(
+			        MIN(dim_orders[order_purchase_timestamp]),
+			        REMOVEFILTERS(dim_purchase_date)
+			    )
+			VAR LastSellerOrder =
+			    CALCULATE(
+			        MAX(dim_orders[order_purchase_timestamp]),
+			        REMOVEFILTERS(dim_purchase_date)
+			    )
+			VAR FirstSellerDate =
+			    DATEVALUE(FirstSellerOrder)
+			VAR LastSellerDate =
+			    DATEVALUE(LastSellerOrder)
+			RETURN
+			    IF(
+			        NOT ISBLANK(FirstSellerOrder)
+			            && CurrentDate >= FirstSellerDate
+			            && CurrentDate <= LastSellerDate,
+			        1,
+			        0
+			    )
+		formatString: 0
+		lineageTag: 4caa7047-31f8-4065-958e-3a24195cbdab
+
+	measure 'Last Order Date per Seller' =
+			
+			VAR SellerOrderIDs =
+			    CALCULATETABLE(
+			        VALUES(fact_order_items[order_id])
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX(dim_orders[order_purchase_timestamp]),
+			        TREATAS(
+			            SellerOrderIDs,
+			            dim_orders[order_id]
+			        )
+			    )
+		formatString: Short Date
+		lineageTag: 471e6e70-6661-4a17-bebf-a14ba30ed02e
+
+	measure 'Number of delayed deliveries (Single-Seller-Order)' =
+			
+			VAR OrdersOfCurrentSeller =
+			    CALCULATETABLE(
+			        VALUES(fact_order_items[order_id])
+			    )
+			RETURN
+			    COUNTROWS(
+			        FILTER(
+			            CALCULATETABLE(
+			                dim_orders,
+			                TREATAS(
+			                    OrdersOfCurrentSeller,
+			                    dim_orders[order_id]
+			                )
+			            ),
+			            NOT ISBLANK(
+			                dim_orders[days_delayed_delivery]
+			            )
+			                && dim_orders[days_delayed_delivery] > 0
+			                && CALCULATE(
+			                    DISTINCTCOUNT(fact_order_items[seller_id]),
+			                    REMOVEFILTERS(dim_sellers),
+			                    REMOVEFILTERS(fact_order_items[seller_id])
+			                ) = 1
+			        )
+			    )
+		lineageTag: be84ef18-cc5c-4bf5-9d9b-7682982c775e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Share of delayed deliveries (Single-Seller-Order)' =
+			
+			VAR CurrentSellerOrders =
+			    CALCULATETABLE(
+			        VALUES(fact_order_items[order_id])
+			    )
+			VAR SingleSellerOrders =
+			    FILTER(
+			        CALCULATETABLE(
+			            dim_orders,
+			            TREATAS(
+			                CurrentSellerOrders,
+			                dim_orders[order_id]
+			            )
+			        ),
+			        CALCULATE(
+			            DISTINCTCOUNT(fact_order_items[seller_id]),
+			            REMOVEFILTERS(dim_sellers),
+			            REMOVEFILTERS(fact_order_items[seller_id])
+			        ) = 1
+			    )
+			VAR DelayedOrders =
+			    FILTER(
+			        SingleSellerOrders,
+			        NOT ISBLANK(
+			            dim_orders[days_delayed_delivery]
+			        )
+			            && dim_orders[days_delayed_delivery] > 0
+			            && NOT ISBLANK(
+			                dim_orders[order_delivered_customer_date]
+			            )
+			    )
+			VAR DeliveredOrders =
+			    FILTER(
+			        SingleSellerOrders,
+			        NOT ISBLANK(
+			            dim_orders[order_delivered_customer_date]
+			        )
+			    )
+			RETURN
+			    DIVIDE(
+			        COUNTROWS(DelayedOrders),
+			        COUNTROWS(DeliveredOrders),
+			        0
+			    )
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 8c6c1405-7f4d-4d52-914e-fb9e61bcd7c6
+
+	measure 'Number of delayed deliveries (Single-Product-Order)' =
+			
+			VAR OrdersOfCurrentProduct =
+			    CALCULATETABLE(
+			        VALUES(fact_order_items[order_id])
+			    )
+			RETURN
+			    COUNTROWS(
+			        FILTER(
+			            CALCULATETABLE(
+			                dim_orders,
+			                TREATAS(
+			                    OrdersOfCurrentProduct,
+			                    dim_orders[order_id]
+			                )
+			            ),
+			            NOT ISBLANK(
+			                dim_orders[days_delayed_delivery]
+			            )
+			                && dim_orders[days_delayed_delivery] > 0
+			                && NOT ISBLANK(
+			                    dim_orders[order_delivered_customer_date]
+			                )
+			                && CALCULATE(
+			                    DISTINCTCOUNT(fact_order_items[product_id]),
+			                    REMOVEFILTERS(dim_products),
+			                    REMOVEFILTERS(fact_order_items[product_id])
+			                ) = 1
+			        )
+			    )
+		formatString: 0
+		lineageTag: ae85d259-4689-4f6c-9c33-468e4cc1f352
+
+	measure 'Share of delayed deliveries (Single-Product-Order)' =
+			
+			VAR CurrentProductOrders =
+			    CALCULATETABLE(
+			        VALUES(fact_order_items[order_id])
+			    )
+			VAR SingleProductOrders =
+			    FILTER(
+			        CALCULATETABLE(
+			            dim_orders,
+			            TREATAS(
+			                CurrentProductOrders,
+			                dim_orders[order_id]
+			            )
+			        ),
+			        CALCULATE(
+			            DISTINCTCOUNT(fact_order_items[product_id]),
+			            REMOVEFILTERS(dim_products),
+			            REMOVEFILTERS(fact_order_items[product_id])
+			        ) = 1
+			    )
+			VAR DelayedOrders =
+			    FILTER(
+			        SingleProductOrders,
+			        NOT ISBLANK(
+			            dim_orders[days_delayed_delivery]
+			        )
+			            && dim_orders[days_delayed_delivery] > 0
+			            && NOT ISBLANK(
+			                dim_orders[order_delivered_customer_date]
+			            )
+			    )
+			VAR DeliveredOrders =
+			    FILTER(
+			        SingleProductOrders,
+			        NOT ISBLANK(
+			            dim_orders[order_delivered_customer_date]
+			        )
+			    )
+			RETURN
+			    DIVIDE(
+			        COUNTROWS(DelayedOrders),
+			        COUNTROWS(DeliveredOrders),
+			        0
+			    )
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 3d689e82-1fbd-4272-be2d-9e23e0ae2b22
+
+	measure 'number of orders per product (Single Product Only)' =
+			
+			COUNTROWS(
+			    FILTER(
+			        DISTINCT(fact_order_items[order_id]),
+			        VAR ProductInOrder =
+			            CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[product_id]),
+			                ALLEXCEPT(fact_order_items, fact_order_items[order_id])
+			            )
+			        RETURN
+			            ProductInOrder = 1
+			    )
+			)
+		formatString: 0
+		lineageTag: f2901931-dbc4-46ac-adb8-6e43c9641c0d
+
+	measure 'Average Hours Purchase to Carrier' =
+			
+			AVERAGEX(
+			    FILTER(dim_orders, NOT ISBLANK(dim_orders[hours_purchase_to_delivered_carrier])),
+			    dim_orders[hours_purchase_to_delivered_carrier]
+			)
+		lineageTag: f00d9031-1200-44b9-902d-c9182066bd3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '(hours) average time purchase to delivered carrier (Multi-Seller-Order)' =
+			
+			CALCULATE(
+			    AVERAGE(
+			        dim_orders[hours_purchase_to_delivered_carrier]
+			    ),
+			    dim_orders[seller_order_type] = "Multi Seller",
+			    dim_orders[carrier_before_purchase_flag] = FALSE(),
+			    dim_orders[delivery_before_carrier_flag] = FALSE()
+			)
+			
+			/*
+			calculate average time from purchase until the seller hands over
+			the order to the carrier, considering only orders with multiple sellers
+			*/
+		lineageTag: 0af09956-58ca-4d55-a828-99c9a677b251
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'number of orders per seller (Multi Seller Only)' =
+			
+			COUNTROWS(
+			    FILTER(
+			        DISTINCT(fact_order_items[order_id]),
+			        VAR SellersInOrder =
+			            CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                ALLEXCEPT(fact_order_items, fact_order_items[order_id])
+			            )
+			        RETURN
+			            SellersInOrder > 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 42eafa85-e3ed-400a-9a39-a59bf62fb1e6
+
+	measure 'diff average single seller multi seller orders' =
+			
+			IF(
+			    [(hours) average time purchase to delivered carrier (Multi-Seller-Order)] = 0,
+			    0,
+			    [(hours) average time purchase to delivered carrier (Multi-Seller-Order)] - [(hours) average time purchase to delivered carrier (Single-Seller-Order)]
+			)
+		lineageTag: ee971a36-e359-4ba2-9876-eea787cfd941
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'number of products per seller' =
+			
+			COUNTROWS(
+			    FILTER(
+			        DISTINCT(fact_order_items[order_id]),
+			        VAR SellersInOrder =
+			            CALCULATE(
+			                DISTINCTCOUNT(fact_order_items[seller_id]),
+			                ALLEXCEPT(fact_order_items, fact_order_items[order_id])
+			            )
+			        RETURN
+			            SellersInOrder = 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 4ff9fbc6-d05c-4d01-a9fc-1083ea6260a0
+
+	partition tbl_measures_patrick = m
+		mode: import
+		source =
+				let
+				  Quelle = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Spalte1 = _t]),
+				    #"Entfernte Spalten" = Table.RemoveColumns(Quelle,{"Spalte1"})
+				in
+				  #"Entfernte Spalten"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

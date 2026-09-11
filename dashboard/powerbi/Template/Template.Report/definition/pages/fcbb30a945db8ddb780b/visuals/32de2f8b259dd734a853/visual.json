@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "32de2f8b259dd734a853",
+  "position": {
+    "x": 550.03039513677811,
+    "y": 177.99392097264439,
+    "z": 5000,
+    "height": 177.99392097264439,
+    "width": 199.87841945288753,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tbl_measures_patrick"
+                    }
+                  },
+                  "Property": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
+                }
+              },
+              "queryRef": "tbl_measures_patrick.(days) average time purchase to delivered carrier",
+              "nativeQueryRef": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "tbl_measures_patrick"
+                  }
+                },
+                "Property": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
