@@ -1,0 +1,141 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "40bff4d0e62825e7b984",
+  "position": {
+    "x": 189,
+    "y": 467,
+    "z": 4000,
+    "height": 334,
+    "width": 719,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_order_reviews"
+                    }
+                  },
+                  "Property": "david_review_category"
+                }
+              },
+              "queryRef": "fact_order_reviews.review_category",
+              "nativeQueryRef": "review_category",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "david_measure_tbl"
+                    }
+                  },
+                  "Property": "Total Reviews"
+                }
+              },
+              "queryRef": "fact_order_reviews.Total Reviews",
+              "nativeQueryRef": "Total Reviews"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_order_reviews"
+                  }
+                },
+                "Property": "david_review_category"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Reviews by Sentiment Category'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Distribution of customer reviews'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bc1ec93d6376505ce0aa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_order_reviews"
+              }
+            },
+            "Property": "david_review_category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5e9ce09d90bd65572109",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Total Reviews"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

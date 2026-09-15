@@ -1,0 +1,289 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bffbc4bc3a65a63e0036",
+  "position": {
+    "x": 826,
+    "y": 176,
+    "z": 5000,
+    "height": 350,
+    "width": 660,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_customers"
+                    }
+                  },
+                  "Property": "customer_state"
+                }
+              },
+              "queryRef": "dim_customers.customer_state",
+              "nativeQueryRef": "customer_state",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "david_measure_tbl"
+                    }
+                  },
+                  "Property": "Delivered Orders"
+                }
+              },
+              "queryRef": "dim_orders.Delivered Orders",
+              "nativeQueryRef": "Delivered Orders"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "david_measure_tbl"
+                    }
+                  },
+                  "Property": "Late Orders"
+                }
+              },
+              "queryRef": "dim_orders.Late Orders",
+              "nativeQueryRef": "Late Orders"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "david_measure_tbl"
+                    }
+                  },
+                  "Property": "Late Delivery Rate by Customer State 100+"
+                }
+              },
+              "queryRef": "dim_orders.Late Delivery Rate by Customer State 100+",
+              "nativeQueryRef": "Late Delivery Rate by Customer State 100+"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "david_measure_tbl"
+                  }
+                },
+                "Property": "Late Delivery Rate by Customer State 100+"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top 10 Late Delivery Rate by Customer State'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'States with 100+ delivered orders'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2d3c21110455524993a0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_customers"
+              }
+            },
+            "Property": "customer_state"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "dim_customers",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "d2",
+                        "Entity": "david_measure_tbl",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "customer_state"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d2"
+                              }
+                            },
+                            "Property": "Late Delivery Rate by Customer State 100+"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "d",
+              "Entity": "dim_customers",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "customer_state"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "8dad1c0d2becb0169a5c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Delivered Orders"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a5c0875f989cc086b202",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Late Orders"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ff3addc1e07b30ad0849",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Late Delivery Rate by Customer State 100+"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

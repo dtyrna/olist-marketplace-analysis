@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 0
+        "x": 726.82248172896891,
+        "y": 76.093328412058113
       },
       "nodes": [
         {
@@ -19,7 +19,7 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 12
         },
         {
           "location": {
@@ -32,7 +32,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 13
         },
         {
           "location": {
@@ -45,7 +45,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 17
+          "zIndex": 23
         },
         {
           "location": {
@@ -58,7 +58,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 14
         },
         {
           "location": {
@@ -71,7 +71,7 @@
             "height": 248,
             "width": 234
           },
-          "zIndex": 9
+          "zIndex": 15
         },
         {
           "location": {
@@ -84,7 +84,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 10
+          "zIndex": 16
         },
         {
           "location": {
@@ -97,7 +97,7 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 11
+          "zIndex": 17
         },
         {
           "location": {
@@ -110,7 +110,7 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 12
+          "zIndex": 18
         },
         {
           "location": {
@@ -123,7 +123,7 @@
             "height": 248,
             "width": 234
           },
-          "zIndex": 13
+          "zIndex": 19
         },
         {
           "location": {
@@ -136,7 +136,7 @@
             "height": 224,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 7
         },
         {
           "location": {
@@ -149,7 +149,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 14
+          "zIndex": 20
         },
         {
           "location": {
@@ -162,7 +162,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 8
         },
         {
           "location": {
@@ -175,7 +175,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 9
         },
         {
           "location": {
@@ -188,7 +188,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 10
         },
         {
           "location": {
@@ -201,7 +201,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 11
         },
         {
           "location": {
@@ -214,7 +214,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 15
+          "zIndex": 21
         },
         {
           "location": {
@@ -227,7 +227,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 16
+          "zIndex": 22
         },
         {
           "location": {
@@ -238,9 +238,113 @@
           "nodeLineageTag": "753f2bbb-58da-4369-86e0-af2f4c0478b3",
           "size": {
             "height": 266.45246246377343,
-            "width": 365.82035560092481
+            "width": 234.62496178703168
           },
-          "zIndex": 18
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 3245.2527006336472,
+            "y": 1724.2687240564494
+          },
+          "nodeIndex": "david_dim_transport_type",
+          "nodeLineageTag": "b0b5b36c-720a-4bd4-b8ac-1fb375682ac3",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2885.2369068725243,
+            "y": 1987.8354361064298
+          },
+          "nodeIndex": "david_fact_comment_topics",
+          "nodeLineageTag": "19851424-e87f-45c9-bf38-a8aa424c7361",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2887.3321449677624,
+            "y": 1523.4477621310348
+          },
+          "nodeIndex": "david_final_topic_analysis",
+          "nodeLineageTag": "db7e22b5-5f9f-485a-99c2-af07f03e1723",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2881.555659434167,
+            "y": 1040.2729085025221
+          },
+          "nodeIndex": "david_topic_score_distribution",
+          "nodeLineageTag": "173a8516-6342-4aac-8451-82173baf027b",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 3243.0622244431706,
+            "y": 1499.2360817023939
+          },
+          "nodeIndex": "david_dim_customer_order_distribution",
+          "nodeLineageTag": "556d6e6d-f6b5-4807-9808-fc1532130a36",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 3245.1574625384083,
+            "y": 1282.4014038855996
+          },
+          "nodeIndex": "david_dim_customer_type",
+          "nodeLineageTag": "d9d6ae73-3cd6-4f88-acfe-dd1085af7702",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 3514.3955577765037,
+            "y": 1282.8427906440459
+          },
+          "nodeIndex": "david_dim_customer_revenue_bucket",
+          "nodeLineageTag": "b17b77be-682f-4596-958a-f40393e8009e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2640.1054878099189,
+            "y": 127.13429069866083
+          },
+          "nodeIndex": "david_measure_tbl",
+          "nodeLineageTag": "9d4bc608-c5e9-495f-b8a8-b1efdcabda83",
+          "size": {
+            "height": 245.69102531900478,
+            "width": 234
+          },
+          "zIndex": 6
         }
       ],
       "name": "Alle Tabellen",

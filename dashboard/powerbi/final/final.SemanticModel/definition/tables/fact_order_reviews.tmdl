@@ -69,6 +69,38 @@ table fact_order_reviews
 
 		annotation SummarizationSetBy = Automatic
 
+	column david_review_category =
+			
+			SWITCH(
+			    TRUE(),
+			    fact_order_reviews[review_score] >= 4, "Good",
+			    fact_order_reviews[review_score] = 3, "Average",
+			    fact_order_reviews[review_score] <= 2, "Bad",
+			    BLANK()
+			)
+		lineageTag: 8db238c2-4f72-43e4-8d71-423cbfa0cec2
+		summarizeBy: none
+		sortByColumn: david_review_category_sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column david_review_category_sort =
+			
+			SWITCH(
+			    TRUE(),
+			    fact_order_reviews[review_score] >= 4, 1,
+			    fact_order_reviews[review_score] = 3, 2,
+			    fact_order_reviews[review_score] <= 2, 3,
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 563dfb44-da3b-4dde-9bdb-990fa635f111
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_order_reviews = m
 		mode: import
 		source =

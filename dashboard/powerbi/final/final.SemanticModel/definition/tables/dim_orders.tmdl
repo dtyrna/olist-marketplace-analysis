@@ -420,6 +420,65 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'david_Delivery Variance Days' =
+			
+			IF(
+			    dim_orders[order_status] = "delivered"
+			        && NOT ISBLANK(dim_orders[order_delivered_customer_date])
+			        && NOT ISBLANK(dim_orders[order_estimated_delivery_date]),
+			    DATEDIFF(
+			        dim_orders[order_estimated_delivery_date],
+			        dim_orders[order_delivered_customer_date],
+			        DAY
+			    ),
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 631d93cf-ff06-410e-8236-8cb4fbfa58f6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'david_Delivery Variance Bucket' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(dim_orders[david_Delivery Variance Days]), BLANK(),
+			    dim_orders[david_Delivery Variance Days] <= -15, "≤ -15 Tage",
+			    dim_orders[david_Delivery Variance Days] <= -8, "-14 bis -8 Tage",
+			    dim_orders[david_Delivery Variance Days] <= -1, "-7 bis -1 Tage",
+			    dim_orders[david_Delivery Variance Days] = 0, "0 Tage",
+			    dim_orders[david_Delivery Variance Days] <= 7, "+1 bis +7 Tage",
+			    dim_orders[david_Delivery Variance Days] <= 14, "+8 bis +14 Tage",
+			    "≥ +15 Tage"
+			)
+		lineageTag: 54a03cad-05c2-4134-8b03-cbff369b3546
+		summarizeBy: none
+		sortByColumn: 'david_Delivery Variance Bucket Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'david_Delivery Variance Bucket Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(dim_orders[david_Delivery Variance Days]), BLANK(),
+			    dim_orders[david_Delivery Variance Days] <= -15, 1,
+			    dim_orders[david_Delivery Variance Days] <= -8, 2,
+			    dim_orders[david_Delivery Variance Days] <= -1, 3,
+			    dim_orders[david_Delivery Variance Days] = 0, 4,
+			    dim_orders[david_Delivery Variance Days] <= 7, 5,
+			    dim_orders[david_Delivery Variance Days] <= 14, 6,
+			    7
+			)
+		formatString: 0
+		lineageTag: 680b9223-3011-4f1a-8263-86bf5266f053
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_orders = m
 		mode: import
 		source =
