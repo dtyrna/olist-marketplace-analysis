@@ -54,6 +54,7 @@ TBLPROPERTIES (
 DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_order_items (
+  id_olist_order_items          BIGINT,
   order_id                      STRING,
   product_id                    STRING,
   seller_id                     STRING,
@@ -121,7 +122,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_orde
   order_approved_at               TIMESTAMP,
   order_delivered_carrier_date    TIMESTAMP,
   order_delivered_customer_date   TIMESTAMP,
-  order_estimated_delivery_date   TIMESTAMP,
+  order_estimated_delivery_date   DATE,
   carrier_before_purchase_flag    BOOLEAN,
   delivery_before_carrier_flag    BOOLEAN,
   missing_approval_flag           BOOLEAN,
