@@ -194,7 +194,7 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column purchase_before_approved_flag = ```
+	column patrick_purchase_before_approved_flag = ```
 			
 			IF(
 			    NOT ISBLANK(dim_orders[order_purchase_timestamp]) && NOT ISBLANK(dim_orders[order_approved_at]), 
@@ -212,7 +212,7 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column hours_purchase_to_delivered_carrier =
+	column patrick_hours_purchase_to_delivered_carrier =
 			
 			IF(
 			    NOT ISBLANK(dim_orders[order_purchase_timestamp])
@@ -232,7 +232,7 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column days_purchase_to_delivered_carrier =
+	column patrick_days_purchase_to_delivered_carrier =
 			
 			IF(
 			    NOT ISBLANK(dim_orders[order_purchase_timestamp])
@@ -252,7 +252,7 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column is_single_pos =
+	column patrick_is_single_pos =
 			
 			VAR MaxItemForOrder =
 			    CALCULATE(
@@ -267,7 +267,7 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column days_delayed_delivery =
+	column patrick_days_delayed_delivery =
 			
 			IF(
 			    NOT ISBLANK(dim_orders[order_estimated_delivery_date])
@@ -286,7 +286,7 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column seller_order_type =
+	column patrick_seller_order_type =
 			
 			VAR SellerCount =
 			    CALCULATE(
@@ -301,6 +301,15 @@ table dim_orders
 			    )
 		lineageTag: dddfccb7-abbc-4690-bd5e-912b82fbf0ce
 		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column patrick_number_distinct_products =
+			
+			CALCULATE((DISTINCTCOUNT(fact_order_items[product_id])))
+		formatString: 0
+		lineageTag: 0f0071c6-86d8-4180-9dc2-bf1f94a69dce
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 

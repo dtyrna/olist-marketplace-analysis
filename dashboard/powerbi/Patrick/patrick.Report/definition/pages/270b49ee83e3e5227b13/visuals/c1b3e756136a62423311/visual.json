@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "c1b3e756136a62423311",
   "position": {
-    "x": 0,
-    "y": 0,
+    "x": 140.92682926829269,
+    "y": 350.34146341463389,
     "z": 0,
-    "height": 535.44072948328267,
-    "width": 669.66565349544078,
+    "height": 680.92682926829264,
+    "width": 757.31707317073165,
     "tabOrder": 0
   },
   "visual": {
@@ -23,7 +23,7 @@
                       "Entity": "dim_orders"
                     }
                   },
-                  "Property": "seller_order_type"
+                  "Property": "patrick_seller_order_type"
                 }
               },
               "queryRef": "dim_orders.seller_order_type",
@@ -44,7 +44,7 @@
                           "Entity": "dim_orders"
                         }
                       },
-                      "Property": "seller_order_type"
+                      "Property": "patrick_seller_order_type"
                     }
                   },
                   "Function": 5
@@ -68,7 +68,7 @@
                         "Entity": "dim_orders"
                       }
                     },
-                    "Property": "seller_order_type"
+                    "Property": "patrick_seller_order_type"
                   }
                 },
                 "Function": 5
@@ -117,6 +117,13 @@
                   "Value": "0L"
                 }
               }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
             }
           }
         }
@@ -129,7 +136,20 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Bestelltypen'"
+                  "Value": "'Ordertypes'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -142,7 +162,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "f41e79d37dcebee2937d",
+        "name": "10e561a84d97be7500b7",
         "field": {
           "Column": {
             "Expression": {
@@ -150,13 +170,13 @@
                 "Entity": "dim_orders"
               }
             },
-            "Property": "seller_order_type"
+            "Property": "patrick_seller_order_type"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "70edfa8552d4e86a7d6e",
+        "name": "37818e1c4937330e952d",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -166,7 +186,7 @@
                     "Entity": "dim_orders"
                   }
                 },
-                "Property": "seller_order_type"
+                "Property": "patrick_seller_order_type"
               }
             },
             "Function": 5

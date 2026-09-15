@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "4b3f61d7541cdb725310",
   "position": {
-    "x": 644.28571428571433,
-    "y": 0,
+    "x": 1069.4634146341464,
+    "y": 350.34146341463389,
     "z": 1000,
-    "height": 420,
-    "width": 461.42857142857144,
+    "height": 680.92682926829264,
+    "width": 663.80487804878044,
     "tabOrder": 1000
   },
   "visual": {
@@ -23,7 +23,7 @@
                       "Entity": "dim_orders"
                     }
                   },
-                  "Property": "seller_order_type"
+                  "Property": "patrick_seller_order_type"
                 }
               },
               "queryRef": "dim_orders.seller_order_type",
@@ -42,7 +42,7 @@
                       "Entity": "tbl_measures_patrick"
                     }
                   },
-                  "Property": "Average Hours Purchase to Carrier"
+                  "Property": "Average Processing Time in hours"
                 }
               },
               "queryRef": "tbl_measures_patrick.Average Hours Purchase to Carrier",
@@ -61,7 +61,7 @@
                     "Entity": "tbl_measures_patrick"
                   }
                 },
-                "Property": "Average Hours Purchase to Carrier"
+                "Property": "Average Processing Time in hours"
               }
             },
             "direction": "Descending"
@@ -77,7 +77,20 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Durchschnittliche Bearbeitungszeit'"
+                  "Value": "'Average Processing Time [hours]'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -98,7 +111,7 @@
                 "Entity": "dim_orders"
               }
             },
-            "Property": "seller_order_type"
+            "Property": "patrick_seller_order_type"
           }
         },
         "type": "Categorical",
@@ -123,7 +136,7 @@
                             "Source": "d"
                           }
                         },
-                        "Property": "seller_order_type"
+                        "Property": "patrick_seller_order_type"
                       }
                     }
                   ],
@@ -150,7 +163,7 @@
         }
       },
       {
-        "name": "6137dbeb0db639414269",
+        "name": "daec7888c1d060b43bc8",
         "field": {
           "Measure": {
             "Expression": {
@@ -158,7 +171,7 @@
                 "Entity": "tbl_measures_patrick"
               }
             },
-            "Property": "Average Hours Purchase to Carrier"
+            "Property": "Average Processing Time in hours"
           }
         },
         "type": "Advanced"
