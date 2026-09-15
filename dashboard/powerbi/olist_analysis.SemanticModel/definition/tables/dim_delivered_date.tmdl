@@ -5,7 +5,7 @@ table dim_delivered_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 8d285b87-c1cc-48a6-956f-e9e15f93ad5c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: date_key
 
 		annotation SummarizationSetBy = Automatic

@@ -5,7 +5,7 @@ table dim_review_creation_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 972aedb4-b51c-45c8-8aba-a053eb1a41d0
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -91,6 +91,9 @@ table dim_review_creation_date
 		lineageTag: 79d0d9b8-f085-424f-a1b8-ce5398fbc019
 		summarizeBy: none
 		sourceColumn: year_month_name
+		sortByColumn: year_month_key
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

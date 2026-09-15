@@ -1,17 +1,6 @@
 table fact_order_items
 	lineageTag: 6b9535f3-6afe-4e9a-8955-16e2e9f8c0bb
 
-	measure 'Average Items per Order' =
-			
-			DIVIDE(
-			    COUNTROWS(fact_order_items),
-			    DISTINCTCOUNT(fact_order_items[order_id]),
-			    0
-			)
-		lineageTag: ea89f086-6a27-4e96-9b69-be15823e92cc
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column order_item_key
 		dataType: int64
 		formatString: 0
@@ -49,7 +38,7 @@ table fact_order_items
 		dataType: int64
 		formatString: 0
 		lineageTag: f12858b5-3093-4551-8049-ef51235c53b4
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: shipping_limit_date_key
 
 		annotation SummarizationSetBy = Automatic

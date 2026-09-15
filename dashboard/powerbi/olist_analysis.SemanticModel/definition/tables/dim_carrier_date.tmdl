@@ -5,7 +5,7 @@ table dim_carrier_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 4c433a15-1f13-4e53-9c87-2ec83528e05a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: date_key
 
 		annotation SummarizationSetBy = Automatic

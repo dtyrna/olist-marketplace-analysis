@@ -5,7 +5,7 @@ table dim_review_answer_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 9151cfb1-dd50-4667-8181-b1bb4317ff11
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: date_key
 
 		annotation SummarizationSetBy = Automatic

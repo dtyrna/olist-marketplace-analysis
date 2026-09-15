@@ -45,21 +45,9 @@ relationship 92fc1bcc-6579-d048-25d3-0aedbb4457cc
 	fromColumn: fact_order_items.product_id
 	toColumn: dim_products.product_id
 
-relationship 09cb5ac1-407b-621f-b7aa-9d64151ecd6f
-	fromColumn: fact_order_reviews.review_creation_date_key
-	toColumn: dim_review_date.date_key
-
 relationship AutoDetected_8253453c-8f26-44d1-a960-1e3b0ced1223
 	fromColumn: fact_order_payments.order_id
 	toColumn: dim_orders.order_id
-
-relationship f0654325-c68d-ad71-d111-d80176b4fbf9
-	fromColumn: dim_orders.delivered_date_key
-	toColumn: dim_delivery_date.date_key
-
-relationship 0455b119-b8b6-9579-0329-88a4292ff7a0
-	fromColumn: fact_order_payments.order_purchase_date_key
-	toColumn: dim_purchase_date.date_key
 
 relationship 1f60acd1-247a-49e0-870a-853a2d9aa39f
 	joinOnDateBehavior: datePartOnly
@@ -130,41 +118,6 @@ relationship 94c054a3-8eb7-41e4-a96d-6ceaa65f83d6
 	joinOnDateBehavior: datePartOnly
 	fromColumn: dim_carrier_date.year_end_date
 	toColumn: LocalDateTable_e9bbb6cd-56c7-4ab1-b243-30db53623b24.Date
-
-relationship 5945a800-5787-4746-8498-736f3649f1fc
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.full_date
-	toColumn: LocalDateTable_e9ba2b59-5635-44de-a4ab-775dda2fe08e.Date
-
-relationship 8b57eff9-4ac5-47d8-b083-421e49b8c9b5
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.month_start_date
-	toColumn: LocalDateTable_cb0bfc4b-6ecd-4090-a7b4-579efe959073.Date
-
-relationship 85c91f19-b212-4d16-a2d6-4d1a82bd039a
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.month_end_date
-	toColumn: LocalDateTable_062a7fbc-a06c-4d8b-967f-8f7d55e6d202.Date
-
-relationship 118d8730-2142-4dcd-a858-2370d2ac0948
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.quarter_start_date
-	toColumn: LocalDateTable_2f9647d7-8e6a-4847-8bd0-da49a607a7e8.Date
-
-relationship 3f2cb556-1886-4beb-981c-d7f958141fe5
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.quarter_end_date
-	toColumn: LocalDateTable_a0305536-55d9-4858-8ae3-63911f606681.Date
-
-relationship 316b3479-4dac-4b4c-94d7-aca84c120266
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.year_start_date
-	toColumn: LocalDateTable_6bdfc3ee-d9ea-4596-b4bd-e8f5e40036d9.Date
-
-relationship 2d31ff38-89a3-4376-818c-8fb78ea9ea7e
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.year_end_date
-	toColumn: LocalDateTable_16cac646-56f8-4576-b3f3-30918fc1fa1c.Date
 
 relationship 0c07337e-9109-41fa-86b5-c10710514c6a
 	joinOnDateBehavior: datePartOnly
@@ -340,4 +293,87 @@ relationship 698945a7-e2d2-4899-89ed-d260ca398fea
 	joinOnDateBehavior: datePartOnly
 	fromColumn: dim_review_answer_date.year_end_date
 	toColumn: LocalDateTable_50baf2dd-3332-4638-91dc-163f6ccba725.Date
+
+relationship cb816be1-2b0e-c224-b1dc-30ef67e635ce
+	fromColumn: dim_orders.delivered_date_key
+	toColumn: dim_delivered_date.date_key
+
+relationship 2bd157e0-8d9c-b76f-ddef-53c38fac359b
+	fromColumn: fact_order_reviews.review_creation_date_key
+	toColumn: dim_review_creation_date.date_key
+
+relationship ee17710e-f801-3652-0aa4-e184d2054b4a
+	fromColumn: fact_order_reviews.review_answer_date_key
+	toColumn: dim_review_answer_date.date_key
+
+relationship 46231cb7-f22a-4fc6-8397-24daf764332d
+	fromColumn: dim_orders.approval_date_key
+	toColumn: dim_approval_date.date_key
+
+relationship 75b22620-6402-ee54-47f0-d159c2a685b7
+	fromColumn: dim_orders.carrier_date_key
+	toColumn: dim_carrier_date.date_key
+
+relationship d8ea3bcc-debc-5d22-167e-65ac7cb63ef0
+	fromColumn: dim_orders.estimated_delivery_date_key
+	toColumn: dim_estimated_delivery_date.date_key
+
+relationship ce0a2996-232a-8f61-a39d-014d51af9a34
+	fromColumn: fact_order_payments.order_purchase_date_key
+	toColumn: dim_order_purchase_date.date_key
+
+relationship e7b2349c-5fae-7b19-e959-0c7449af164d
+	fromColumn: dim_orders.purchase_date_key
+	toColumn: dim_purchase_date.date_key
+
+relationship d18f44c2-b207-953e-a1ed-b9818a14f596
+	fromColumn: fact_order_items.shipping_limit_date_key
+	toColumn: dim_shipping_limit_date.date_key
+
+relationship f0b0f875-3d23-41db-ac8c-bb3953b7c5c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.full_date
+	toColumn: LocalDateTable_629c899f-6186-446f-a571-87cebddb8f7f.Date
+
+relationship 9461a321-fd3c-4ccf-a99e-6c063aeda318
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.month_start_date
+	toColumn: LocalDateTable_21fabe58-38c5-4dc6-90b1-fab771dcf834.Date
+
+relationship addaa401-9cae-4643-9e97-622b3aae0ef5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.month_end_date
+	toColumn: LocalDateTable_8bdbd7c8-b51e-4b02-ba25-853e30879aa2.Date
+
+relationship 42f2f5ad-e10c-4e6a-9fbd-9b542b2fcc53
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.quarter_start_date
+	toColumn: LocalDateTable_dcab8d4b-f940-4c57-81a7-086ddc298737.Date
+
+relationship 7cd15e61-8fd7-41ab-8022-1dca03a42997
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.quarter_end_date
+	toColumn: LocalDateTable_c9bb8461-3675-4417-b3d7-521dfd13d287.Date
+
+relationship 3f955f12-dba6-44b7-a0d2-26611db2a46e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.year_start_date
+	toColumn: LocalDateTable_4e09488c-6996-4a16-b025-ff1aabb8cc13.Date
+
+relationship 64743e78-7d2a-465e-aaae-e6a5b1f7e495
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.year_end_date
+	toColumn: LocalDateTable_cd9bb9e5-708a-4192-bb98-2082612bcd71.Date
+
+relationship AutoDetected_12439f3f-2911-4bc3-ab76-9e83ce7f91b1
+	fromColumn: david_fact_comment_topics.order_id
+	toColumn: dim_orders.order_id
+
+relationship AutoDetected_cff574f4-e0d1-44b7-8640-45c75e24b05a
+	fromColumn: david_fact_comment_topics.topic
+	toColumn: david_final_topic_analysis.topic
+
+relationship AutoDetected_301e6f57-e01a-4506-9c5b-0e4f95635405
+	fromColumn: david_topic_score_distribution.topic
+	toColumn: david_final_topic_analysis.topic
 

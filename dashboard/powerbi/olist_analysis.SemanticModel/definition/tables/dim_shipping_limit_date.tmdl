@@ -6,7 +6,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 0fa63b2b-22f7-4a54-838f-ea7e9445b7ca
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: date_key
 
 		annotation SummarizationSetBy = Automatic
@@ -27,7 +27,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: ff9ad759-662a-4bed-b16a-20cf5a626eca
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: calendar_year
 
 		annotation SummarizationSetBy = Automatic
@@ -36,7 +36,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 8875751f-74d9-409b-a843-3d84222a8a4e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: quarter_no
 
 		annotation SummarizationSetBy = Automatic
@@ -61,7 +61,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 2e585649-9276-4710-a7fb-941eae96de56
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: month_no
 
 		annotation SummarizationSetBy = Automatic
@@ -78,7 +78,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 41c7a45f-045c-45db-9573-69fc8c442b6f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: year_month_key
 
 		annotation SummarizationSetBy = Automatic
@@ -95,7 +95,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 745969ac-03b8-4e99-a072-ebd802d9667b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: iso_week_no
 
 		annotation SummarizationSetBy = Automatic
@@ -104,7 +104,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: e9f86934-2606-424c-9517-cb5e49b5c05e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: iso_week_year
 
 		annotation SummarizationSetBy = Automatic
@@ -121,7 +121,7 @@ table dim_shipping_limit_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 96a586bb-986e-46e0-98cf-63922098564d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: iso_weekday_no
 
 		annotation SummarizationSetBy = Automatic
