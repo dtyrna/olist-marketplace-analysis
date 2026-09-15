@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "70df5ab47a57475c5309",
+  "displayName": "Patrick - Olist Lowlights",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "5fbca89400ec81dd3b17",
+      "target": "8d4536dd835c3e1e775a",
+      "type": "DataFilter"
+    }
+  ]
+}

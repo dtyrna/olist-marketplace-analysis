@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "24404bb0c90e9b214c0c",
+  "displayName": "Patrick - Olist Highlights",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "482bf9e5752a858aaee0",
+      "target": "d544f95047c88a54ce27",
+      "type": "DataFilter"
+    },
+    {
+      "source": "482bf9e5752a858aaee0",
+      "target": "f68116139a10b16b2c0b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d544f95047c88a54ce27",
+      "target": "482bf9e5752a858aaee0",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d544f95047c88a54ce27",
+      "target": "f68116139a10b16b2c0b",
+      "type": "DataFilter"
+    }
+  ]
+}
