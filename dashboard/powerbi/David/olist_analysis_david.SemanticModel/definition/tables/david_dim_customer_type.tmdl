@@ -1,0 +1,25 @@
+table david_dim_customer_type
+	lineageTag: d9d6ae73-3cd6-4f88-acfe-dd1085af7702
+
+	column 'Customer Type'
+		lineageTag: 209a1d9c-71d2-427d-bd83-a8c8bb0cf277
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Customer Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition david_dim_customer_type = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Customer Type", STRING,
+				    {
+				        {"One-time Customer"},
+				        {"Repeat Customer"}
+				    }
+				)
+
+	annotation PBI_Id = b76fcecc39b448d59f7795eb52d718e2
+
