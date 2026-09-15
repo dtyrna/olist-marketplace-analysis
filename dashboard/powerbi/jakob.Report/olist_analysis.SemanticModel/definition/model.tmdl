@@ -1,0 +1,42 @@
+model Model
+	culture: de-DE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: de-DE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["dim_customers","dim_orders","dim_products","dim_purchase_date","dim_sellers","dim_shipping_limit_date","fact_order_items","fact_order_reviews","fact_order_payments","tbl_measures_patrick","dim_approval_date","dim_carrier_date","dim_delivered_date","dim_estimated_delivery_date","dim_order_purchase_date","dim_review_answer_date","dim_review_creation_date","tbl_measures_jakob"]
+
+ref table dim_customers
+ref table DateTableTemplate_e26e30ee-67ba-4ae6-a939-82d24f0c276d
+ref table dim_orders
+ref table LocalDateTable_c6342338-fcdb-4a58-90bb-3ca876a71270
+ref table LocalDateTable_9550e5f3-e1a0-4c14-81f8-2407429be4c4
+ref table LocalDateTable_d377dcf3-b6fe-4bc9-93a2-af7e03748515
+ref table LocalDateTable_9906f3f8-3161-48d8-b83a-42dffcf8fc84
+ref table LocalDateTable_050c412d-082c-4bf2-9783-1ff296a162bb
+ref table dim_products
+ref table dim_purchase_date
+ref table dim_sellers
+ref table dim_shipping_limit_date
+ref table fact_order_items
+ref table fact_order_reviews
+ref table fact_order_payments
+ref table tbl_measures_patrick
+ref table dim_approval_date
+ref table dim_carrier_date
+ref table dim_delivered_date
+ref table dim_estimated_delivery_date
+ref table dim_order_purchase_date
+ref table dim_review_answer_date
+ref table dim_review_creation_date
+ref table tbl_measures_jakob
+
+ref cultureInfo de-DE
+
