@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 592.82222744599221,
+        "x": 0,
         "y": 0
       },
       "nodes": [
@@ -228,10 +228,23 @@
             "width": 234
           },
           "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 2209.4795696968358,
+            "y": 113.33690753909954
+          },
+          "nodeIndex": "tbl_measures_jakob",
+          "nodeLineageTag": "753f2bbb-58da-4369-86e0-af2f4c0478b3",
+          "size": {
+            "height": 266.45246246377343,
+            "width": 365.82035560092481
+          },
+          "zIndex": 18
         }
       ],
       "name": "Alle Tabellen",
-      "zoomValue": 47.906435833813809,
+      "zoomValue": 38.111094106647755,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

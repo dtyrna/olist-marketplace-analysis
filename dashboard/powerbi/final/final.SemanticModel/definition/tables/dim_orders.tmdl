@@ -313,6 +313,113 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column distance_seller_customer_km = ```
+			
+			-- 1. Kunden-Koordinaten über die bestehende Beziehung holen
+			VAR K_Lat = RELATED(dim_customers[geolocation_lat])
+			VAR K_Lon = RELATED(dim_customers[geolocation_lng])
+			
+			-- 2. Aktuelle Order_ID dieser Zeile fixieren
+			VAR AktuelleOrder = 'dim_orders'[order_id]
+			
+			-- 3. Verkäufer-ID aus den Bestellpositionen holen
+			VAR V_ID = 
+			    CALCULATE(
+			        MIN('fact_order_items'[seller_id]),
+			        'fact_order_items'[order_id] = AktuelleOrder
+			    )
+			
+			-- 4. Seller Koordinaten laden und bei mehrfachbestellungen die erste wählen
+			VAR V_Lat = LOOKUPVALUE('dim_sellers'[geolocation_lat], 'dim_sellers'[seller_id], V_ID)
+			VAR V_Lon = LOOKUPVALUE('dim_sellers'[geolocation_lng], 'dim_sellers'[seller_id], V_ID)
+			
+			-- 5. Haversine-Berechnung (Luftlinie)
+			VAR Erdradius = 6371 
+			VAR P = DIVIDE(PI(), 180) 
+			
+			VAR Lat1 = V_Lat * P
+			VAR Lon1 = V_Lon * P 
+			VAR Lat2 = K_Lat * P
+			VAR Lon2 = K_Lon * P
+			
+			VAR dLat = Lat2 - Lat1
+			VAR dLon = Lon2 - Lon1
+			
+			VAR A = 
+			    SIN(dLat / 2) * SIN(dLat / 2) +
+			    COS(Lat1) * COS(Lat2) *
+			    SIN(dLon / 2) * SIN(dLon / 2)
+			
+			VAR BerechneteDistanz = 2 * Erdradius * ASIN(SQRT(A))
+			
+			RETURN
+			    -- Nur berechnen, wenn sowohl Kunden- als auch Verkäuferdaten da sind
+			    IF(
+			        ISBLANK(K_Lat) || ISBLANK(V_Lat), 
+			        BLANK(), 
+			        IF(BerechneteDistanz = 0, 2, BerechneteDistanz)
+			    )
+			
+			```
+		lineageTag: 1ac12351-931e-4fdc-b319-4e72898b7ba4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column distance_categorys = ```
+			
+			VAR KM = 'dim_orders'[distance_seller_customer_km]
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(KM), "Unknown",
+			        KM <= 100,  "1. local (< 100 km)",
+			        KM <= 500,  "2. regional (101 - 500 km)",
+			        KM <= 1500, "3. national long distance (501 - 1500 km)",
+			        "4. continental long distance (> 1500 km)"
+			    )
+			
+			```
+		lineageTag: 877058d8-be23-4d0d-809f-dde7eadd2a02
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_size = ```
+			
+			VAR Laenge = CALCULATE(MAX('dim_products'[product_length_cm]), EARLIER('dim_products'[product_id]))
+			VAR Hoehe = CALCULATE(MAX('dim_products'[product_height_cm]), EARLIER('dim_products'[product_id]))
+			VAR Breite = CALCULATE(MAX('dim_products'[product_width_cm]), EARLIER('dim_products'[product_id]))
+			
+			VAR VolumenLiters = (Laenge * Hoehe * Breite) / 1000
+			
+			VAR MaxKante = 
+			    IF(
+			        Laenge > Hoehe, 
+			        IF(Laenge > Breite, Laenge, Breite), 
+			        IF(Hoehe > Breite, Hoehe, Breite)
+			    )
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(VolumenLiters) || VolumenLiters = 0, "Unbekannt",
+			    VolumenLiters <= 5, "1. Kleinpaket bis 5 L",
+			    VolumenLiters <= 25, "2. Mediumpaket bis 25 L",
+			    VolumenLiters <= 60 && MaxKante < 90, "3. Großpaket bis 60L",
+			    "4. Sperrgut über 60L oder Kante >90cm"
+			)
+			
+			
+			```
+		lineageTag: 50c0689a-aa8f-47aa-82be-17827c8f9ed0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_orders = m
 		mode: import
 		source =

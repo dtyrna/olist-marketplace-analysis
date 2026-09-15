@@ -72,6 +72,37 @@ table fact_order_items
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column product_size = ```
+			
+			VAR Laenge = RELATED('dim_products'[product_length_cm])
+			VAR Hoehe = RELATED('dim_products'[product_height_cm])
+			VAR Breite = RELATED('dim_products'[product_width_cm])
+			
+			VAR VolumenLiters = (Laenge * Hoehe * Breite) / 1000
+			
+			VAR MaxKante = 
+			    IF(
+			        Laenge > Hoehe, 
+			        IF(Laenge > Breite, Laenge, Breite), 
+			        IF(Hoehe > Breite, Hoehe, Breite)
+			    )
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(VolumenLiters) || VolumenLiters = 0, "Unknown",
+			    VolumenLiters <= 5, "1. Small parcel up to 5 l",
+			    VolumenLiters <= 25, "2. Medium parcel up to 25 l",
+			    VolumenLiters <= 60 && MaxKante < 90, "3. Large parcel up to 60 l",
+			    "4. Oversized freight up to  60 l or larger than > 90 cm"
+			)
+			
+			```
+		lineageTag: eab528a8-851b-4472-8d83-a548fa6784c6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_order_items = m
 		mode: import
 		source =

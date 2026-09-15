@@ -32432,6 +32432,69 @@ cultureInfo de-DE
 			          }
 			        }
 			      ]
+			    },
+			    "dim_orders.distance_categorys": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_orders",
+			          "ConceptualProperty": "distance_categorys"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Dis": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_measures_jakob.timetillcarrier": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbl_measures_jakob",
+			          "ConceptualProperty": "timetillcarrier"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "process time": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "tbl_measures_jakob.timespan_delivery": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbl_measures_jakob",
+			          "ConceptualProperty": "timespan_delivery"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "delivery time": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {

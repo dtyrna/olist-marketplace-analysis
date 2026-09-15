@@ -1,0 +1,172 @@
+table tbl_measures_jakob
+	lineageTag: 753f2bbb-58da-4369-86e0-af2f4c0478b3
+
+	measure total_revenue = ```
+			SUM('fact_order_items'[price])
+			
+			```
+		lineageTag: ebe48daf-a93a-417c-8669-11c193c31d3f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure avg_distance = ROUND(AVERAGE(dim_orders[distance_seller_customer_km] ),0)
+		formatString: 0
+		lineageTag: 7c4e0a25-3814-4f9b-ae48-9f7c82ee3e00
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Total_Orders_Count = ```
+			COUNT('fact_order_items'[order_id])
+			
+			
+			```
+		formatString: 0
+		lineageTag: c787b3a6-7bc5-4dc3-9bcb-611f08fce1d6
+
+	measure timetillcarrier = ```
+			
+			AVERAGEX(
+			    'fact_order_items',
+			    VAR StartDate = RELATED('dim_orders'[order_purchase_timestamp])
+			    VAR EndDate = RELATED('dim_orders'[order_delivered_carrier_date])
+			    
+			    -- Gesamte Tage berechnen
+			    VAR TotalDays = DATEDIFF(StartDate, EndDate, DAY)
+			    
+			    -- Ermitteln, wie viele Wochenenden (Sonntage) rein rechnerisch dazwischenliegen
+			    VAR FullWeeks = INT(TotalDays / 7)
+			    VAR RemainingDays = MOD(TotalDays, 7)
+			    VAR StartDayOfWeek = WEEKDAY(StartDate, 2) -- 1 = Mo, 7 = So
+			    
+			    -- Prüfen, ob der verbleibende Rest über einen Sonntag rutscht
+			    VAR SundayCrossed = IF(StartDayOfWeek + RemainingDays >= 7, 1, 0)
+			    VAR TotalSundays = FullWeeks + SundayCrossed
+			    
+			    RETURN
+			    IF(
+			        ISBLANK(EndDate) || ISBLANK(StartDate), 
+			        BLANK(),
+			        -- Gesamte Tage minus die arbeitsfreien Sonntage
+			        TotalDays - TotalSundays
+			    )
+			)
+			
+			```
+		lineageTag: 3b0e6632-ea31-48d7-869c-12b99a21ceb5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure timespan_delivery = ```
+			
+			AVERAGEX(
+			    'fact_order_items',
+			    DATEDIFF(
+			        RELATED('dim_orders'[order_delivered_carrier_date]), 
+			        RELATED('dim_orders'[order_delivered_customer_date]), 
+			        DAY
+			    )
+			)
+			
+			```
+		lineageTag: dceab471-2efe-4e70-acd7-64c5fb659d7c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure review_distance = ```
+			
+			CALCULATE(
+			    COUNT('fact_order_reviews'[review_score]),
+			    CROSSFILTER('fact_order_reviews'[order_id], 'dim_orders'[order_id], Both)
+			)
+			
+			```
+		formatString: 0
+		lineageTag: f65a695a-cd3a-48be-83f9-166185cd6786
+
+	measure Prozent_pro_Distanzzeile = ```
+			
+			VAR AktuelleDistanz = SELECTEDVALUE('dim_orders'[distance_categorys])
+			VAR AktuellerZellenWert = COUNT('fact_order_items'[order_id])
+			
+			VAR SummeDerGanzenZeile = 
+			    CALCULATE(
+			        COUNT('fact_order_items'[order_id]), 
+			        ALL('fact_order_items'),
+			        'dim_orders'[distance_categorys] = AktuelleDistanz
+			    )
+			RETURN
+			DIVIDE(AktuellerZellenWert, SummeDerGanzenZeile, 0)
+			
+			
+			```
+		lineageTag: d4e1cd09-730a-4175-80c6-65e5a2b50a11
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure min = min(dim_orders[distance_seller_customer_km])
+		lineageTag: 70c35b6c-99b6-42dd-bdad-1577a5225270
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure max_distance = ```
+			MAX(dim_orders[distance_seller_customer_km]) 
+			```
+		formatString: 0
+		lineageTag: b9f0257e-0712-4f15-b2a5-323f264b5eba
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure distance_median = ```
+			MEDIAN(dim_orders[distance_seller_customer_km]) 
+			```
+		formatString: 0
+		lineageTag: 0d3edbed-7651-4af0-96d4-4c5592993379
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure cost_mailing = ```
+			AVERAGE('fact_order_items'[freight_value])
+			
+			```
+		lineageTag: 7729012e-92f0-4c7d-99a6-59d6d3a0ff72
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure avg_review = ```
+			
+			AVERAGEX(
+			    KEEPFILTERS(VALUES('fact_order_reviews'[review_score])),
+			    CALCULATE(AVERAGE('fact_order_reviews'[review_score]))
+			)
+			
+			```
+		lineageTag: 1a094049-42ab-4c04-aa8a-74251ffedb3c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure avg_freight_scatter = ```
+			
+			AVERAGEX(
+			    KEEPFILTERS(VALUES('fact_order_items'[order_id])),
+			    CALCULATE(AVERAGE('fact_order_items'[freight_value]))
+			)
+			
+			```
+		lineageTag: f7969764-2d4b-4241-a805-442673b0a36e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition tbl_measures_jakob = m
+		mode: import
+		source =
+				let
+				    Quelle = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Spalte ""1""" = _t]),
+				    #"Geänderter Typ" = Table.TransformColumnTypes(Quelle,{{"Spalte ""1""", type text}}),
+				    #"Entfernte Spalten" = Table.RemoveColumns(#"Geänderter Typ",{"Spalte ""1"""})
+				in
+				    #"Entfernte Spalten"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
