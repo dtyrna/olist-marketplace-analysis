@@ -1,0 +1,57 @@
+table david_topic_score_distribution
+	lineageTag: 173a8516-6342-4aac-8451-82173baf027b
+
+	column topic
+		dataType: string
+		lineageTag: 9d637ced-df2a-4a6d-93a3-ad05a3bbb890
+		summarizeBy: none
+		sourceColumn: topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: double
+		lineageTag: ec76759a-6238-47dc-872e-fe5943c5a4b0
+		summarizeBy: sum
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column review_count
+		dataType: double
+		lineageTag: 965b40e1-ee1d-431a-ab0f-bb922a2bd200
+		summarizeBy: sum
+		sourceColumn: review_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_share
+		dataType: double
+		lineageTag: d456371f-e9cc-4e92-9d7c-867de42132cf
+		summarizeBy: sum
+		sourceColumn: score_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition david_topic_score_distribution = m
+		mode: import
+		source =
+				let
+				  Quelle = Csv.Document(File.Contents("C:\Users\bigd\Desktop\DSI - Weiterbildung\olist_marketplace_analysis\olist-marketplace-analysis\datasets\processed\topic_score_distribution.csv"), [Delimiter = ",", Columns = 4, QuoteStyle = QuoteStyle.None]),
+				  #"Höher gestufte Header" = Table.PromoteHeaders(Quelle, [PromoteAllScalars = true]),
+				    #"Geänderter Typ mit Gebietsschema" = Table.TransformColumnTypes(#"Höher gestufte Header", {{"review_score", type number}, {"review_count", type number}, {"score_share", type number}}, "en-US")
+				in
+				    #"Geänderter Typ mit Gebietsschema"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

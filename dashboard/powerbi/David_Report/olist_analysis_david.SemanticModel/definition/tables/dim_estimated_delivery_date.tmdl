@@ -1,0 +1,255 @@
+table dim_estimated_delivery_date
+	lineageTag: 4318a8b2-24f0-4424-97eb-d01f6a517df4
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 5db42f62-d812-478f-b59f-0fe64b8159fa
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7824917d-c610-4726-bca9-69c2e3d6535a
+		summarizeBy: none
+		sourceColumn: full_date
+
+		variation Variation
+			isDefault
+			relationship: 3a1416b6-4d58-428e-aa46-852266a2bb4f
+			defaultHierarchy: LocalDateTable_eae8c78b-20f0-492d-96ae-232a81c26a92.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3465714f-ba19-4e2a-a8c9-955b2626ce8c
+		summarizeBy: sum
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b1f2efc-7b46-4e3c-8ad8-dccf7a0b12ee
+		summarizeBy: sum
+		sourceColumn: quarter_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_name
+		dataType: string
+		lineageTag: 691344db-0b5e-4687-86f5-d8b83ece4a8e
+		summarizeBy: none
+		sourceColumn: quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_quarter_name
+		dataType: string
+		lineageTag: b86113e5-d73b-4e19-add0-1fbe2092f2ac
+		summarizeBy: none
+		sourceColumn: year_quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no
+		dataType: int64
+		formatString: 0
+		lineageTag: a38c0aab-4c68-4ff3-bb19-7578673cc509
+		summarizeBy: sum
+		sourceColumn: month_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 2a580f47-c77f-4d10-b10f-8483f68a0307
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 65e76dd9-0308-4fb8-bc45-2f9ece707919
+		summarizeBy: sum
+		sourceColumn: year_month_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month_name
+		dataType: string
+		lineageTag: a1bcb3c3-2877-46fb-b833-c779317457b7
+		summarizeBy: none
+		sourceColumn: year_month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a8c49da-1a60-45ab-88a0-9d23d42895d6
+		summarizeBy: sum
+		sourceColumn: iso_week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 58f07983-5b2c-478d-b358-bed1d3808c9f
+		summarizeBy: sum
+		sourceColumn: iso_week_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_year_week_name
+		dataType: string
+		lineageTag: 549d2eee-d28e-41f4-96dc-022483e63f9d
+		summarizeBy: none
+		sourceColumn: iso_year_week_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_weekday_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b16e6eb-19ae-49ab-9753-41934b377ca1
+		summarizeBy: sum
+		sourceColumn: iso_weekday_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		lineageTag: 49c83aad-ca96-419b-95ac-ec28764a59e1
+		summarizeBy: none
+		sourceColumn: weekday_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 550654cb-6821-42c1-b308-27125a1651eb
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6990296f-5722-4327-a0de-d1b32fcde672
+		summarizeBy: none
+		sourceColumn: month_start_date
+
+		variation Variation
+			isDefault
+			relationship: d5616c95-9cec-4e73-bb47-de5657339f82
+			defaultHierarchy: LocalDateTable_74ea711f-38fc-43e4-b864-2c5ed2d42a23.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8df41c60-8202-49cc-bbf7-b7801901866b
+		summarizeBy: none
+		sourceColumn: month_end_date
+
+		variation Variation
+			isDefault
+			relationship: 64249c34-dd05-4891-b0a0-9ae6d00ba6da
+			defaultHierarchy: LocalDateTable_f71ba87d-c422-4439-9ad9-eb3bf20b4adb.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quarter_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 03b05577-970a-4bec-b45c-adb6a03769d8
+		summarizeBy: none
+		sourceColumn: quarter_start_date
+
+		variation Variation
+			isDefault
+			relationship: 459a081d-f1db-477c-8111-c3011d75f948
+			defaultHierarchy: LocalDateTable_102d2197-8a9c-4671-a460-160ed1aa2a38.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quarter_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb9e5218-0431-4c71-b378-1b545fa9fc24
+		summarizeBy: none
+		sourceColumn: quarter_end_date
+
+		variation Variation
+			isDefault
+			relationship: 5908d688-ac4e-47f7-b071-10838eb7c610
+			defaultHierarchy: LocalDateTable_74cfdf5d-766a-4542-a004-03cad4f8d083.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dcd4a725-bf3d-4933-b6fb-670e6d93f72b
+		summarizeBy: none
+		sourceColumn: year_start_date
+
+		variation Variation
+			isDefault
+			relationship: 555ff548-5964-45bf-b473-666a4434fa39
+			defaultHierarchy: LocalDateTable_19a950c7-0ca2-45e8-ba73-7090073383c2.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7f6c8c76-ea3e-4284-ab2b-e60b5a9dcb9c
+		summarizeBy: none
+		sourceColumn: year_end_date
+
+		variation Variation
+			isDefault
+			relationship: 328feae3-fc3e-4bf7-a137-bee6dab18f91
+			defaultHierarchy: LocalDateTable_59ea0253-a35d-4336-a2d8-ec2b21878127.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_estimated_delivery_date = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    dim_estimated_delivery_date_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_estimated_delivery_date",Kind="Table"]}[Data]
+				in
+				    dim_estimated_delivery_date_Table
+
