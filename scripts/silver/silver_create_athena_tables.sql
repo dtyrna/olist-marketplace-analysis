@@ -175,3 +175,61 @@ LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/sellers
 TBLPROPERTIES (
   'skip.header.line.count' = '1'
 );
+
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_comment_topics;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_comment_topics (
+  id_order_reviews            STRING,
+  review_id                   STRING,
+  order_id                    STRING,
+  review_score                STRING,
+  review_comment_message_en   STRING,
+  topic                       STRING,
+  is_negative                 STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+  'separatorChar' = ',',
+  'quoteChar'     = '"',
+  'escapeChar'    = '\\'
+)
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/comment_topics/'
+TBLPROPERTIES (
+  'skip.header.line.count' = '1'
+);
+
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_topic_analysis;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_topic_analysis (
+  topic                       STRING,
+  review_count                INTEGER,
+  share_pct                   DOUBLE,
+  negative_reviews            INTEGER,
+  negative_rate_pct           DOUBLE,
+  avg_review_score            DOUBLE,
+  negative_contribution_pct   DOUBLE,
+  priority_score              INTEGER
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/topic_analysis/'
+TBLPROPERTIES (
+  'skip.header.line.count' = '1'
+);
+
+DROP TABLE IF EXISTS dsi_final_project_powerbi_dw.silver_csv_topic_score_distribution;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS dsi_final_project_powerbi_dw.silver_csv_topic_score_distribution (
+  topic           STRING,
+  review_score    INTEGER,
+  review_count    INTEGER,
+  score_share     DOUBLE
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 's3://dsi-final-project-360964564955-eu-central-1-an/_processed/topic_score_distribution/'
+TBLPROPERTIES (
+  'skip.header.line.count' = '1'
+);

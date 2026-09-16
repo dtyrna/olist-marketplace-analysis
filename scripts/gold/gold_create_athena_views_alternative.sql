@@ -253,3 +253,44 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_review_answer_date AS
     SELECT *
     FROM dsi_final_project_powerbi_dw.dim_date
 ;
+--CAST(comment_id AS INT) AS comment_id,
+--CASE 
+    --WHEN LOWER(is_relevant) IN ('true', '1', 'ja', 'yes') THEN TRUE 
+   -- ELSE FALSE 
+ -- END AS is_relevant
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_fact_comment_topics AS
+    SELECT
+        CAST(id_order_reviews AS INTEGER) AS id_order_reviews,
+        review_id,
+        order_id,
+        CAST(review_score AS INTEGER) AS review_score,
+        review_comment_message_en,
+        topic,
+        CASE
+            WHEN LOWER(is_negative) IN ('true')
+            THEN TRUE
+            ELSE FALSE
+        END AS is_negative
+    FROM silver_csv_comment_topics
+;
+
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_final_topic_analysis AS
+    SELECT
+        topic,
+        review_count,
+        share_pct,
+        negative_reviews,
+        negative_rate_pct,
+        avg_review_score,
+        negative_contribution_pct
+    FROM silver_csv_topic_analysis
+;
+
+CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_topic_score_distribution AS
+    SELECT
+        topic,
+        review_score,
+        review_count,
+        score_share
+    FROM silver_csv_topic_score_distribution
+;

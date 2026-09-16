@@ -1,10 +1,10 @@
 table david_fact_comment_topics
-	lineageTag: 19851424-e87f-45c9-bf38-a8aa424c7361
+	lineageTag: 7ac8ec26-40d6-4c0f-a1d7-bd9268a1c43a
 
 	column id_order_reviews
 		dataType: int64
 		formatString: 0
-		lineageTag: b57fe0bc-5b3b-431f-8346-40ce0fdb7f03
+		lineageTag: 4834e985-7793-4c5e-a4ad-276b793b5a3f
 		summarizeBy: sum
 		sourceColumn: id_order_reviews
 
@@ -12,7 +12,7 @@ table david_fact_comment_topics
 
 	column review_id
 		dataType: string
-		lineageTag: 5d2bc4cd-e0f6-46d4-8d37-b565aa9edf5e
+		lineageTag: e2d4523b-fe77-4d7c-9903-b15c90b56b82
 		summarizeBy: none
 		sourceColumn: review_id
 
@@ -20,7 +20,7 @@ table david_fact_comment_topics
 
 	column order_id
 		dataType: string
-		lineageTag: 599f2fc6-3f77-4ac0-9d15-28228066fe91
+		lineageTag: 1f3a565e-609b-483d-a53f-a2df7bb7bbef
 		summarizeBy: none
 		sourceColumn: order_id
 
@@ -29,7 +29,7 @@ table david_fact_comment_topics
 	column review_score
 		dataType: int64
 		formatString: 0
-		lineageTag: 7707cefd-1829-48a0-8491-3c94c4cb1235
+		lineageTag: a92cdfb3-efc4-4eb7-a71b-275ff3ca3b9d
 		summarizeBy: sum
 		sourceColumn: review_score
 
@@ -37,7 +37,7 @@ table david_fact_comment_topics
 
 	column review_comment_message_en
 		dataType: string
-		lineageTag: 7f104f59-c8b3-491c-830d-ca54a141e536
+		lineageTag: d72d044c-eb60-4450-a2d4-e888c693d441
 		summarizeBy: none
 		sourceColumn: review_comment_message_en
 
@@ -45,7 +45,7 @@ table david_fact_comment_topics
 
 	column topic
 		dataType: string
-		lineageTag: 67266c30-5eef-4ba6-8632-fda54bc2b800
+		lineageTag: d0326d76-1222-440e-97ad-a8319e31dda2
 		summarizeBy: none
 		sourceColumn: topic
 
@@ -54,7 +54,7 @@ table david_fact_comment_topics
 	column is_negative
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: a00b344e-f906-4e9d-b1fd-be759443fffc
+		lineageTag: 18726c90-e4f8-4d2e-9aa6-0ae0a13dff63
 		summarizeBy: none
 		sourceColumn: is_negative
 
@@ -64,15 +64,10 @@ table david_fact_comment_topics
 		mode: import
 		source =
 				let
-				  Quelle = Csv.Document(File.Contents("C:\Users\bigd\Desktop\DSI - Weiterbildung\olist_marketplace_analysis\olist-marketplace-analysis\datasets\processed\comment_topics.csv"), [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.None]),
-				  #"Höher gestufte Header" = Table.PromoteHeaders(Quelle, [PromoteAllScalars = true]),
-				  #"Geänderter Spaltentyp" = Table.TransformColumnTypes(#"Höher gestufte Header", {{"id_order_reviews", Int64.Type}, {"review_id", type text}, {"order_id", type text}, {"review_score", Int64.Type}, {"review_comment_message_en", type text}, {"topic", type text}, {"is_negative", type logical}}, "de")
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    david_fact_comment_topics_Table = dsi_final_project_powerbi_dw_Schema{[Name="david_fact_comment_topics",Kind="Table"]}[Data]
 				in
-				  #"Geänderter Spaltentyp"
-
-	changedProperty = Name
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Table
+				    david_fact_comment_topics_Table
 

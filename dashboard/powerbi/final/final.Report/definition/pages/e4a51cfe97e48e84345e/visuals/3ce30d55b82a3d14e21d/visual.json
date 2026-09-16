@@ -17,60 +17,23 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_review_creation_date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "year_end_date"
-                        }
-                      },
-                      "Hierarchy": "Datumshierarchie"
+                    "SourceRef": {
+                      "Entity": "dim_review_creation_date"
                     }
                   },
-                  "Level": "Jahr"
+                  "Property": "calendar_year"
                 }
               },
-              "queryRef": "dim_review_creation_date.year_end_date.Variation.Datumshierarchie.Jahr",
-              "nativeQueryRef": "year_end_date Jahr",
+              "queryRef": "dim_review_creation_date.calendar_year",
+              "nativeQueryRef": "calendar_year",
               "active": true
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "HierarchyLevel": {
-                "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "dim_review_creation_date"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "year_end_date"
-                      }
-                    },
-                    "Hierarchy": "Datumshierarchie"
-                  }
-                },
-                "Level": "Jahr"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -82,21 +45,9 @@
         "levels": [
           {
             "queryRefs": [
-              "dim_review_creation_date.year_end_date.Variation.Datumshierarchie.Jahr"
+              "dim_review_creation_date.calendar_year"
             ],
             "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "LocalDateTable_2624b35e-7083-4359-859c-b60eb0703b9e"
-                    }
-                  },
-                  "Property": "Jahr"
-                }
-              }
-            ],
             "isPinned": true
           }
         ],
@@ -150,152 +101,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "2f68d5892db99cabc4bd",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_review_creation_date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "year_end_date"
-                  }
-                },
-                "Hierarchy": "Datumshierarchie"
-              }
-            },
-            "Level": "Jahr"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "l",
-              "Entity": "LocalDateTable_2624b35e-7083-4359-859c-b60eb0703b9e",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "l"
-                          }
-                        },
-                        "Property": "Jahr"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "2017L"
-                        }
-                      }
-                    ],
-                    [
-                      {
-                        "Literal": {
-                          "Value": "2018L"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              },
-              "Annotations": {
-                "filterExpressionMetadata": {
-                  "expressions": [
-                    {
-                      "HierarchyLevel": {
-                        "Expression": {
-                          "Hierarchy": {
-                            "Expression": {
-                              "PropertyVariationSource": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Entity": "dim_review_creation_date"
-                                  }
-                                },
-                                "Name": "Variation",
-                                "Property": "year_end_date"
-                              }
-                            },
-                            "Hierarchy": "Datumshierarchie"
-                          }
-                        },
-                        "Level": "Jahr"
-                      }
-                    }
-                  ],
-                  "decomposedIdentities": {
-                    "values": [
-                      [
-                        {
-                          "0": [
-                            {
-                              "Literal": {
-                                "Value": "2017L"
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      [
-                        {
-                          "0": [
-                            {
-                              "Literal": {
-                                "Value": "2018L"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    ],
-                    "columns": [
-                      {
-                        "value": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "LocalDateTable_2624b35e-7083-4359-859c-b60eb0703b9e"
-                              }
-                            },
-                            "Property": "Jahr"
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "valueMap": [
-                    {
-                      "0": "2017"
-                    },
-                    {
-                      "0": "2018"
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
         "name": "6f1a2718e186a3d22d46",
         "field": {
           "Column": {
@@ -337,14 +142,14 @@
                     [
                       {
                         "Literal": {
-                          "Value": "2017L"
+                          "Value": "2016L"
                         }
                       }
                     ],
                     [
                       {
                         "Literal": {
-                          "Value": "2018L"
+                          "Value": "2017L"
                         }
                       }
                     ]
@@ -354,7 +159,6 @@
             }
           ]
         },
-        "howCreated": "User",
         "objects": {
           "general": [
             {
