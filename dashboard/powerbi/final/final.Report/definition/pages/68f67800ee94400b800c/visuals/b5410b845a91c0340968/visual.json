@@ -285,6 +285,118 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "6bbc99490b0d088804a7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_order_items"
+              }
+            },
+            "Property": "order_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9291e275438313961aa1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "order_purchase_timestamp"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a15556bb35dbcda2c70a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_purchase_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d64355e871ac408ae300",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "order_delivered_carrier_date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ec3e06f2d97e605042c7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_carrier_date"
+              }
+            },
+            "Property": "weekday_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ff8e391c52b265470ac3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "patrick_hours_purchase_to_delivered_carrier"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cb5030366ad6264065e5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "patrick_days_purchase_to_delivered_carrier"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "aaffbedd4826045940d1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_orders"
+              }
+            },
+            "Property": "patrick_days_delayed_delivery"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

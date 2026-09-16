@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "328812373642c05750c5",
+  "name": "a309424b09772039b1bb",
   "position": {
-    "x": 264,
-    "y": 212,
-    "z": 6006,
-    "height": 178,
-    "width": 340,
-    "tabOrder": 6006
+    "x": 31.053698074974971,
+    "y": 213.84498480243158,
+    "z": 3,
+    "height": 170.69908814589667,
+    "width": 189.66565349544072,
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "cardVisual",
@@ -59,7 +59,55 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1e3a8a'"
+                    }
+                  }
+                }
+              }
+            },
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "value": [
+        {
+          "properties": {
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
                 }
               }
             }
@@ -91,6 +139,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Average Processing Time [days]'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

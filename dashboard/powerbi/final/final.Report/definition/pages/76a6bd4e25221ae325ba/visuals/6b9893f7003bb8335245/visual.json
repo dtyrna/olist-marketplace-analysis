@@ -43,6 +43,7 @@
                   {
                     "value": "breakdown of parcelsizes by distance",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontSize": "28pt",
                       "color": "#1e3a8a"
                     }

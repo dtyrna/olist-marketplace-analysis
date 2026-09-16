@@ -92,5 +92,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b99195fd919cc5d7ea40",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Late Orders"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

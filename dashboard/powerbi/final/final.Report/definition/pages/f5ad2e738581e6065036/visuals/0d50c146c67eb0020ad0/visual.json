@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "0d09591f9310e9c043e4",
+  "name": "0d50c146c67eb0020ad0",
   "position": {
-    "x": 22,
-    "y": 572,
-    "z": 6006,
-    "height": 478,
-    "width": 1874,
-    "tabOrder": 6006
+    "x": 31.666666666666668,
+    "y": 428.33333333333337,
+    "z": 0,
+    "height": 615,
+    "width": 1680,
+    "tabOrder": 0
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -45,50 +45,8 @@
                   "Property": "Number of Orders per Seller (Single-Seller-Order)"
                 }
               },
-              "queryRef": "tbl_measures_patrick.number of orders per seller",
-              "nativeQueryRef": "number of orders per seller (Single Seller Only)"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "tbl_measures_patrick"
-                    }
-                  },
-                  "Property": "Average Processing Time in hours (Single-Seller-Order)"
-                }
-              },
-              "queryRef": "tbl_measures_patrick.(hours) average time purchase to delivered carrier",
-              "nativeQueryRef": "(hours) average time purchase to delivered carrier (Single-Seller-Order)"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "tbl_measures_patrick"
-                    }
-                  },
-                  "Property": "Seller Share of Total Items"
-                }
-              },
-              "queryRef": "tbl_measures_patrick.Seller Share of Total Items",
-              "nativeQueryRef": "Seller Share of Total Items"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "tbl_measures_patrick"
-                    }
-                  },
-                  "Property": "Seller Share of Total Sales"
-                }
-              },
-              "queryRef": "tbl_measures_patrick.Seller Share of Total Sales",
-              "nativeQueryRef": "Seller Share of Total Sales"
+              "queryRef": "tbl_measures_patrick.Number of Orders per Seller (Single-Seller-Order)",
+              "nativeQueryRef": "Number of Orders per Seller (Single-Seller-Order)"
             }
           ]
         },
@@ -105,8 +63,8 @@
                   "Property": "Average Processing Time in days (Single-Seller-Order)"
                 }
               },
-              "queryRef": "tbl_measures_patrick.(days) average time purchase to delivered carrier",
-              "nativeQueryRef": "(days) average time purchase to delivered carrier (Single-Seller-Order)"
+              "queryRef": "tbl_measures_patrick.Average Processing Time in days (Single-Seller-Order)",
+              "nativeQueryRef": "Average Processing Time in days (Single-Seller-Order)"
             }
           ]
         }
@@ -126,7 +84,8 @@
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -137,13 +96,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "enableDetailDataLabel": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             },
@@ -186,20 +138,6 @@
       "valueAxis": [
         {
           "properties": {
-            "showAxisTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "titleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
@@ -217,13 +155,6 @@
               "expr": {
                 "Literal": {
                   "Value": "12D"
-                }
-              }
-            },
-            "preferredCategoryWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "30D"
                 }
               }
             }
@@ -264,7 +195,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "d9855864d795cb3a0cbb",
+        "name": "0e547db6624dea6857aa",
         "field": {
           "Measure": {
             "Expression": {
@@ -312,7 +243,7 @@
         }
       },
       {
-        "name": "b7aa44819d85db8204cd",
+        "name": "bf1dad38715e063b5a0d",
         "field": {
           "Column": {
             "Expression": {
@@ -326,21 +257,7 @@
         "type": "Categorical"
       },
       {
-        "name": "eb98e7f681158b8a58cd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "tbl_measures_patrick"
-              }
-            },
-            "Property": "Average Processing Time in hours (Single-Seller-Order)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3a4a3e71188029a06562",
+        "name": "5bfe391bc46356b50d3a",
         "field": {
           "Measure": {
             "Expression": {

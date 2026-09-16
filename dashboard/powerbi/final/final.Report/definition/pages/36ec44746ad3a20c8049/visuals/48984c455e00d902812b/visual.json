@@ -91,5 +91,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d798b045882da0d1e959",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Average Review Score by Category"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

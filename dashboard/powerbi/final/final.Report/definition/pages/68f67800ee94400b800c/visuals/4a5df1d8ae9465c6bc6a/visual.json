@@ -21,7 +21,9 @@
                   {
                     "value": "Possible Cause: Product Availability",
                     "textStyle": {
-                      "fontSize": "32pt"
+                      "fontWeight": "bold",
+                      "fontSize": "32pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ],

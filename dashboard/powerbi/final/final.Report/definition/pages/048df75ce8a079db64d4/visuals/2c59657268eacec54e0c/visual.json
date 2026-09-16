@@ -22,7 +22,8 @@
                     "value": "Product Availibility and Multi Product Orders influence Processing Performance.",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "28pt"
+                      "fontSize": "28pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ]

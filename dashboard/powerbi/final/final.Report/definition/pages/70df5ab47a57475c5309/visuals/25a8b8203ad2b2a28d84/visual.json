@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "d140271d111ac6b275b2",
+  "name": "25a8b8203ad2b2a28d84",
   "position": {
-    "x": 1266,
-    "y": 12,
-    "z": 6003,
-    "height": 378,
-    "width": 626,
-    "tabOrder": 6003
+    "x": 1701.1550151975684,
+    "y": 18.966565349544073,
+    "z": 6017,
+    "height": 170.69908814589667,
+    "width": 189.66565349544072,
+    "tabOrder": 6017
   },
   "visual": {
-    "visualType": "advancedSlicerVisual",
+    "visualType": "listSlicer",
     "query": {
       "queryState": {
         "Values": {
@@ -38,7 +38,8 @@
                 }
               },
               "queryRef": "dim_orders.order_purchase_timestamp.Variation.Datumshierarchie.Jahr",
-              "nativeQueryRef": "order_purchase_timestamp Jahr"
+              "nativeQueryRef": "order_purchase_timestamp Jahr",
+              "active": true
             }
           ]
         }
@@ -97,6 +98,26 @@
                   "Value": "15D"
                 }
               }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -107,7 +128,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "cf5132e5dc46d570611b",
+        "name": "f921119f15432288a29e",
         "field": {
           "HierarchyLevel": {
             "Expression": {

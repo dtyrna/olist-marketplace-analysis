@@ -332,8 +332,7 @@
               }
             }
           ]
-        },
-        "howCreated": "User"
+        }
       },
       {
         "name": "57ddb707a59b3cb68a3d",
@@ -362,6 +361,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "d9254c2f6a552540d759",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_category_name"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

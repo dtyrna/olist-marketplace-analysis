@@ -43,6 +43,7 @@
                   {
                     "value": "impact on delivery time",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontSize": "28pt",
                       "color": "#1e3a8a"
                     }

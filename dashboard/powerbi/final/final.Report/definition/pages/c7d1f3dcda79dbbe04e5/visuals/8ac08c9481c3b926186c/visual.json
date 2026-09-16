@@ -22,7 +22,8 @@
                     "value": "Seller Performance Analyse",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "24pt"
+                      "fontSize": "24pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ],

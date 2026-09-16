@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cc6fdf7d636a2e7c10c4",
   "position": {
-    "x": 123.47266881028938,
-    "y": 773.24758842443725,
+    "x": 122.89156626506025,
+    "y": 773.49397590361446,
     "z": 5000,
-    "height": 85.609756097560975,
-    "width": 782.34146341463406,
+    "height": 133.01204819277109,
+    "width": 783.61445783132535,
     "tabOrder": 5000
   },
   "visual": {
@@ -21,7 +21,9 @@
                   {
                     "value": "Are there Multi Product Orders to split?",
                     "textStyle": {
-                      "fontSize": "32pt"
+                      "fontWeight": "bold",
+                      "fontSize": "32pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ]

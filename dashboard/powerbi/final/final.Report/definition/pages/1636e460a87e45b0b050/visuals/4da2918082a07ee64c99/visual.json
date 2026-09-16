@@ -43,6 +43,7 @@
                   {
                     "value": "how distance impacts reviews",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontSize": "28pt",
                       "color": "#1e3a8a"
                     }

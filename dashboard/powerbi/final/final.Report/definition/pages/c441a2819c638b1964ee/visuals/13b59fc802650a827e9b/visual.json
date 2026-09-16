@@ -21,7 +21,9 @@
                   {
                     "value": "Are certain categories responsible for longer processing times?",
                     "textStyle": {
-                      "fontSize": "20pt"
+                      "fontWeight": "bold",
+                      "fontSize": "20pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ]

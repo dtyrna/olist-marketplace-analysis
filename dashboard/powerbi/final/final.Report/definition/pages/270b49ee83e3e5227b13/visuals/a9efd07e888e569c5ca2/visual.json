@@ -21,7 +21,9 @@
                   {
                     "value": "Possible Cause: Large Orders processed by only one Seller",
                     "textStyle": {
-                      "fontSize": "32pt"
+                      "fontWeight": "bold",
+                      "fontSize": "32pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ],
@@ -32,7 +34,9 @@
                   {
                     "value": "-",
                     "textStyle": {
-                      "fontSize": "32pt"
+                      "fontWeight": "bold",
+                      "fontSize": "32pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ],
@@ -43,7 +47,9 @@
                   {
                     "value": "Order Splitting as a chance to increase processing performance?",
                     "textStyle": {
-                      "fontSize": "32pt"
+                      "fontWeight": "bold",
+                      "fontSize": "32pt",
+                      "color": "#1e3a8a"
                     }
                   }
                 ],

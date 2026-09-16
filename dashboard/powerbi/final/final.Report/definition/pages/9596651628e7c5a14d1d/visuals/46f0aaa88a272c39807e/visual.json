@@ -50,6 +50,7 @@
                   {
                     "value": "Overview of distances in brasil",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontSize": "28pt",
                       "color": "#1e3a8a"
                     }

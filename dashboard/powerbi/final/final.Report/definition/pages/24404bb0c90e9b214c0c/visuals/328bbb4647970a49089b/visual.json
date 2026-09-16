@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "328bbb4647970a49089b",
   "position": {
-    "x": 24,
-    "y": 220,
+    "x": 23.343465045592705,
+    "y": 201.33738601823708,
     "z": 1000,
-    "height": 170,
-    "width": 190,
+    "height": 170.69908814589667,
+    "width": 189.66565349544072,
     "tabOrder": 1000
   },
   "visual": {
@@ -32,8 +32,8 @@
                 }
               },
               "queryRef": "Sum(fact_order_items.price)",
-              "nativeQueryRef": "Revenue",
-              "displayName": "Revenue"
+              "nativeQueryRef": "Total Sales",
+              "displayName": "Total Sales"
             }
           ]
         }
@@ -69,7 +69,55 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1e3a8a'"
+                    }
+                  }
+                }
+              }
+            },
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "value": [
+        {
+          "properties": {
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
                 }
               }
             }
@@ -101,7 +149,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
