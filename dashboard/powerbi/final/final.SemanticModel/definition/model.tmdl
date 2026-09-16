@@ -11,7 +11,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["dim_customers","dim_orders","dim_products","dim_purchase_date","dim_sellers","dim_shipping_limit_date","fact_order_items","fact_order_reviews","fact_order_payments","tbl_measures_patrick","dim_approval_date","dim_carrier_date","dim_delivered_date","dim_estimated_delivery_date","dim_order_purchase_date","dim_review_answer_date","dim_review_creation_date","tbl_measures_jakob","david_fact_comment_topics","david_final_topic_analysis","david_topic_score_distribution","david_measure_tbl"]
+annotation PBI_QueryOrder = ["dim_customers","dim_orders","dim_products","dim_purchase_date","dim_sellers","dim_shipping_limit_date","fact_order_items","fact_order_reviews","fact_order_payments","tbl_measures_patrick","dim_approval_date","dim_carrier_date","dim_delivered_date","dim_estimated_delivery_date","dim_order_purchase_date","dim_review_answer_date","dim_review_creation_date","tbl_measures_jakob","david_measure_tbl","david_fact_comment_topics","david_final_topic_analysis","david_topic_score_distribution"]
 
 ref table dim_customers
 ref table DateTableTemplate_e26e30ee-67ba-4ae6-a939-82d24f0c276d
@@ -41,10 +41,10 @@ ref table david_dim_transport_type
 ref table david_dim_customer_order_distribution
 ref table david_dim_customer_type
 ref table david_dim_customer_revenue_bucket
+ref table david_measure_tbl
 ref table david_fact_comment_topics
 ref table david_final_topic_analysis
 ref table david_topic_score_distribution
-ref table david_measure_tbl
 
 ref cultureInfo de-DE
 

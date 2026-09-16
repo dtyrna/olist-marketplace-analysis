@@ -17,107 +17,18 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_carrier_date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "year_end_date"
-                        }
-                      },
-                      "Hierarchy": "Datumshierarchie"
+                    "SourceRef": {
+                      "Entity": "dim_carrier_date"
                     }
                   },
-                  "Level": "Jahr"
+                  "Property": "calendar_year"
                 }
               },
-              "queryRef": "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Jahr",
-              "nativeQueryRef": "year_end_date Jahr",
+              "queryRef": "dim_carrier_date.calendar_year",
+              "nativeQueryRef": "calendar_year",
               "active": true
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_carrier_date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "year_end_date"
-                        }
-                      },
-                      "Hierarchy": "Datumshierarchie"
-                    }
-                  },
-                  "Level": "Quartal"
-                }
-              },
-              "queryRef": "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Quartal",
-              "nativeQueryRef": "year_end_date Quartal",
-              "active": false
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_carrier_date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "year_end_date"
-                        }
-                      },
-                      "Hierarchy": "Datumshierarchie"
-                    }
-                  },
-                  "Level": "Monat"
-                }
-              },
-              "queryRef": "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Monat",
-              "nativeQueryRef": "year_end_date Monat",
-              "active": false
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_carrier_date"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "year_end_date"
-                        }
-                      },
-                      "Hierarchy": "Datumshierarchie"
-                    }
-                  },
-                  "Level": "Tag"
-                }
-              },
-              "queryRef": "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Tag",
-              "nativeQueryRef": "year_end_date Tag",
-              "active": false
             }
           ]
         }
@@ -131,41 +42,10 @@
         "levels": [
           {
             "queryRefs": [
-              "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Jahr"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "LocalDateTable_e9bbb6cd-56c7-4ab1-b243-30db53623b24"
-                    }
-                  },
-                  "Property": "Jahr"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Quartal"
+              "dim_carrier_date.calendar_year"
             ],
             "isCollapsed": true,
             "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Monat"
-            ],
-            "isCollapsed": true
-          },
-          {
-            "queryRefs": [
-              "dim_carrier_date.year_end_date.Variation.Datumshierarchie.Tag"
-            ],
-            "isCollapsed": true
           }
         ],
         "root": {}
@@ -225,26 +105,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "da2520190710e374748e",
+        "name": "b40c7338135400301952",
         "field": {
-          "HierarchyLevel": {
+          "Column": {
             "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_carrier_date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "year_end_date"
-                  }
-                },
-                "Hierarchy": "Datumshierarchie"
+              "SourceRef": {
+                "Entity": "dim_carrier_date"
               }
             },
-            "Level": "Jahr"
+            "Property": "calendar_year"
           }
         },
         "type": "Categorical",
@@ -252,8 +121,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "l",
-              "Entity": "LocalDateTable_e9bbb6cd-56c7-4ab1-b243-30db53623b24",
+              "Name": "d",
+              "Entity": "dim_carrier_date",
               "Type": 0
             }
           ],
@@ -266,10 +135,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "l"
+                            "Source": "d"
                           }
                         },
-                        "Property": "Jahr"
+                        "Property": "calendar_year"
                       }
                     }
                   ],
@@ -297,174 +166,10 @@
                     ]
                   ]
                 }
-              },
-              "Annotations": {
-                "filterExpressionMetadata": {
-                  "expressions": [
-                    {
-                      "HierarchyLevel": {
-                        "Expression": {
-                          "Hierarchy": {
-                            "Expression": {
-                              "PropertyVariationSource": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Entity": "dim_carrier_date"
-                                  }
-                                },
-                                "Name": "Variation",
-                                "Property": "year_end_date"
-                              }
-                            },
-                            "Hierarchy": "Datumshierarchie"
-                          }
-                        },
-                        "Level": "Jahr"
-                      }
-                    }
-                  ],
-                  "decomposedIdentities": {
-                    "values": [
-                      [
-                        {
-                          "0": [
-                            {
-                              "Literal": {
-                                "Value": "2016L"
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      [
-                        {
-                          "0": [
-                            {
-                              "Literal": {
-                                "Value": "2017L"
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      [
-                        {
-                          "0": [
-                            {
-                              "Literal": {
-                                "Value": "2018L"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    ],
-                    "columns": [
-                      {
-                        "value": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "LocalDateTable_e9bbb6cd-56c7-4ab1-b243-30db53623b24"
-                              }
-                            },
-                            "Property": "Jahr"
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "valueMap": [
-                    {
-                      "0": "2016"
-                    },
-                    {
-                      "0": "2017"
-                    },
-                    {
-                      "0": "2018"
-                    }
-                  ]
-                }
               }
             }
           ]
         }
-      },
-      {
-        "name": "b2b46544ae42092852d8",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_carrier_date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "year_end_date"
-                  }
-                },
-                "Hierarchy": "Datumshierarchie"
-              }
-            },
-            "Level": "Quartal"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5b251fab98874de26cb7",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_carrier_date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "year_end_date"
-                  }
-                },
-                "Hierarchy": "Datumshierarchie"
-              }
-            },
-            "Level": "Monat"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "b7264e026b8325ae7096",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_carrier_date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "year_end_date"
-                  }
-                },
-                "Hierarchy": "Datumshierarchie"
-              }
-            },
-            "Level": "Tag"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

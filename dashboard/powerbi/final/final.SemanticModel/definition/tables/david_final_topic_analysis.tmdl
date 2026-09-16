@@ -1,27 +1,26 @@
 table david_final_topic_analysis
-	lineageTag: db7e22b5-5f9f-485a-99c2-af07f03e1723
+	lineageTag: 611bbd5e-b989-46ea-8176-79c6318072e3
 
 	column topic
 		dataType: string
-		lineageTag: 49872c33-305a-4818-9eb3-d5d795ab52a7
+		lineageTag: 25944254-73a5-4352-a719-0ff33337f49d
 		summarizeBy: none
 		sourceColumn: topic
 
 		annotation SummarizationSetBy = Automatic
 
 	column review_count
-		dataType: double
-		lineageTag: 5e65f695-616d-49c7-a333-9467ed42442e
+		dataType: int64
+		formatString: 0
+		lineageTag: 495710ea-50ae-427a-917f-56794b8a8434
 		summarizeBy: sum
 		sourceColumn: review_count
 
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column share_pct
 		dataType: double
-		lineageTag: 5eade00d-577d-4c93-94cb-81195b90274f
+		lineageTag: a1488809-f228-446e-ade8-ca01b418925f
 		summarizeBy: sum
 		sourceColumn: share_pct
 
@@ -30,28 +29,27 @@ table david_final_topic_analysis
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column negative_reviews
-		dataType: double
-		lineageTag: 11ebf80b-c38b-49bb-a0ec-c715f7358d97
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a006471-2e49-45ab-8f0f-10840a208e45
 		summarizeBy: sum
 		sourceColumn: negative_reviews
 
-		annotation SummarizationSetBy = User
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation SummarizationSetBy = Automatic
 
 	column negative_rate_pct
 		dataType: double
-		lineageTag: 7724bba7-1e17-4e8b-9f67-0ee80598dc12
+		lineageTag: 0e151be1-5abb-4787-8816-a6e5734c7d3b
 		summarizeBy: sum
 		sourceColumn: negative_rate_pct
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column avg_review_score
 		dataType: double
-		lineageTag: febfa9d9-b2ca-453a-92e8-8913f536b694
+		lineageTag: df2f336d-b3d1-450c-a16c-2f378b5d39f7
 		summarizeBy: sum
 		sourceColumn: avg_review_score
 
@@ -61,7 +59,7 @@ table david_final_topic_analysis
 
 	column negative_contribution_pct
 		dataType: double
-		lineageTag: 87a65c90-7cab-4f78-b473-2c2b70cffe19
+		lineageTag: 9cdb7a34-ee0b-4e3a-8856-d4c4b7481597
 		summarizeBy: sum
 		sourceColumn: negative_contribution_pct
 
@@ -73,16 +71,10 @@ table david_final_topic_analysis
 		mode: import
 		source =
 				let
-				  Quelle = Csv.Document(File.Contents("C:\Users\bigd\Desktop\DSI - Weiterbildung\olist_marketplace_analysis\olist-marketplace-analysis\datasets\processed\final_topic_analysis.csv"), [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.None]),
-				  #"Höher gestufte Header" = Table.PromoteHeaders(Quelle, [PromoteAllScalars = true]),
-				    #"Entfernte Spalten" = Table.RemoveColumns(#"Höher gestufte Header",{"priority_score"}),
-				    #"Geänderter Typ mit Gebietsschema" = Table.TransformColumnTypes(#"Entfernte Spalten", {{"review_count", type number}, {"share_pct", type number}, {"negative_reviews", type number}, {"negative_rate_pct", type number}, {"avg_review_score", type number}, {"negative_contribution_pct", type number}}, "en-US")
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    david_final_topic_analysis_Table = dsi_final_project_powerbi_dw_Schema{[Name="david_final_topic_analysis",Kind="Table"]}[Data]
 				in
-				    #"Geänderter Typ mit Gebietsschema"
-
-	changedProperty = Name
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Table
+				    david_final_topic_analysis_Table
 
