@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_date AS
 WITH calendar AS (
     SELECT
         CAST(calendar_date AS DATE) AS full_date
@@ -64,7 +64,7 @@ SELECT
 
 FROM calendar;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_orders AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_orders AS
     SELECT
         id_orders AS order_key,
         order_id,
@@ -107,7 +107,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_orders AS
     FROM silver_csv_orders
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_order_items AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.fact_order_items AS
     SELECT
         id_olist_order_items AS order_item_key,
         order_id,
@@ -123,26 +123,38 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_order_items AS
     FROM silver_csv_order_items
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_order_reviews AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.fact_order_reviews AS
     SELECT
-        id_order_reviews AS review_key,
+        CAST(id_order_reviews AS INTEGER) AS review_key,
         review_id,
         order_id,
         CAST(
-            date_format(CAST(review_creation_date AS DATE), '%Y%m%d')
+            date_format(CAST(review_creation_date AS TIMESTAMP), '%Y%m%d')
             AS INTEGER
         ) AS review_creation_date_key,
         CAST(
-            date_format(CAST(review_answer_timestamp AS DATE), '%Y%m%d')
+            date_format(CAST(review_answer_timestamp AS TIMESTAMP), '%Y%m%d')
             AS INTEGER
         ) AS review_answer_date_key,
-        review_score,
+        CAST(review_score AS INTEGER) AS review_score,
         review_comment_title_en,
         review_comment_message_en
     FROM silver_csv_order_reviews_en
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_order_payments AS
+id_order_reviews            BIGINT,
+  review_id                   STRING,
+  order_id                    STRING,
+  review_score                INT,
+  review_comment_title        STRING,
+  review_comment_title_en     STRING,
+  review_comment_message      STRING,
+  review_comment_message_en   STRING,
+  review_creation_date        DATE,
+  review_answer_timestamp     TIMESTAMP
+
+
+CREATE OR REPLACE VIEW dsi_final_project_test_db.fact_order_payments AS
     SELECT
         p.id_order_payments AS payment_key,
         p.order_id,
@@ -160,7 +172,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.fact_order_payments AS
     INNER JOIN silver_csv_orders o ON p.order_id = o.order_id
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_products AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_products AS
     SELECT
         p.id_products AS product_key,
         p.product_description_lenght AS product_description_lenght,
@@ -176,7 +188,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_products AS
     LEFT JOIN silver_csv_category_translation ct ON p.product_category_name_bras = ct.product_category_name
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_customers AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_customers AS
     SELECT
         c.id_customers AS customer_key,
         c.customer_id AS customer_id,
@@ -190,7 +202,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_customers AS
     LEFT JOIN silver_csv_geolocation g ON c.customer_zip_code_prefix = g.geolocation_zip_code_prefix
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_sellers AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_sellers AS
     SELECT
         s.id_sellers AS seller_key,
         s.seller_city AS seller_city,
@@ -206,55 +218,55 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_sellers AS
 --create seperate dim_date per date-column for Power BI Semantic Model
 
 --dim_orders
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_purchase_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_purchase_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_approval_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_approval_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_carrier_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_carrier_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_delivered_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_delivered_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_estimated_delivery_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_estimated_delivery_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
 --fact_order_items
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_shipping_limit_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_shipping_limit_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
 --fact_order_payments
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_order_purchase_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_order_purchase_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
 --fact_order_reviews
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_review_creation_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_review_creation_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.dim_review_answer_date AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.dim_review_answer_date AS
     SELECT *
-    FROM dsi_final_project_powerbi_dw.dim_date
+    FROM dsi_final_project_test_db.dim_date
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_fact_comment_topics AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.david_fact_comment_topics AS
     SELECT
         CAST(id_order_reviews AS INTEGER) AS id_order_reviews,
         review_id,
@@ -270,7 +282,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_fact_comment_topics AS
     FROM silver_csv_comment_topics
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_final_topic_analysis AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.david_final_topic_analysis AS
     SELECT
         topic,
         review_count,
@@ -282,7 +294,7 @@ CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_final_topic_analysis A
     FROM silver_csv_topic_analysis
 ;
 
-CREATE OR REPLACE VIEW dsi_final_project_powerbi_dw.david_topic_score_distribution AS
+CREATE OR REPLACE VIEW dsi_final_project_test_db.david_topic_score_distribution AS
     SELECT
         topic,
         review_score,
