@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 0
+        "x": 1558.3333839463669,
+        "y": 301.61291302187743
       },
       "nodes": [
         {
           "location": {
             "x": 1123.424429796496,
-            "y": 351.1208321959848
+            "y": 448.62351285030945
           },
           "nodeIndex": "dim_customers",
           "nodeLineageTag": "257b6285-dd33-44fe-bad3-e85a3b68a4f0",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 1126.491046078806,
-            "y": 780.81831741781491
+            "y": 878.32099807213956
           },
           "nodeIndex": "dim_orders",
           "nodeLineageTag": "67956d8f-a92f-4248-a53a-df67516b572d",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 531.06256995266085,
-            "y": 527.30347426428125
+            "y": 624.8061549186059
           },
           "nodeIndex": "dim_products",
           "nodeLineageTag": "68b0e63d-06ee-45da-afa4-60e333dfe308",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 2993.8109501299296,
-            "y": 537.24414135945983
+            "y": 634.74682201378448
           },
           "nodeIndex": "dim_purchase_date",
           "nodeLineageTag": "ee21a08c-3c69-4cc3-bb48-144acc2fd814",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 242.18056671659718,
-            "y": 526.12340411590731
+            "y": 623.626084770232
           },
           "nodeIndex": "dim_sellers",
           "nodeLineageTag": "d71f5df0-f519-4aa6-8205-3a3d02300030",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 200.39061209442,
-            "y": 1157.3607107897897
+            "y": 1254.8633914441143
           },
           "nodeIndex": "dim_shipping_limit_date",
           "nodeLineageTag": "82a170b6-6d28-4604-b3f3-9119446c660e",
@@ -89,7 +89,7 @@
         {
           "location": {
             "x": 766.6136196585519,
-            "y": 858.58060977801949
+            "y": 956.08329043234414
           },
           "nodeIndex": "fact_order_items",
           "nodeLineageTag": "6b9535f3-6afe-4e9a-8955-16e2e9f8c0bb",
@@ -102,7 +102,7 @@
         {
           "location": {
             "x": 1430.7941195277979,
-            "y": 1063.3950815293178
+            "y": 1160.8977621836425
           },
           "nodeIndex": "fact_order_reviews",
           "nodeLineageTag": "8c1846a6-9e70-4588-81d1-7d1d2c778d1f",
@@ -115,7 +115,7 @@
         {
           "location": {
             "x": 1136.2302816121191,
-            "y": 1325.10288125256
+            "y": 1422.6055619068848
           },
           "nodeIndex": "fact_order_payments",
           "nodeLineageTag": "686afce1-6373-4270-8e6d-30757ddc838b",
@@ -128,7 +128,7 @@
         {
           "location": {
             "x": 1906.2912690481342,
-            "y": 226.06273684732423
+            "y": 323.56541750164888
           },
           "nodeIndex": "tbl_measures_patrick",
           "nodeLineageTag": "eb5bb8ec-ae9a-4946-974e-8aacf78f509d",
@@ -141,7 +141,7 @@
         {
           "location": {
             "x": 1925.9199179242105,
-            "y": 534.54757018681994
+            "y": 632.05025084114459
           },
           "nodeIndex": "dim_approval_date",
           "nodeLineageTag": "6005a653-2855-46ad-a061-c38ea2bdf127",
@@ -154,7 +154,7 @@
         {
           "location": {
             "x": 2188.0714988052414,
-            "y": 530.57513034700742
+            "y": 628.07781100133207
           },
           "nodeIndex": "dim_carrier_date",
           "nodeLineageTag": "a11d4d2c-841e-4775-bd42-3eb56f59a42b",
@@ -167,7 +167,7 @@
         {
           "location": {
             "x": 2452.2092996061788,
-            "y": 534.54757018681994
+            "y": 632.05025084114459
           },
           "nodeIndex": "dim_delivered_date",
           "nodeLineageTag": "05840b4d-3103-455d-a4e1-ede95cceaaca",
@@ -180,7 +180,7 @@
         {
           "location": {
             "x": 2720.3195402469287,
-            "y": 534.54757018681994
+            "y": 632.05025084114459
           },
           "nodeIndex": "dim_estimated_delivery_date",
           "nodeLineageTag": "74491695-14b1-468b-8b44-d138401b819e",
@@ -193,7 +193,7 @@
         {
           "location": {
             "x": 1145.2365433539146,
-            "y": 1686.0351152926164
+            "y": 1783.5377959469411
           },
           "nodeIndex": "dim_order_purchase_date",
           "nodeLineageTag": "b5a06bbd-c0ac-4b96-853b-604366f32072",
@@ -206,7 +206,7 @@
         {
           "location": {
             "x": 1914.8514742345074,
-            "y": 1327.1047948069577
+            "y": 1424.6074754612823
           },
           "nodeIndex": "dim_review_answer_date",
           "nodeLineageTag": "308934a8-a6e8-49f0-b6c9-8ca9f9d472f2",
@@ -219,7 +219,7 @@
         {
           "location": {
             "x": 2196.76407202519,
-            "y": 1329.1921970162743
+            "y": 1426.694877670599
           },
           "nodeIndex": "dim_review_creation_date",
           "nodeLineageTag": "0fb85af0-abd6-4a7f-bf4e-f37878f9aa19",
@@ -232,7 +232,7 @@
         {
           "location": {
             "x": 2209.4795696968358,
-            "y": 195.00536130864927
+            "y": 292.50804196297395
           },
           "nodeIndex": "tbl_measures_jakob",
           "nodeLineageTag": "753f2bbb-58da-4369-86e0-af2f4c0478b3",
@@ -245,7 +245,7 @@
         {
           "location": {
             "x": 3245.2527006336472,
-            "y": 1805.9371778259992
+            "y": 1903.4398584803239
           },
           "nodeIndex": "david_dim_transport_type",
           "nodeLineageTag": "b0b5b36c-720a-4bd4-b8ac-1fb375682ac3",
@@ -258,7 +258,7 @@
         {
           "location": {
             "x": 3243.0622244431706,
-            "y": 1580.9045354719437
+            "y": 1678.4072161262684
           },
           "nodeIndex": "david_dim_customer_order_distribution",
           "nodeLineageTag": "556d6e6d-f6b5-4807-9808-fc1532130a36",
@@ -271,7 +271,7 @@
         {
           "location": {
             "x": 3245.1574625384083,
-            "y": 1364.0698576551495
+            "y": 1461.5725383094741
           },
           "nodeIndex": "david_dim_customer_type",
           "nodeLineageTag": "d9d6ae73-3cd6-4f88-acfe-dd1085af7702",
@@ -284,7 +284,7 @@
         {
           "location": {
             "x": 3514.3955577765037,
-            "y": 1364.5112444135957
+            "y": 1462.0139250679204
           },
           "nodeIndex": "david_dim_customer_revenue_bucket",
           "nodeLineageTag": "b17b77be-682f-4596-958a-f40393e8009e",
@@ -297,7 +297,7 @@
         {
           "location": {
             "x": 2640.1054878099189,
-            "y": 208.80274446821056
+            "y": 306.30542512253521
           },
           "nodeIndex": "david_measure_tbl",
           "nodeLineageTag": "9d4bc608-c5e9-495f-b8a8-b1efdcabda83",
@@ -310,7 +310,7 @@
         {
           "location": {
             "x": 2757.2328135926332,
-            "y": 1023.2340876894699
+            "y": 1120.7367683437947
           },
           "nodeIndex": "david_fact_comment_topics",
           "nodeLineageTag": "7ac8ec26-40d6-4c0f-a1d7-bd9268a1c43a",
@@ -323,7 +323,7 @@
         {
           "location": {
             "x": 2755.4684567912814,
-            "y": 1385.5654396728314
+            "y": 1483.0681203271561
           },
           "nodeIndex": "david_final_topic_analysis",
           "nodeLineageTag": "611bbd5e-b989-46ea-8176-79c6318072e3",
@@ -336,12 +336,25 @@
         {
           "location": {
             "x": 2759.5677178686733,
-            "y": 1748.1925065161017
+            "y": 1845.6951871704264
           },
           "nodeIndex": "david_topic_score_distribution",
           "nodeLineageTag": "3dee96ec-6bf9-485b-b18d-746a4ce84284",
           "size": {
             "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3463.9547621168049,
+            "y": 979.30272122100553
+          },
+          "nodeIndex": "ML_Data_Warehouse_Flat",
+          "nodeLineageTag": "10bff6ed-009c-47cd-928f-720af228ae1c",
+          "size": {
+            "height": 200,
             "width": 234
           },
           "zIndex": 0

@@ -388,38 +388,6 @@ table dim_orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column product_size = ```
-			
-			VAR Laenge = CALCULATE(MAX('dim_products'[product_length_cm]), EARLIER('dim_products'[product_id]))
-			VAR Hoehe = CALCULATE(MAX('dim_products'[product_height_cm]), EARLIER('dim_products'[product_id]))
-			VAR Breite = CALCULATE(MAX('dim_products'[product_width_cm]), EARLIER('dim_products'[product_id]))
-			
-			VAR VolumenLiters = (Laenge * Hoehe * Breite) / 1000
-			
-			VAR MaxKante = 
-			    IF(
-			        Laenge > Hoehe, 
-			        IF(Laenge > Breite, Laenge, Breite), 
-			        IF(Hoehe > Breite, Hoehe, Breite)
-			    )
-			
-			RETURN
-			SWITCH(
-			    TRUE(),
-			    ISBLANK(VolumenLiters) || VolumenLiters = 0, "Unbekannt",
-			    VolumenLiters <= 5, "1. Kleinpaket bis 5 L",
-			    VolumenLiters <= 25, "2. Mediumpaket bis 25 L",
-			    VolumenLiters <= 60 && MaxKante < 90, "3. Großpaket bis 60L",
-			    "4. Sperrgut über 60L oder Kante >90cm"
-			)
-			
-			
-			```
-		lineageTag: 50c0689a-aa8f-47aa-82be-17827c8f9ed0
-		summarizeBy: none
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'david_Delivery Variance Days' =
 			
 			IF(

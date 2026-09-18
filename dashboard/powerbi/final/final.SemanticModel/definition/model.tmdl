@@ -45,6 +45,7 @@ ref table david_measure_tbl
 ref table david_fact_comment_topics
 ref table david_final_topic_analysis
 ref table david_topic_score_distribution
+ref table ML_Data_Warehouse_Flat
 
 ref cultureInfo de-DE
 
