@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "25a8b8203ad2b2a28d84",
+  "position": {
+    "x": 1701.1550151975684,
+    "y": 18.966565349544073,
+    "z": 6017,
+    "height": 170.69908814589667,
+    "width": 189.66565349544072,
+    "tabOrder": 6017
+  },
+  "visual": {
+    "visualType": "listSlicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "dim_orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "order_purchase_timestamp"
+                        }
+                      },
+                      "Hierarchy": "Datumshierarchie"
+                    }
+                  },
+                  "Level": "Jahr"
+                }
+              },
+              "queryRef": "dim_orders.order_purchase_timestamp.Variation.Datumshierarchie.Jahr",
+              "nativeQueryRef": "order_purchase_timestamp Jahr",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "PropertyVariationSource": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "dim_orders"
+                          }
+                        },
+                        "Name": "Variation",
+                        "Property": "order_purchase_timestamp"
+                      }
+                    },
+                    "Hierarchy": "Datumshierarchie"
+                  }
+                },
+                "Level": "Jahr"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Year of Purchase'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f921119f15432288a29e",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_orders"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "order_purchase_timestamp"
+                  }
+                },
+                "Hierarchy": "Datumshierarchie"
+              }
+            },
+            "Level": "Jahr"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

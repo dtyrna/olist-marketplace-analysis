@@ -1,0 +1,76 @@
+table fact_order_payments
+	lineageTag: 686afce1-6373-4270-8e6d-30757ddc838b
+
+	column payment_key
+		dataType: int64
+		formatString: 0
+		lineageTag: b5c27b54-439d-4d6a-a01f-c860a2271c8a
+		summarizeBy: sum
+		sourceColumn: payment_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: e40e109e-d894-4a9c-b7e7-183d5eb94d5c
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_purchase_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: bce8a97c-fac2-48f5-aa34-b76d650155e9
+		summarizeBy: none
+		sourceColumn: order_purchase_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_sequential
+		dataType: int64
+		formatString: 0
+		lineageTag: 130991ea-d172-4496-ba65-d646ad0623cb
+		summarizeBy: sum
+		sourceColumn: payment_sequential
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_installments
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d1c237f-f9ac-4b63-9f31-fb8fbadddd4f
+		summarizeBy: sum
+		sourceColumn: payment_installments
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: 39475814-c97b-48ca-81e5-2d54e218c8bc
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_value
+		dataType: double
+		lineageTag: 78e7ea30-7db2-440c-bd45-48bfe4db1175
+		summarizeBy: sum
+		sourceColumn: payment_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_order_payments = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    fact_order_payments_Table = dsi_final_project_powerbi_dw_Schema{[Name="fact_order_payments",Kind="Table"]}[Data]
+				in
+				    fact_order_payments_Table
+

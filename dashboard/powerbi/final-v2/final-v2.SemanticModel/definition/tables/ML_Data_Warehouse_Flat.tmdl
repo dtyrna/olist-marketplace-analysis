@@ -1,0 +1,78 @@
+table ML_Data_Warehouse_Flat
+	lineageTag: 10bff6ed-009c-47cd-928f-720af228ae1c
+
+	column order_id
+		lineageTag: 2a409598-5c44-4e6b-bc7c-7e99e093c71e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [order_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		formatString: 0
+		lineageTag: 6a69cce9-7659-45ae-91a1-57ef20cd2084
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [review_score]
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_category
+		lineageTag: 5b3b6b10-5add-4572-8afb-5527ad7f69ec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [distance_category]
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_key
+		formatString: 0
+		lineageTag: cdd108db-bfe7-446b-982d-d1d2d3e243b9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [purchase_key]
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivered_key
+		formatString: 0
+		lineageTag: 56dc8f8c-1ef2-449b-a37d-54bfaeb44346
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [delivered_key]
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimated_key
+		formatString: 0
+		lineageTag: ce2a974d-84a7-4842-80e4-7ca68e1bd46c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [estimated_key]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ML_Data_Warehouse_Flat = calculated
+		mode: import
+		source = ```
+				
+				SELECTCOLUMNS(
+				    NATURALINNERJOIN(
+				        fact_order_reviews,
+				        dim_orders
+				    ),
+				    "order_id", dim_orders[order_id],
+				    "review_score", [review_score],
+				    "distance_category", dim_orders[distance_categorys],
+				    
+				   
+				    "purchase_key", RELATED('dim_purchase_date'[date_key]),
+				    "delivered_key", RELATED('dim_delivered_date'[date_key]),
+				    "estimated_key", RELATED('dim_estimated_delivery_date'[date_key])
+				)
+				
+				```
+
+	annotation PBI_Id = 299c86e62cf241e0bbae3e34f58d0981
+

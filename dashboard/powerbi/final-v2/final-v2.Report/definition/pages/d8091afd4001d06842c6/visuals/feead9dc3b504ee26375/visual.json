@@ -1,0 +1,153 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "feead9dc3b504ee26375",
+  "position": {
+    "x": 317.09618874773139,
+    "y": 336.26134301270417,
+    "z": 2,
+    "height": 714.33756805807616,
+    "width": 642.90381125226861,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ML_Data_Warehouse_Flat"
+                        }
+                      },
+                      "Property": "delivered_key"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(ML_Data_Warehouse_Flat.delivered_key)",
+              "nativeQueryRef": "Summe von delivered_key"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "ML_Data_Warehouse_Flat"
+                      }
+                    },
+                    "Property": "delivered_key"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'import matplotlib.pyplot as plt\n\n# ==========================================\n# 🚨 VISUAL 2: EVALUATION METRICS REPORT\n# ==========================================\nmetrics_summary = (\n    f\"Results\\n\"\n    f\"{\"=\"*50}\\n\"\n    f\"▶ Accuracy: 75.27%\\n\"\n    f\"▶ Cross-Val F1-Score: 75.08%\\n\"\n    f\"{\"=\"*50}\"\n)\n\nreport_text = \"\"\"\n📋 Precision & Recall:\n\n              precision    recall  f1-score   support\n\n    Schlecht       0.41      0.40      0.40      4062\n         Gut       0.84      0.85      0.84     15210\n\n    accuracy                           0.75     19272\n   macro avg       0.63      0.62      0.62     19272\nweighted avg       0.75      0.75      0.75     19272\n\"\"\"\n\n# Leeren Plot erstellen, um nur Text anzuzeigen\nfig, ax = plt.subplots(figsize=(6, 5))\nax.axis(''off'')  # Versteckt das Koordinatensystem komplett\n\n# Text blockweise platzieren (monospace sorgt für die perfekte Tabellenstruktur)\nax.text(0.01, 0.95, metrics_summary, fontsize=11, weight=\"bold\", family=''monospace'', va=''top'')\nax.text(0.01, 0.65, report_text, fontsize=10, family=''monospace'', va=''top'')\n\nplt.tight_layout()\nplt.show()\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Evaluationmatrix '"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ad210cb57c27c01710ec",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ML_Data_Warehouse_Flat"
+                  }
+                },
+                "Property": "delivered_key"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

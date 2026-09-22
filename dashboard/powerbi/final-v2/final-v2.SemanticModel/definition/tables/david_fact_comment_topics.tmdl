@@ -1,0 +1,73 @@
+table david_fact_comment_topics
+	lineageTag: 7ac8ec26-40d6-4c0f-a1d7-bd9268a1c43a
+
+	column id_order_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 4834e985-7793-4c5e-a4ad-276b793b5a3f
+		summarizeBy: sum
+		sourceColumn: id_order_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_id
+		dataType: string
+		lineageTag: e2d4523b-fe77-4d7c-9903-b15c90b56b82
+		summarizeBy: none
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 1f3a565e-609b-483d-a53f-a2df7bb7bbef
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: int64
+		formatString: 0
+		lineageTag: a92cdfb3-efc4-4eb7-a71b-275ff3ca3b9d
+		summarizeBy: sum
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_message_en
+		dataType: string
+		lineageTag: d72d044c-eb60-4450-a2d4-e888c693d441
+		summarizeBy: none
+		sourceColumn: review_comment_message_en
+
+		annotation SummarizationSetBy = Automatic
+
+	column topic
+		dataType: string
+		lineageTag: d0326d76-1222-440e-97ad-a8319e31dda2
+		summarizeBy: none
+		sourceColumn: topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_negative
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 18726c90-e4f8-4d2e-9aa6-0ae0a13dff63
+		summarizeBy: none
+		sourceColumn: is_negative
+
+		annotation SummarizationSetBy = Automatic
+
+	partition david_fact_comment_topics = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    david_fact_comment_topics_Table = dsi_final_project_powerbi_dw_Schema{[Name="david_fact_comment_topics",Kind="Table"]}[Data]
+				in
+				    david_fact_comment_topics_Table
+

@@ -1,0 +1,275 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0d50c146c67eb0020ad0",
+  "position": {
+    "x": 31.666666666666668,
+    "y": 428.33333333333337,
+    "z": 0,
+    "height": 615,
+    "width": 1680,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_sellers"
+                    }
+                  },
+                  "Property": "seller_id"
+                }
+              },
+              "queryRef": "dim_sellers.seller_id",
+              "nativeQueryRef": "seller_id",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tbl_measures_patrick"
+                    }
+                  },
+                  "Property": "Number of Orders per Seller (Single-Seller-Order)"
+                }
+              },
+              "queryRef": "tbl_measures_patrick.Number of Orders per Seller (Single-Seller-Order)",
+              "nativeQueryRef": "Number of Orders per Seller (Single-Seller-Order)"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tbl_measures_patrick"
+                    }
+                  },
+                  "Property": "Average Processing Time in days (Single-Seller-Order)"
+                }
+              },
+              "queryRef": "tbl_measures_patrick.Average Processing Time in days (Single-Seller-Order)",
+              "nativeQueryRef": "Average Processing Time in days (Single-Seller-Order)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "tbl_measures_patrick"
+                  }
+                },
+                "Property": "Average Processing Time in days (Single-Seller-Order)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "dynamicLabelValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tbl_measures_patrick"
+                    }
+                  },
+                  "Property": "Number of Orders per Seller (Single-Seller-Order)"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "highlightMatching": 1
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Average Processing Times per Seller in Days, with Number of Orders'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Single Seller Orders > 100'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0e547db6624dea6857aa",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "Number of Orders per Seller (Single-Seller-Order)"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "tbl_measures_patrick",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "t"
+                        }
+                      },
+                      "Property": "Number of Orders per Seller (Single-Seller-Order)"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "100L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "bf1dad38715e063b5a0d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_sellers"
+              }
+            },
+            "Property": "seller_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5bfe391bc46356b50d3a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_measures_patrick"
+              }
+            },
+            "Property": "Average Processing Time in days (Single-Seller-Order)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

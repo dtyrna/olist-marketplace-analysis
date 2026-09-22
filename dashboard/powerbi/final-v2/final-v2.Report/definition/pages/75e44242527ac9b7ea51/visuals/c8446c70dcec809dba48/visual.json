@@ -1,0 +1,158 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c8446c70dcec809dba48",
+  "position": {
+    "x": 826,
+    "y": 526,
+    "z": 7000,
+    "height": 220,
+    "width": 660,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "david_dim_transport_type"
+                    }
+                  },
+                  "Property": "Transport Type"
+                }
+              },
+              "queryRef": "dim_transport_type.Transport Type",
+              "nativeQueryRef": "Transport Type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "david_measure_tbl"
+                    }
+                  },
+                  "Property": "Late Delivery Rate - Transport Type"
+                }
+              },
+              "queryRef": "dim_transport_type.Late Delivery Rate - Transport Type",
+              "nativeQueryRef": "Late Delivery Rate - Transport Type",
+              "format": "0.00 %;-0.00 %;0.00 %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "david_measure_tbl"
+                  }
+                },
+                "Property": "Late Delivery Rate - Transport Type"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Late Delivery Rate by Transport Type'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "35647f92853a72d0abb2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_dim_transport_type"
+              }
+            },
+            "Property": "Transport Type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ec0d886563598d93379c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "david_measure_tbl"
+              }
+            },
+            "Property": "Late Delivery Rate - Transport Type"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
