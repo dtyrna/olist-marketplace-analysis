@@ -1,0 +1,50 @@
+table david_topic_score_distribution
+	lineageTag: 3dee96ec-6bf9-485b-b18d-746a4ce84284
+
+	column topic
+		dataType: string
+		lineageTag: 17ef78f7-95a4-4a98-8d87-59ccf150e62a
+		summarizeBy: none
+		sourceColumn: topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 57bf4578-2e47-40a9-9cc2-14e5bea2ed02
+		summarizeBy: sum
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 8762f331-63be-4360-8d1f-501a04d1a266
+		summarizeBy: sum
+		sourceColumn: review_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_share
+		dataType: double
+		lineageTag: 982cf639-ceaf-467f-9ab0-e02f264c9ec0
+		summarizeBy: sum
+		sourceColumn: score_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition david_topic_score_distribution = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    david_topic_score_distribution_Table = dsi_final_project_powerbi_dw_Schema{[Name="david_topic_score_distribution",Kind="Table"]}[Data]
+				in
+				    david_topic_score_distribution_Table
+

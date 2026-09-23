@@ -1,0 +1,116 @@
+table fact_order_items
+	lineageTag: 6b9535f3-6afe-4e9a-8955-16e2e9f8c0bb
+
+	column order_item_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e52e3a3f-4a3d-4ab1-901f-472840b43bc7
+		summarizeBy: sum
+		sourceColumn: order_item_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 2489b25b-ae50-46b3-a19e-ca72cda16664
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 63992800-273e-46a1-b4df-a61d7a0dd4b1
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: e0388c1e-9914-472d-a023-24ae0a02da0f
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_limit_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: f12858b5-3093-4551-8049-ef51235c53b4
+		summarizeBy: none
+		sourceColumn: shipping_limit_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 338805f3-5b41-4851-a0c0-1d0291d4bce7
+		summarizeBy: sum
+		sourceColumn: order_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: 3c4d6849-650d-4ac6-936d-fc0b4fcff1ca
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column freight_value
+		dataType: double
+		lineageTag: ad34d50b-0d59-4eb0-b360-f5c994d040a2
+		summarizeBy: sum
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_size = ```
+			
+			VAR Laenge = RELATED('dim_products'[product_length_cm])
+			VAR Hoehe = RELATED('dim_products'[product_height_cm])
+			VAR Breite = RELATED('dim_products'[product_width_cm])
+			
+			VAR VolumenLiters = (Laenge * Hoehe * Breite) / 1000
+			
+			VAR MaxKante = 
+			    IF(
+			        Laenge > Hoehe, 
+			        IF(Laenge > Breite, Laenge, Breite), 
+			        IF(Hoehe > Breite, Hoehe, Breite)
+			    )
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(VolumenLiters) || VolumenLiters = 0, "Unknown",
+			    VolumenLiters <= 5, "1. Small parcel up to 5 l",
+			    VolumenLiters <= 25, "2. Medium parcel up to 25 l",
+			    VolumenLiters <= 60 && MaxKante < 90, "3. Large parcel up to 60 l",
+			    "4. Oversized freight up to  60 l or larger than > 90 cm"
+			)
+			
+			```
+		lineageTag: eab528a8-851b-4472-8d83-a548fa6784c6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_order_items = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    fact_order_items_Table = dsi_final_project_powerbi_dw_Schema{[Name="fact_order_items",Kind="Table"]}[Data]
+				in
+				    fact_order_items_Table
+

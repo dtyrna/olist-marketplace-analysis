@@ -1,0 +1,250 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8823b3f0674028998685",
+  "position": {
+    "x": 960,
+    "y": 336.26134301270417,
+    "z": 1,
+    "height": 714.33756805807616,
+    "width": 747.44101633393825,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ML_Data_Warehouse_Flat"
+                    }
+                  },
+                  "Property": "review_score"
+                }
+              },
+              "queryRef": "Sum(ML_Data_Warehouse_Flat.review_score)",
+              "nativeQueryRef": "review_score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ML_Data_Warehouse_Flat"
+                    }
+                  },
+                  "Property": "distance_category"
+                }
+              },
+              "queryRef": "ML_Data_Warehouse_Flat.distance_category",
+              "nativeQueryRef": "distance_category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ML_Data_Warehouse_Flat"
+                    }
+                  },
+                  "Property": "purchase_key"
+                }
+              },
+              "queryRef": "Sum(ML_Data_Warehouse_Flat.purchase_key)",
+              "nativeQueryRef": "purchase_key"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ML_Data_Warehouse_Flat"
+                    }
+                  },
+                  "Property": "delivered_key"
+                }
+              },
+              "queryRef": "Sum(ML_Data_Warehouse_Flat.delivered_key)",
+              "nativeQueryRef": "delivered_key"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ML_Data_Warehouse_Flat"
+                    }
+                  },
+                  "Property": "estimated_key"
+                }
+              },
+              "queryRef": "Sum(ML_Data_Warehouse_Flat.estimated_key)",
+              "nativeQueryRef": "estimated_key"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ML_Data_Warehouse_Flat"
+                  }
+                },
+                "Property": "review_score"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'import matplotlib.pyplot as plt\nimport numpy as np\nimport seaborn as sns\n\n# ==========================================\n# 🚨 VISUAL 1: CONFUSION MATRIX ONLY\n# ==========================================\ntn, fp, fn, tp = 1607, 2455, 2311, 12899\ncm = np.array([[tn, fp], [fn, tp]])\n\nfig, ax = plt.subplots(figsize=(6, 5))\n\nsns.heatmap(\n    cm, \n    annot=True, \n    fmt=\"d\", \n    cmap=\"Blues\", \n    xticklabels=[''Schlecht (1-3★)'', ''Gut (4-5★)''], \n    yticklabels=[''Schlecht (1-3★)'', ''Gut (4-5★)''], \n    cbar=False, \n    annot_kws={\"size\": 14, \"weight\": \"bold\"},\n    ax=ax\n)\n\n\nplt.title(\"Model-prediction vs. reality\\n(Confusion matrix)\", fontsize=12, weight=\"bold\", pad=15)\nplt.ylabel(''True score (Gold Layer)'', fontsize=11, weight=\"bold\", labelpad=10)\nplt.xlabel(''Predicted score (Model)'', fontsize=11, weight=\"bold\", labelpad=10)\n\nplt.tight_layout()\nplt.show()\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Confusionmatrix '"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e49daf6c30c2aa96b638",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ML_Data_Warehouse_Flat"
+              }
+            },
+            "Property": "distance_category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "34c1cded7a72aa024635",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ML_Data_Warehouse_Flat"
+              }
+            },
+            "Property": "review_score"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0483d6253705c4933ab0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ML_Data_Warehouse_Flat"
+              }
+            },
+            "Property": "purchase_key"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "027d2f30420c773140a0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ML_Data_Warehouse_Flat"
+              }
+            },
+            "Property": "delivered_key"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f8b7eb7c2c5d65100e66",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ML_Data_Warehouse_Flat"
+              }
+            },
+            "Property": "estimated_key"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

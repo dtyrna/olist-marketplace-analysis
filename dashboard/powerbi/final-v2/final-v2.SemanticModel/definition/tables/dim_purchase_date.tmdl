@@ -1,0 +1,225 @@
+table dim_purchase_date
+	lineageTag: ee21a08c-3c69-4cc3-bb48-144acc2fd814
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 1db2fe67-5ffd-405a-b333-efba7e178484
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 7750baa0-59fa-4b2c-aa39-1377c4044074
+		summarizeBy: none
+		sourceColumn: full_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_year
+		dataType: int64
+		formatString: 0
+		lineageTag: f94578de-aac0-4031-ba27-d6b3216bc897
+		summarizeBy: none
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 65faa17d-647a-48ef-b8d2-39df6c4fa3dd
+		summarizeBy: none
+		sourceColumn: quarter_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_name
+		dataType: string
+		lineageTag: ad240138-c06b-4980-a7a9-f54776390797
+		summarizeBy: none
+		sourceColumn: quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_quarter_name
+		dataType: string
+		lineageTag: 5c4771d8-96e7-4b07-a687-4103a8dd6764
+		summarizeBy: none
+		sourceColumn: year_quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 5bc9cee8-8c05-4386-894c-25dbb53fc17f
+		summarizeBy: none
+		sourceColumn: month_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: de9b806b-77e0-439c-8cff-76adcf60ecb8
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month_key
+		dataType: int64
+		formatString: 0
+		lineageTag: a8ce5944-c30c-4f69-a46a-6d015c38064a
+		summarizeBy: none
+		sourceColumn: year_month_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month_name
+		dataType: string
+		lineageTag: 0b768cb1-e28d-4711-be41-06bc024ba9d2
+		summarizeBy: none
+		sourceColumn: year_month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: f3de7341-907e-4a75-80c1-5618d8285c5f
+		summarizeBy: none
+		sourceColumn: iso_week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week_year
+		dataType: int64
+		formatString: 0
+		lineageTag: a5a00c86-4735-4702-b8e6-438e1754ac4d
+		summarizeBy: none
+		sourceColumn: iso_week_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_year_week_name
+		dataType: string
+		lineageTag: 14610d08-90db-4b53-bf5a-b5bcd41595cc
+		summarizeBy: none
+		sourceColumn: iso_year_week_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_weekday_no
+		dataType: int64
+		formatString: 0
+		lineageTag: ceb01937-9e17-4731-b304-c6120f8a7978
+		summarizeBy: none
+		sourceColumn: iso_weekday_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		lineageTag: adcf3e62-be59-458f-84bd-a7cbaa62f7fd
+		summarizeBy: none
+		sourceColumn: weekday_name
+		sortByColumn: iso_weekday_no
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bf8c85c8-3498-42a9-9903-34546736320e
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c7e12c2a-b04e-4cdf-b36a-672b46d91c04
+		summarizeBy: none
+		sourceColumn: month_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12f5947f-f6aa-4464-9764-52c3fe98bd7a
+		summarizeBy: none
+		sourceColumn: month_end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quarter_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6bd0585f-e562-4f13-b9f4-de8b582e2ee8
+		summarizeBy: none
+		sourceColumn: quarter_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quarter_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4f12de00-89f4-403b-b016-43ee1c2706dc
+		summarizeBy: none
+		sourceColumn: quarter_end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 29f494cd-dada-43c8-9b40-2635e5dbebae
+		summarizeBy: none
+		sourceColumn: year_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7039ae8b-6039-490e-a1e1-22793800e980
+		summarizeBy: none
+		sourceColumn: year_end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_purchase_date = m
+		mode: import
+		source =
+				let
+				    Quelle = Odbc.DataSource("dsn=Amazon_Athena_Power_BI", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Quelle{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    dsi_final_project_powerbi_dw_Schema = AwsDataCatalog_Database{[Name="dsi_final_project_powerbi_dw",Kind="Schema"]}[Data],
+				    dim_purchase_date_Table = dsi_final_project_powerbi_dw_Schema{[Name="dim_purchase_date",Kind="Table"]}[Data]
+				in
+				    dim_purchase_date_Table
+

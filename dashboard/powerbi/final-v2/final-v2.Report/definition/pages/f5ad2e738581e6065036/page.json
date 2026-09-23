@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "f5ad2e738581e6065036",
+  "displayName": "Patrick - Optimisation of Processing Times",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "0d50c146c67eb0020ad0",
+      "target": "4340448e59d82a53d0b2",
+      "type": "NoFilter"
+    }
+  ]
+}
