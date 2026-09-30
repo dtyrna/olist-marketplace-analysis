@@ -4,48 +4,48 @@ from io import BytesIO, StringIO
 import numpy as np
 import pandas as pd
 from unidecode import unidecode
+import os
 
 
-S3_BUCKET = "dsi-final-project-360964564955-eu-central-1-an"
-SOURCE_PREFIX = "_raw/"
-TARGET_PREFIX = "test/"
+s3 = boto3.client("s3")
+
+bucket = os.environ['S3_BUCKET']
+source_prefix = os.environ['SOURCE_PREFIX']
+target_prefix = os.environ['TARGET_PREFIX']
 
 
 SOURCE_FILES = {
-    "customers": "_raw/olist_customers_dataset.csv",
-    "geolocation": "_raw/olist_geolocation_dataset.csv",
-    "order_items": "_raw/olist_order_items_dataset.csv",
-    "order_payments": "_raw/olist_order_payments_dataset.csv",
-    "order_reviews": "_raw/olist_order_reviews_dataset_en.csv",
-    "orders": "_raw/olist_orders_dataset.csv",
-    "products": "_raw/olist_products_dataset.csv",
-    "sellers": "_raw/olist_sellers_dataset.csv",
-    "category_translation": (
-        "_raw/product_category_name_translation.csv"
+"customers": f"{source_prefix}/olist_customers_dataset.csv",
+"geolocation": f"{source_prefix}/olist_geolocation_dataset.csv",
+"order_items": f"{source_prefix}/olist_order_items_dataset.csv",
+"order_payments": f"{source_prefix}/olist_order_payments_dataset.csv",
+"order_reviews": f"{source_prefix}/olist_order_reviews_dataset_en.csv",
+"orders": f"{source_prefix}/olist_orders_dataset.csv",
+"products": f"{source_prefix}/olist_products_dataset.csv",
+"sellers": f"{source_prefix}/olist_sellers_dataset.csv",
+"category_translation": (
+    f"{source_prefix}/product_category_name_translation.csv"
     ),
 }
 
 
 TARGET_FILES = {
-    "customers": "test/customers/silver_customers.csv",
-    "geolocation": "test/geolocation/silver_geolocation.csv",
-    "order_items": "test/order_items/silver_order_items.csv",
+    "customers": f"{target_prefix}/customers/silver_customers.csv",
+    "geolocation": f"{target_prefix}/geolocation/silver_geolocation.csv",
+    "order_items": f"{target_prefix}/order_items/silver_order_items.csv",
     "order_payments": (
-        "test/order_payments/silver_order_payments.csv"
+        f"{target_prefix}/order_payments/silver_order_payments.csv"
     ),
     "order_reviews": (
-        "test/order_reviews/silver_order_reviews_en.csv"
+        f"{target_prefix}/order_reviews/silver_order_reviews_en.csv"
     ),
-    "orders": "test/orders/silver_orders.csv",
-    "products": "test/products/silver_products.csv",
-    "sellers": "test/sellers/silver_sellers.csv",
+    "orders": f"{target_prefix}/orders/silver_orders.csv",
+    "products": f"{target_prefix}/products/silver_products.csv",
+    "sellers": f"{target_prefix}/sellers/silver_sellers.csv",
     "category_translation": (
-        "test/category_translation/silver_category_translation.csv"
+        f"{target_prefix}/category_translation/silver_category_translation.csv"
     ),
 }
-
-
-s3 = boto3.client("s3")
 
 
 def load_csv_from_s3(bucket, key):
@@ -70,7 +70,7 @@ def load_source_data():
     Load all predefined source files from S3.
     """
     return {
-        name: load_csv_from_s3(S3_BUCKET, key)
+        name: load_csv_from_s3(bucket, key)
         for name, key in SOURCE_FILES.items()
     }
 
@@ -951,7 +951,12 @@ def validate_core_silver_datasets(
 
 
 def lambda_handler(event, context):
+    
+   
+    
+
     """Run the complete manual S3-to-S3 transformation workflow."""
+
     try:
         print("Lambda transformation started.")
         source_data = load_source_data()
@@ -1047,7 +1052,7 @@ def lambda_handler(event, context):
         for name, dataframe in transformed_data.items():
             save_csv_to_s3(
                 dataframe,
-                S3_BUCKET,
+                bucket,
                 TARGET_FILES[name],
             )
 
