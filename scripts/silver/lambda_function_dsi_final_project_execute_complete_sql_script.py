@@ -3,7 +3,7 @@ import boto3
 import time
 import re
 
-# AWS Clients initialisieren
+# AWS Clients init
 athena_client = boto3.client('athena')
 s3_client = boto3.client('s3')
 
@@ -45,7 +45,7 @@ def execute_athena_query(sql_query, database, s3_output):
         time.sleep(2)
 
 def lambda_handler(event, context):
-    # Konfiguration aus Umgebungsvariablen laden
+    # Config environment variables
     database = os.environ['ATHENA_DATABASE']
     s3_output = os.environ['S3_OUTPUT']
     script_bucket = os.environ['SCRIPT_S3_BUCKET']
