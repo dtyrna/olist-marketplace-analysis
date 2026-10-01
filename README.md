@@ -180,3 +180,136 @@ Machine Learning
 Business Recommendations
    ↓
 Power BI Dashboard / Streamlit Application
+
+
+
+
+Part David:
+
+## Customer, Order & Review Data Processing
+
+My contribution focused on the preparation and analysis of the **customer, order and review datasets**. The goal was to create a reliable analytical foundation for investigating customer satisfaction in relation to the order and delivery experience.
+
+### 1. Data Quality & Structural Validation
+
+The three datasets were initially assessed for:
+
+- data types and dataset structure
+- missing values
+- duplicate records
+- primary and foreign key integrity
+- timestamp consistency
+- completeness of review information
+
+The relational structure between the datasets was preserved throughout the preprocessing:
+
+**Customer → Order → Review**
+
+`customer_id` was used to connect customers with their orders, while `order_id` connected orders with their corresponding reviews.
+
+---
+
+### 2. Customer Data Preparation
+
+The customer dataset required comparatively little preprocessing. The main focus was on preserving the customer identifiers and their relational structure.
+
+Both `customer_id` and `customer_unique_id` were retained because they serve different analytical purposes:
+
+- `customer_id` identifies the customer record associated with an order.
+- `customer_unique_id` allows customer-level behavior to be analyzed across multiple orders.
+
+This distinction was important when switching between order-level and customer-level analyses.
+
+---
+
+### 3. Order Lifecycle Preprocessing
+
+The order dataset contains several timestamps describing the order lifecycle:
+
+**Purchase → Approval → Carrier Handover → Customer Delivery**
+
+The timestamp columns were converted into appropriate datetime formats to enable time-based analysis and delivery-related calculations.
+
+Missing timestamps were **not automatically imputed or removed**, as missingness can indicate an incomplete order lifecycle rather than a technical data error.
+
+The order data was therefore validated for chronological consistency, and potentially problematic records were identified through validation checks. Records were only excluded from specific analyses when the required timestamps were unavailable.
+
+This approach prevented artificial values from distorting operational metrics such as delivery duration.
+
+---
+
+### 4. Review Data & Text Preparation
+
+Review data was separated into two analytical components:
+
+- **Structured feedback:** `review_score`
+- **Unstructured feedback:** `review_comment_title` and `review_comment_message`
+
+The numerical review score was retained as the primary quantitative measure of customer satisfaction.
+
+Missing review comments were not interpreted as missing reviews, since customers can provide a score without writing a comment. Text-based analysis was therefore restricted to reviews containing usable written feedback.
+
+The available Portuguese review comments were translated into English while retaining the original review information for traceability.
+
+---
+
+### 5. Review Comment Classification
+
+To complement the numerical review scores, the written comments were analyzed to identify recurring customer-reported issues.
+
+The process consisted of:
+
+1. **Identifying relevant comments** containing usable customer feedback.
+2. **Defining analytical categories** based on recurring themes in the comments.
+3. **Mapping comments to categories** according to their content.
+4. **Creating a keyword dictionary** linking relevant expressions to the respective categories.
+5. **Validating the classification** using manually reviewed examples.
+6. **Refining the dictionary** based on misclassifications, missing keywords and ambiguous expressions.
+7. **Applying the validated classification** to the relevant review population.
+
+This transformed unstructured customer feedback into structured analytical variables that could be combined with review scores and order-related information.
+
+---
+
+### 6. Integrated Customer Satisfaction Analysis
+
+After preprocessing and validation, the customer, order and review datasets were integrated to analyze customer satisfaction in the context of the underlying order experience.
+
+The analysis combined:
+
+- customer behavior
+- order characteristics
+- delivery performance
+- numerical review scores
+- customer-reported issues from review comments
+
+This enabled the analysis to move beyond simply measuring **how satisfied customers were** and investigate **which operational and customer-reported patterns were associated with different satisfaction levels**.
+
+The analysis was interpreted as **associational rather than causal**, since the Olist dataset is observational.
+
+---
+
+### 7. Key Data Decisions
+
+Several preprocessing decisions were made to avoid unnecessary data loss or artificial information:
+
+| Data Issue | Decision | Reason |
+|---|---|---|
+| Missing order timestamps | Preserved | Missingness can represent an incomplete order lifecycle |
+| Missing review comments | Preserved | A customer can submit a score without written feedback |
+| Different customer IDs | Both retained | Required for order-level and customer-level analysis |
+| Invalid/inconsistent timestamps | Flagged and validated | Prevents distorted delivery metrics |
+| Review text | Analyzed separately | Text is only available for a subset of reviews |
+| Text categories | Validated before full application | Reduces classification errors |
+
+---
+
+### 8. Limitations
+
+The analysis has several limitations that need to be considered when interpreting the results:
+
+- Not every customer submits a review, creating potential review selection bias.
+- A large share of reviews contains a score without written comments, limiting the scope of text analysis.
+- Some orders have incomplete lifecycle timestamps, restricting delivery-related calculations.
+- Keyword-based comment classification may not fully capture context, ambiguity or previously unseen expressions.
+- The dataset is observational; identified relationships should therefore not be interpreted as causal effects.
