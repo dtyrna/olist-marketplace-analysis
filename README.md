@@ -29,8 +29,10 @@ Instead of relying on local files, we designed a production-ready, secure cloud 
 
 ### 🥈 Silver Layer (Serverless Preprocessing)
 * **Serverless Compute:** Python preprocessing notebooks were refactored into modular **AWS Lambda scripts** triggered by data arrival.
-* **Real-World Data Challenge Solved:** Faced severe inconsistencies with geographic data (missing coordinates for some zip codes, but hundreds of duplicate, conflicting GPS points for others). 
-* **The Solution:** We resolved this by grouping the data by zip code prefix and calculating a single **Centroid (mathematical average coordinate)** to aggregate the noise and approximate missing gaps. Potential distortions (Verzerrungen) are openly documented in the notebooks. Look for details in the scripts/silver/silver_clean_geo_location.order_items.product_category_names.ipynb
+* **Real-World Data Challenge Solved:** Faced severe inconsistencies with geographic data (missing coordinates for some zip codes, but hundreds of duplicate, conflicting GPS points for others).
+* **The Solution:** We resolved this pragmatically by grouping the data by zip code prefix and applying `keep='first'` to quickly remove redundant entries, keep the dataset lightweight, and stabilize          the pipeline. 
+* **Data Verification:** All preprocessing steps, text cleaning (using the `.join()` approach), and surrogate key creations are documented in the notebook: *scriptscripts/silver/silver_clean_geo_location.order_items.product_category_names.ipynb
+
 
 ### 🥇 Gold Layer (Cloud Analytics & Business Logic)
 * **Serverless Querying:** Utilized **AWS Athena** to run optimized **SQL** queries directly over our cleaned S3 files to build analytical aggregates without maintaining a costly database server.
