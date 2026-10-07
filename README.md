@@ -7,7 +7,10 @@ This project analyzes the Brazilian E-Commerce dataset provided by Olist. We bui
 
 The analysis will investigate:
 
-- Which sellers have high delivery delay rates?
+- Which sellers have much more processing time than the average?
+- Is long processing time linked to delayed deliveries?
+- Are incoming orders at the weekend, single categories or products responsible for delays?
+- Could order splitting increase processing time?
 - Which product categories receive lower review scores?
 - Which regions have particularly long delivery times?
 - Where are freight costs unusually high?
