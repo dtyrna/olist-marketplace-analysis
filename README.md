@@ -63,24 +63,9 @@ In a real enterprise environment, architecture is driven by budget constraints. 
 
 ---
 
-## 📊 Core Analytical Pillars & Machine Learning
-
-### 1. Customer Experience & Bottlenecks
-* **Key Predicitive Insight:** **The delivery process predicts with approximately 40% accuracy whether a customer review will fall into the top category (4+ Stars), proving that operational fulfillment is the single largest driver of platform loyalty."**.
-* Identified the carrier as critical point, since processing time was constant in all four distance categorys. 
-* Debunked the bulky goods hypothesis with EDA visuals. The review_score shows a marginal drop. --> (dashboard/powerbi/final/final.pbib)
-
-### 2. Predictive Analytics & Modeling 
-We built a predictive model to classify and flag negative customer experiences early.
-* **Algorithm:** Logistic Regression.
-* **Key Insight:** Through our feature importance analysis, we mathematically proved that **Delivery Time** had the strongest impact on customer satisfaction scores.
-* **Business-Driven ML Optimization:** To make the model actionable, we deliberately adjusted the classification threshold to **0.45**. By lowering the threshold, we intentionally shifted the model's sensitivity to accept more *False Positives* in order to maximize *Recall*. This strategic business choice ensures Olist proactively flags and retains at-risk customers rather than missing them due to an overly strict default threshold.
-
----
-
 ## 🛠️ Tech Stack
 
-<<<<<<< HEAD
+
 * **Cloud Infrastructure:** AWS (S3, Lambda, Athena)
 * **Data Engineering & Analysis:** Python (Pandas, NumPy), SQL (Athena)
 * **Machine Learning:** Scikit-Learn (Logistic Regression)
